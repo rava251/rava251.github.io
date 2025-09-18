@@ -73,22 +73,50 @@
         <label for="fname">ФИО:</label><br>
         <input type="text" id="fname" name="fname" placeholder="Введите ваше ФИО" required><br><br>
 
-         <label for="fname">Телефон:</label><br>
-        <input type="text" id="fname" name="fname" placeholder="Введите ваше номер телефона" required><br><br>
-
+<form action="/action_page.php">
+  <label for="phone">Номер телефона:</label><br><br>
+  <input type="tel" id="phone" name="phone" placeholder="+7 777-777-77-77" pattern="\+7 \d{3}-\d{3}-\d{2}-\d{2}" required><br><br>
+        
         <label for="fname">E-mail:</label><br>
         <input type="text" id="fname" name="fname" placeholder="Введите ваш E-mail" required><br><br>
 
       <form action="/action_page.php">
   <label for="birthday">День Рождения:</label>
   <input type="date" id="birthday" name="birthday">
+
+   <p>Пол:</p>
+<form action="/action_page.php">
+  <!-- Радиокнопки для выбора пола -->
+  <input type="radio" id="male" name="sex" value="Мужской">
+  <label for="male">Мужской</label><br>
+
+  <input type="radio" id="female" name="sex" value="Женский">
+  <label for="female">Женский</label><br>
+    
+<form action="/action_page.php">
+  <label for="programming_languages">Выбери любимый язык программирования:</label>
+  <select id="programming_languages" name="programming_language">
+    <option value="html">HTML</option>
+    <option value="css">CSS</option>
+    <option value="javascript" selected>JavaScript</option>
+    <option value="python">Python</option>
+    <option value="java">Java</option>
+    <option value="php">PHP</option>
+    <option value="ruby">Ruby</option>
+  </select><br><br>
+    
+<form action="/action_page.php">
+  <label for="biography">Расскажите о себе:</label><br><br>
+  <textarea id="biography" name="biography" rows="4" cols="50" placeholder="Расскажите о себе..."></textarea><br><br>
+
+     <input type="checkbox" id="contract" name="contract" required>
+  <label for="contract">С контрактом ознакомлен(а)</label><br><br>
+
   <input type="submit" value="Отправить">
             
     </form>
-        
     </body>
 </html>
-
 
 
 
