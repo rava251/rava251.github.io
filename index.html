@@ -68,9 +68,6 @@
         <!-- Пример ссылки с фрагментом на GitHub Pages -->
         <p>Перейти к разделу 1 на моем сайте: </p>
         <a href="https://rava251.github.io#section1" target="_blank">Раздел 1</a>
-
-        <h2>Text field</h2>
-<p>The <strong>input type="text"</strong> defines a one-line text input field:</p>
     
     <form action="https://formspree.io/f/mayknzjw" method="POST">
         <label for="fname">ФИО:</label><br>
@@ -82,12 +79,16 @@
         <label for="fname">E-mail:</label><br>
         <input type="text" id="fname" name="fname" placeholder="Введите ваш E-mail" required><br><br>
 
-        <input type="submit" value="Отправить">
-        
+        <form action="/action_page.php">
+  <label for="birthday">День Рождения:</label>
+  <input type="data" id="birthday" name="birthday">
+  <input type="submit" value="Отправить">
+            
     </form>
         
     </body>
 </html>
+
 
 
 
