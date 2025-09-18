@@ -1,124 +1,96 @@
 <!DOCTYPE html>
 <html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <title>Новости КубГУ</title>
-    </head>
-    <body>
-        <h1>Новости Кубанского Государственного Университета</h1>
-        <p>Здесь вы найдете все новости Университета:</p>
+<head>
+  <meta charset="UTF-8">
+  <title>Новости КубГУ</title>
+</head>
+<body>
 
-        <!-- 1) Абсолютная гиперссылка на главную страницу сайта kubsu.ru -->
-        <p>Ссылка на сайт (http): </p>
-        <a href="http://www.kubsu.ru" target="_blank">КубГУ</a> <!-- добавил target="_blank", чтобы ссылка открывалась в новом окне -->
+  <h1>Новости Кубанского Государственного Университета</h1>
+  <p>Здесь вы найдете все новости Университета:</p>
 
-        <!-- 2) Абсолютная гиперссылка на главную страницу сайта kubsu.ru в https -->
-        <p>Ссылка на сайт (https): </p>
-        <a href="https://www.kubsu.ru" target="_blank">КубГУ</a>
+  <p><b>Ссылка на сайт (http):</b> 
+    <a href="http://www.kubsu.ru" target="_blank">КубГУ</a>
+  </p>
 
-         <!-- 3) Ссылка-изображение -->
-        <p>Ссылка-изображение:</p>
-        <a href="https://www.kubsu.ru" target="_blank">
-            <img src="https://www.kubsu.ru/sites/all/themes/portal_kubsu/logo.png" alt="Логотип КубГУ">
-        </a>
-        
-        <!-- 13) Пример ссылки на твой сайт (GitHub Pages) -->
-        <p>Перейти на мой сайт на GitHub Pages: </p>
-        <a href="https://rava251.github.io" target="_blank">Мой сайт на GitHub Pages</a>
+  <p><b>Ссылка на сайт (https):</b> 
+    <a href="https://www.kubsu.ru" target="_blank">КубГУ</a>
+  </p>
 
-        <!-- Пример ссылки с фрагментом на GitHub Pages -->
-        <p>Перейти к разделу Форме на моем сайте: </p>
-        <a href="https://rava251.github.io#section1" target="_blank">Раздел 1</a>
-        <!-- 4) Сокращенная ссылка на внутреннюю страницу -->
-        <p>Ссылка на внутреннюю страницу (например, о нас): </p>
-        <a href="about.html">О нас</a>
+  <p>Ссылка-изображение:</p>
+  <a href="https://www.kubsu.ru" target="_blank">
+    <img src="https://www.kubsu.ru/sites/all/themes/portal_kubsu/logo.png" alt="Логотип КубГУ">
+  </a>
 
-        <!-- 5) Сокращенная ссылка на главную страницу -->
-        <p>Ссылка на главную страницу: </p>
-        <a href="/">Главная</a> <!-- Это работает, если сайт в корне, для GitHub Pages лучше использовать полный путь -->
+  <p><b>Перейти на мой сайт на GitHub Pages:</b> 
+    <a href="https://rava251.github.io" target="_blank">Мой сайт</a>
+  </p>
 
-        <!-- 6) Ссылка на фрагмент текущей страницы -->
-        <p>Ссылка на фрагмент страницы (раздел 1): </p>
-        <a href="#section1">Перейти к разделу 1</a>
+  <p><b>Перейти к разделу Форме:</b> 
+    <a href="#section1">Раздел 1</a>
+  </p>
 
-        <!-- 7) Ссылка с тремя параметрами в URL -->
-        <p>Ссылка с тремя параметрами в URL: </p>
-        <a href="search.html?query=html&category=web&sort=desc">Поиск по HTML</a>
+  <p><b>Примеры ссылок:</b></p>
+  <ul>
+    <li><a href="about.html">О нас</a></li>
+    <li><a href="/">Главная</a></li>
+    <li><a href="search.html?query=html&category=web&sort=desc">Поиск по HTML</a></li>
+    <li><a href="profile.html?id=123">Профиль пользователя 123</a></li>
+    <li><a href="https://kubsu.ru/ru/university">О нас (kubsu)</a></li>
+    <li><a href="about/about-us.html">О нас (about)</a></li>
+    <li><a href="https://www.kubsu.ru/ru/contacts">Контакты</a></li>
+    <li><a href="../../home.html">Главная (на 2 уровня выше)</a></li>
+  </ul>
 
-        <!-- 8) Ссылка с параметром id в URL -->
-        <p>Ссылка с параметром id (например, профиль пользователя 123): </p>
-        <a href="profile.html?id=123">Профиль пользователя 123</a>
+  <h2 id="section1">Форма</h2>
+  <p>Пройти форму ниже ⬇️</p>
 
-        <!-- 9) Относительная ссылка на страницу в текущем каталоге -->
-        <p>Относительная ссылка на страницу в текущем каталоге: </p>
-        <a href="https://kubsu.ru/ru/university">О нас</a>
+  <form action="https://formspree.io/f/mayknzjw" method="POST">
 
-        <!-- 10) Относительная ссылка на страницу в каталоге about -->
-        <p>Относительная ссылка на страницу в каталоге about: </p>
-        <a href="about/about-us.html">О нас</a>
+    <label for="fname">ФИО:</label><br>
+    <input type="text" id="fname" name="fname" placeholder="Введите ваше ФИО" required><br><br>
 
-        <!-- 11) Относительная ссылка на страницу в каталоге уровнем выше -->
-        <p>Относительная ссылка на страницу на уровень выше: </p>
-        <a href="https://www.kubsu.ru/ru/contacts">Контакты</a>
+    <label for="phone">Номер телефона:</label><br>
+    <input type="tel" id="phone" name="phone" placeholder="+7 777-777-77-77" 
+           pattern="\+7 \d{3}-\d{3}-\d{2}-\d{2}" required><br><br>
 
-        <!-- 12) Относительная ссылка на страницу двумя уровнями выше -->
-        <p>Относительная ссылка на страницу двумя уровнями выше: </p>
-        <a href="../../home.html">Главная</a>
+    <label for="email">E-mail:</label><br>
+    <input type="email" id="email" name="email" placeholder="Введите ваш E-mail" required><br><br>
 
-        <!-- 6) Фрагмент на текущей странице (секция 1) -->
-        <h2 id="section1">Форма</h2>
-        <p>Пройти форму ниже ️⬇️</p>
-    
-    <form action="https://formspree.io/f/mayknzjw" method="POST">
-        <label for="fname">ФИО:</label><br>
-        <input type="text" id="fname" name="fname" placeholder="Введите ваше ФИО" required><br><br>
+    <label for="birthday">День рождения:</label><br>
+    <input type="date" id="birthday" name="birthday"><br><br>
 
-<form action="/action_page.php">
-  <label for="phone">Номер телефона:</label><br><br>
-  <input type="tel" id="phone" name="phone" placeholder="+7 777-777-77-77" pattern="\+7 \d{3}-\d{3}-\d{2}-\d{2}" required><br><br>
-        
-        <label for="fname">E-mail:</label><br>
-        <input type="text" id="fname" name="fname" placeholder="Введите ваш E-mail" required><br><br>
+    <p>Пол:</p>
+    <input type="radio" id="male" name="sex" value="Мужской">
+    <label for="male">Мужской</label><br>
 
-      <form action="/action_page.php">
-  <label for="birthday">День Рождения:</label>
-  <input type="date" id="birthday" name="birthday">
+    <input type="radio" id="female" name="sex" value="Женский">
+    <label for="female">Женский</label><br><br>
 
-   <p>Пол:</p>
-<form action="/action_page.php">
-  <!-- Радиокнопки для выбора пола -->
-  <input type="radio" id="male" name="sex" value="Мужской">
-  <label for="male">Мужской</label><br>
+    <label for="programming_languages">Любимый язык программирования:</label><br>
+    <select id="programming_languages" name="programming_language">
+      <option value="html">HTML</option>
+      <option value="css">CSS</option>
+      <option value="javascript" selected>JavaScript</option>
+      <option value="python">Python</option>
+      <option value="java">Java</option>
+      <option value="php">PHP</option>
+      <option value="ruby">Ruby</option>
+    </select><br><br>
 
-  <input type="radio" id="female" name="sex" value="Женский">
-  <label for="female">Женский</label><br>
-    
-<form action="/action_page.php">
-  <label for="programming_languages">Выбери любимый язык программирования:</label>
-  <select id="programming_languages" name="programming_language">
-    <option value="html">HTML</option>
-    <option value="css">CSS</option>
-    <option value="javascript" selected>JavaScript</option>
-    <option value="python">Python</option>
-    <option value="java">Java</option>
-    <option value="php">PHP</option>
-    <option value="ruby">Ruby</option>
-  </select><br><br>
-    
-<form action="/action_page.php">
-  <label for="biography">Расскажите о себе:</label><br><br>
-  <textarea id="biography" name="biography" rows="4" cols="50" placeholder="Расскажите о себе..."></textarea><br><br>
+    <label for="biography">Расскажите о себе:</label><br>
+    <textarea id="biography" name="biography" rows="4" cols="50" 
+              placeholder="Расскажите о себе..."></textarea><br><br>
 
-     <input type="checkbox" id="contract" name="contract" required>
-  <label for="contract">С контрактом ознакомлен(а)</label><br><br>
+    <input type="checkbox" id="contract" name="contract" required>
+    <label for="contract">С контрактом ознакомлен(а)</label><br><br>
 
-  <input type="submit" value="Отправить">
-            
-    </form>
-    </body>
+    <input type="submit" value="Отправить">
+
+  </form>
+
+</body>
 </html>
-
-
 
 
 
