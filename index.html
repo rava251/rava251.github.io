@@ -19,7 +19,8 @@
 
   <p>Ссылка-изображение:</p>
   <a href="https://www.kubsu.ru" target="_blank">
-    <img src="https://www.kubsu.ru/sites/all/themes/portal_kubsu/logo.png" alt="Логотип КубГУ">
+    <img src="https://www.kubsu.ru/sites/all/themes/portal_kubsu/logo.png" 
+         alt="Логотип КубГУ" width="150">
   </a>
 
   <p><b>Перейти на мой сайт на GitHub Pages:</b> 
@@ -32,15 +33,51 @@
 
   <p><b>Примеры ссылок:</b></p>
   <ul>
-    <li><a href="">О нас</a></li>
-    <li><a href="/">Главная</a></li>
-    <li><a href="">Поиск по HTML</a></li>
-    <li><a href="https://www.kubsu.ru/ru/user/70598">Профиль пользователя</a></li>
-    <li><a href="https://www.kubsu.ru/ru/sveden">О нас (kubsu)</a></li>
-    <li><a href="">О нас (about)</a></li>
-    <li><a href="https://www.kubsu.ru/ru/contacts">Контакты</a></li>
-    <li><a href="">Главная (на 2 уровня выше)</a></li>
+    <!-- абсолютная -->
+    <li><a href="https://www.kubsu.ru/ru/sveden">Абсолютная ссылка на kubsu</a></li>
+    <!-- относительная -->
+    <li><a href="about.html">Относительная (about.html)</a></li>
+    <!-- ссылка на главную -->
+    <li><a href="/">Главная (относительно корня)</a></li>
+    <!-- якорная -->
+    <li><a href="#footer">Вниз страницы (якорь)</a></li>
+    <!-- с параметрами -->
+    <li><a href="search.html?query=html&lang=ru">Ссылка с параметрами</a></li>
+    <!-- с протоколом mailto -->
+    <li><a href="mailto:info@kubsu.ru">Написать на e-mail</a></li>
+    <!-- с протоколом tel -->
+    <li><a href="tel:+78612199979">Позвонить в КубГУ</a></li>
   </ul>
+
+  <h2>Таблица</h2>
+  <table border="1" cellspacing="0" cellpadding="5">
+    <caption>Пример таблицы с объединением ячеек</caption>
+    <thead>
+      <tr>
+        <th>№</th>
+        <th>Название</th>
+        <th colspan="2">Информация</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="2">1</td>
+        <td>HTML</td>
+        <td>Разметка</td>
+        <td>Да</td>
+      </tr>
+      <tr>
+        <td>CSS</td>
+        <td>Стилизация</td>
+        <td>Да</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>JavaScript</td>
+        <td colspan="2">Добавляет интерактивность</td>
+      </tr>
+    </tbody>
+  </table>
 
   <h2 id="section1">Форма</h2>
   <p>Пройти форму ниже ⬇️</p>
@@ -88,13 +125,13 @@
     <input type="submit" value="Отправить">
 
   </form>
+  <hr>
+  <footer id="footer">
+    <p>© 2025 Кубанский Государственный Университет. Все права защищены.</p>
+  </footer>
 
 </body>
 </html>
-
-
-
-
 
 
 
