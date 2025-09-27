@@ -9,25 +9,71 @@
       line-height: 1.6;
       margin: 0;
       padding: 0;
-      background: #f9f9f9;
+      background: #f4f6fa;
       color: #333;
     }
 
-    header, footer {
-      background: #004080;
+    /* Шапка */
+    header {
+      background: linear-gradient(90deg, #004080, #0066cc);
       color: #fff;
-      padding: 15px;
+      padding: 20px 50px;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    header p {
+      margin: 5px 0 0;
+      font-size: 14px;
+    }
+
+    header img {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      width: 80px;
+      border-radius: 50%;
+      background: #fff;
+      padding: 5px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    }
+
+    /* Навигация */
+    nav {
+      background: #003366;
+      padding: 10px 20px;
       text-align: center;
     }
 
-    h1, h2 {
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffcc00;
+    }
+
+    /* Контент */
+    h2 {
       color: #004080;
       text-align: center;
+      margin-top: 30px;
     }
 
     p, ul, table, form {
       width: 90%;
-      max-width: 800px;
+      max-width: 900px;
       margin: 15px auto;
     }
 
@@ -49,12 +95,12 @@
       border-collapse: collapse;
       margin: 20px auto;
       background: #fff;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
     }
 
     th, td {
       border: 1px solid #ccc;
-      padding: 10px;
+      padding: 12px;
       text-align: center;
     }
 
@@ -65,14 +111,16 @@
     caption {
       font-weight: bold;
       margin-bottom: 10px;
+      color: #004080;
     }
 
     /* Форма */
     form {
       background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
     }
 
     label {
@@ -81,12 +129,18 @@
 
     input, select, textarea {
       width: 100%;
-      max-width: 400px;
-      padding: 8px;
+      max-width: 450px;
+      padding: 10px;
       margin-top: 5px;
       margin-bottom: 15px;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 6px;
+      transition: border-color 0.3s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #004080;
+      outline: none;
     }
 
     input[type="radio"], input[type="checkbox"] {
@@ -100,14 +154,21 @@
       border: none;
       cursor: pointer;
       font-size: 16px;
-      transition: 0.3s;
+      padding: 10px 20px;
+      border-radius: 6px;
+      transition: background 0.3s;
     }
 
     input[type="submit"]:hover {
       background: #0066cc;
     }
 
+    /* Футер */
     footer {
+      background: #003366;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
       margin-top: 30px;
     }
   </style>
@@ -115,31 +176,20 @@
 <body>
 
   <header>
-    <h1>Новости Кубанского Государственного Университета</h1>
-    <p>Здесь вы найдете все новости Университета</p>
+    <div>
+      <h1>Новости Кубанского Государственного Университета</h1>
+      <p>Здесь вы найдете все новости Университета</p>
+    </div>
+    <img src="https://www.kubsu.ru/sites/all/themes/portal_kubsu/logo.png" alt="Логотип КубГУ">
   </header>
 
-  <p><b>Ссылка на сайт (http):</b> 
-    <a href="http://www.kubsu.ru" target="_blank">КубГУ</a>
-  </p>
-
-  <p><b>Ссылка на сайт (https):</b> 
-    <a href="https://www.kubsu.ru" target="_blank">КубГУ</a>
-  </p>
-
-  <p>Ссылка-изображение:</p>
-  <a href="https://www.kubsu.ru" target="_blank">
-    <img src="https://www.kubsu.ru/sites/all/themes/portal_kubsu/logo.png" 
-         alt="Логотип КубГУ" width="150">
-  </a>
-
-  <p><b>Перейти на мой сайт на GitHub Pages:</b> 
+  <nav>
+    <a href="http://www.kubsu.ru" target="_blank">КубГУ (http)</a>
+    <a href="https://www.kubsu.ru" target="_blank">КубГУ (https)</a>
     <a href="https://rava251.github.io" target="_blank">Мой сайт</a>
-  </p>
-
-  <p><b>Перейти к разделу Форме:</b> 
     <a href="#section1">Форма</a>
-  </p>
+    <a href="#footer">Вниз</a>
+  </nav>
 
   <p><b>Примеры ссылок:</b></p>
   <ul>
@@ -218,7 +268,7 @@
     </select>
 
     <label for="biography">Расскажите о себе:</label>
-    <textarea id="biography" name="biography" rows="4" cols="50" 
+    <textarea id="biography" name="biography" rows="4" 
               placeholder="Расскажите о себе..."></textarea>
 
     <input type="checkbox" id="contract" name="contract" required>
@@ -234,7 +284,6 @@
 
 </body>
 </html>
-
 
 
 
