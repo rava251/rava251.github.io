@@ -34,7 +34,7 @@
       font-size: 14px;
     }
 
-    header img {
+    header a img {
       position: absolute;
       top: 15px;
       right: 20px;
@@ -43,6 +43,11 @@
       background: #fff;
       padding: 5px;
       box-shadow: 0 0 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    header a img:hover {
+      transform: scale(1.1);
     }
 
     /* Навигация */
@@ -180,7 +185,9 @@
       <h1>Новости Кубанского Государственного Университета</h1>
       <p>Здесь вы найдете все новости Университета</p>
     </div>
-    <img src="https://www.kubsu.ru/sites/all/themes/portal_kubsu/logo.png" alt="Логотип КубГУ">
+    <a href="https://www.kubsu.ru/" target="_blank">
+      <img src="https://www.kubsu.ru/sites/all/themes/portal_kubsu/logo.png" alt="Логотип КубГУ">
+    </a>
   </header>
 
   <nav>
