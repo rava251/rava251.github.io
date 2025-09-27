@@ -3,11 +3,121 @@
 <head>
   <meta charset="UTF-8">
   <title>Новости КубГУ</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    header, footer {
+      background: #004080;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+    }
+
+    h1, h2 {
+      color: #004080;
+      text-align: center;
+    }
+
+    p, ul, table, form {
+      width: 90%;
+      max-width: 800px;
+      margin: 15px auto;
+    }
+
+    ul li {
+      margin-bottom: 8px;
+    }
+
+    a {
+      color: #004080;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Таблица */
+    table {
+      width: 90%;
+      border-collapse: collapse;
+      margin: 20px auto;
+      background: #fff;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background: #e6f0ff;
+    }
+
+    caption {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    /* Форма */
+    form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      max-width: 400px;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    input[type="radio"], input[type="checkbox"] {
+      width: auto;
+      margin-right: 5px;
+    }
+
+    input[type="submit"] {
+      background: #004080;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background: #0066cc;
+    }
+
+    footer {
+      margin-top: 30px;
+    }
+  </style>
 </head>
 <body>
 
-  <h1>Новости Кубанского Государственного Университета</h1>
-  <p>Здесь вы найдете все новости Университета:</p>
+  <header>
+    <h1>Новости Кубанского Государственного Университета</h1>
+    <p>Здесь вы найдете все новости Университета</p>
+  </header>
 
   <p><b>Ссылка на сайт (http):</b> 
     <a href="http://www.kubsu.ru" target="_blank">КубГУ</a>
@@ -33,24 +143,17 @@
 
   <p><b>Примеры ссылок:</b></p>
   <ul>
-    <!-- абсолютная -->
     <li><a href="https://www.kubsu.ru/ru/sveden">Абсолютная ссылка на kubsu</a></li>
-    <!-- относительная -->
     <li><a href="about.html">Относительная (about.html)</a></li>
-    <!-- ссылка на главную -->
     <li><a href="/">Главная (относительно корня)</a></li>
-    <!-- якорная -->
     <li><a href="#footer">Вниз страницы (якорь)</a></li>
-    <!-- с параметрами -->
     <li><a href="search.html?query=html&lang=ru">Ссылка с параметрами</a></li>
-    <!-- с протоколом mailto -->
     <li><a href="mailto:info@kubsu.ru">Написать на e-mail</a></li>
-    <!-- с протоколом tel -->
     <li><a href="tel:+78612199979">Позвонить в КубГУ</a></li>
   </ul>
 
   <h2>Таблица</h2>
-  <table border="1" cellspacing="0" cellpadding="5">
+  <table>
     <caption>Пример таблицы с объединением ячеек</caption>
     <thead>
       <tr>
@@ -80,31 +183,30 @@
   </table>
 
   <h2 id="section1">Форма</h2>
-  <p>Пройти форму ниже ⬇️</p>
+  <p style="text-align:center;">Пройти форму ниже ⬇️</p>
 
   <form action="https://formspree.io/f/mayknzjw" method="POST">
 
-    <label for="fname">ФИО:</label><br>
-    <input type="text" id="fname" name="fname" placeholder="Введите ваше ФИО" required><br><br>
+    <label for="fname">ФИО:</label>
+    <input type="text" id="fname" name="fname" placeholder="Введите ваше ФИО" required>
 
-    <label for="phone">Номер телефона:</label><br>
+    <label for="phone">Номер телефона:</label>
     <input type="tel" id="phone" name="phone" placeholder="+7 777-777-77-77" 
-           pattern="\+7 \d{3}-\d{3}-\d{2}-\d{2}" required><br><br>
+           pattern="\+7 \d{3}-\d{3}-\d{2}-\d{2}" required>
 
-    <label for="email">E-mail:</label><br>
-    <input type="email" id="email" name="email" placeholder="Введите ваш E-mail" required><br><br>
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" placeholder="Введите ваш E-mail" required>
 
-    <label for="birthday">День рождения:</label><br>
-    <input type="date" id="birthday" name="birthday"><br><br>
+    <label for="birthday">День рождения:</label>
+    <input type="date" id="birthday" name="birthday">
 
     <p>Пол:</p>
     <input type="radio" id="male" name="sex" value="Мужской">
     <label for="male">Мужской</label><br>
-
     <input type="radio" id="female" name="sex" value="Женский">
     <label for="female">Женский</label><br><br>
 
-    <label for="programming_languages">Любимый язык программирования:</label><br>
+    <label for="programming_languages">Любимый язык программирования:</label>
     <select id="programming_languages" name="programming_language">
       <option value="html">HTML</option>
       <option value="css">CSS</option>
@@ -113,27 +215,25 @@
       <option value="java">Java</option>
       <option value="php">PHP</option>
       <option value="ruby">Ruby</option>
-    </select><br><br>
+    </select>
 
-    <label for="biography">Расскажите о себе:</label><br>
+    <label for="biography">Расскажите о себе:</label>
     <textarea id="biography" name="biography" rows="4" cols="50" 
-              placeholder="Расскажите о себе..."></textarea><br><br>
+              placeholder="Расскажите о себе..."></textarea>
 
     <input type="checkbox" id="contract" name="contract" required>
-    <label for="contract">С контрактом ознакомлен(а)</label><br><br>
+    <label for="contract">С контрактом ознакомлен(а)</label>
 
     <input type="submit" value="Отправить">
 
   </form>
-  <hr>
+
   <footer id="footer">
     <p>© 2025 Кубанский Государственный Университет. Все права защищены.</p>
   </footer>
 
 </body>
 </html>
-
-
 
 
 
