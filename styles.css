@@ -1,0 +1,291 @@
+/* Mobile First стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    padding: 10px;
+}
+
+/* Шапка Mobile First */
+#site-header {
+    background: #2c3e50;
+    color: white;
+    padding: 15px 0;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.site-name {
+    font-size: 1.4rem;
+    text-align: center;
+    margin: 0;
+}
+
+/* Навигация Mobile First - вертикальное меню */
+.main-menu ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.main-menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+    display: block;
+    padding: 8px;
+}
+
+.main-menu a:hover {
+    text-decoration: underline;
+    background: rgba(255,255,255,0.1);
+}
+
+/* Блок описания */
+.site-description {
+    background: #ecf0f1;
+    padding: 15px;
+    margin: 15px 0;
+    border-left: 5px solid #2980b9;
+}
+
+/* Основной контент с изменением порядка */
+.main-content {
+    display: flex;
+    flex-direction: column;
+}
+
+#table-section {
+    order: 1;
+}
+
+#hyperlinks {
+    order: 2;
+}
+
+#forma {
+    order: 3;
+}
+
+/* Стили для карты изображения с надписями */
+.image-map-container {
+    position: relative;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+.map-label {
+    position: absolute;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.rect-label {
+    top: 50px;
+    left: 60px;
+}
+
+.circle-label {
+    top: 80px;
+    left: 210px;
+}
+
+/* Мобильная версия таблицы */
+.mobile-table {
+    display: block;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 15px 0;
+    background: white;
+}
+
+.table-row {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+}
+
+.table-row:last-child {
+    border-bottom: none;
+}
+
+.table-cell {
+    flex: 1;
+    padding: 12px 8px;
+    text-align: left;
+}
+
+.table-cell.header {
+    background: #2980b9;
+    color: white;
+    font-weight: bold;
+    flex: 0 0 40%;
+}
+
+.table-divider {
+    height: 2px;
+    background: #2c3e50;
+    margin: 5px 0;
+}
+
+/* Десктопная версия таблицы */
+.desktop-table {
+    display: none;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: white;
+}
+
+.desktop-table th, .desktop-table td {
+    border: 1px solid #bbb;
+    padding: 8px;
+    text-align: center;
+}
+
+.desktop-table th {
+    background: #2980b9;
+    color: white;
+}
+
+.desktop-table tr:nth-child(even) {
+    background: #f2f2f2;
+}
+
+/* Форма */
+form input, form textarea, form select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+form input[type="submit"] {
+    width: auto;
+    background: #27ae60;
+    color: white;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+    padding: 10px 20px;
+}
+
+form input[type="submit"]:hover {
+    background: #2ecc71;
+}
+
+/* Подвал */
+#site-footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+/* Media Query для планшетов (min-width: 768px) */
+@media screen and (min-width: 768px) {
+    .header-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .site-name {
+        text-align: left;
+        margin-left: 15px;
+    }
+    
+    .main-menu ul {
+        flex-direction: row;
+        width: auto;
+        gap: 20px;
+    }
+    
+    .main-menu a {
+        padding: 0;
+    }
+    
+    .main-menu a:hover {
+        background: none;
+    }
+    
+    /* Возвращаем исходный порядок элементов */
+    .main-content {
+        display: block;
+    }
+    
+    #table-section,
+    #hyperlinks,
+    #forma {
+        order: 0;
+    }
+    
+    /* Показываем десктопную таблицу, скрываем мобильную */
+    .mobile-table {
+        display: none;
+    }
+    
+    .desktop-table {
+        display: table;
+    }
+}
+
+/* Media Query для десктопов (min-width: 1024px) */
+@media screen and (min-width: 1024px) {
+    .container {
+        width: 95%;
+    }
+    
+    .header-content {
+        padding: 0 20px;
+    }
+}
+
+/* Адаптивность для карты изображения */
+@media screen and (max-width: 480px) {
+    .image-map-container img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .map-label {
+        font-size: 14px;
+    }
+    
+    .rect-label {
+        top: 40px;
+        left: 50px;
+    }
+    
+    .circle-label {
+        top: 60px;
+        left: 180px;
+    }
+}
