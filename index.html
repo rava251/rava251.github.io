@@ -12,7 +12,7 @@
         <div class="container header-content">
             <div class="logo">
                 <img src="https://upload.wikimedia.org/wikipedia/ru/a/a2/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%9A%D1%83%D0%B1%D0%93%D0%A3.png" 
-                     alt="Логотип КубГУ" width="70" height="70">
+                     alt="Логотип КубГУ">
             </div>
             <h1 class="site-name">Кубанский государственный университет</h1>
             <nav class="main-menu">
@@ -47,13 +47,13 @@
                     <a href="https://kubsu.ru/">
                         <img src="https://upload.wikimedia.org/wikipedia/ru/a/a2/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%9A%D1%83%D0%B1%D0%93%D0%A3.png"
                              alt="Логотип КубГУ"
-                             width="100"
-                             height="100">
+                             width="80"
+                             height="80">
                     </a>
                 </li>
                 <li>ссылки из прямоугольных и круглых областей картинки (map):<br>
                     <div class="image-map-container">
-                        <img src="map.svg" alt="карта изображения" width="320" height="160" usemap="#m">
+                        <img src="map.svg" alt="карта изображения" usemap="#m">
                         <map name="m">
                             <area shape="rect" coords="20,20,140,80" href="https://kubsu.ru" alt="Переход на kubsu.ru">
                             <area shape="circle" coords="230,80,36" href="https://developer.mozilla.org/" alt="Переход на MDN">
@@ -109,6 +109,7 @@
             
             <!-- Мобильная версия таблицы -->
             <div class="mobile-table">
+                <!-- Факультет 1 -->
                 <div class="table-row">
                     <div class="table-cell header">Факультет</div>
                     <div class="table-cell">Математики и компьютерных наук</div>
@@ -132,6 +133,7 @@
                 
                 <div class="table-divider"></div>
                 
+                <!-- Факультет 2 -->
                 <div class="table-row">
                     <div class="table-cell header">Факультет</div>
                     <div class="table-cell">Филологический</div>
@@ -155,6 +157,7 @@
                 
                 <div class="table-divider"></div>
                 
+                <!-- Факультет 3 -->
                 <div class="table-row">
                     <div class="table-cell header">Факультет</div>
                     <div class="table-cell">Исторический</div>
@@ -178,6 +181,7 @@
                 
                 <div class="table-divider"></div>
                 
+                <!-- Итог -->
                 <div class="table-row">
                     <div class="table-cell header">Общее количество студентов</div>
                     <div class="table-cell">4170</div>
@@ -246,26 +250,28 @@
                 <label>
                     Введите ваше ФИО:<br />
                     <input name="field-name-1" placeholder="Фамилия Имя Отчество" required />
-                </label><br />
+                </label>
 
                 <label>
                     Ваш номер телефона:<br />
-                    <input name="field-phone" placeholder="+7(_)_  " required />
-                </label><br />
+                    <input name="field-phone" placeholder="+7(___) ___-__-__" required />
+                </label>
 
                 <label>
                     Ваш email:<br />
                     <input name="field-email" type="email" placeholder="example@gmail.com" required />
-                </label><br />
+                </label>
 
                 <label>
                     Ваша дата рождения:<br />
                     <input name="field-date" type="date" />
-                </label><br />
+                </label>
 
-                Ваш пол:<br />
-                <label><input type="radio" name="radio-group-1" value="Мужской" checked /> Мужской</label>
-                <label><input type="radio" name="radio-group-1" value="Женский" /> Женский</label><br />
+                <label>
+                    Ваш пол:<br />
+                    <label><input type="radio" name="radio-group-1" value="Мужской" checked /> Мужской</label>
+                    <label><input type="radio" name="radio-group-1" value="Женский" /> Женский</label>
+                </label>
 
                 <label>
                     Ваш любимый язык программирования:<br />
@@ -276,16 +282,16 @@
                         <option value="Java">Java</option>
                         <option value="Rust">Rust</option>
                     </select>
-                </label><br />
+                </label>
 
                 <label>
                     Ваша биография:<br />
-                    <textarea name="field-name-2"></textarea>
-                </label><br />
+                    <textarea name="field-name-2" placeholder="Расскажите о себе..."></textarea>
+                </label>
 
                 <label>
                     <input type="checkbox" checked /> С контрактом ознакомлен(а)
-                </label><br />
+                </label>
 
                 <input type="submit" value="Сохранить" />
             </form>
@@ -300,6 +306,7 @@
     </footer>
 </body>
 </html>
+
 
 
 
