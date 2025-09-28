@@ -1,0 +1,120 @@
+/* Стили для карты изображения с надписями */
+.image-map-container {
+    position: relative;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+.map-label {
+    position: absolute;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.rect-label {
+    top: 50px;
+    left: 60px;
+}
+
+.circle-label {
+    top: 80px;
+    left: 210px;
+}
+
+/* Мобильная версия таблицы */
+.mobile-table {
+    display: block;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+.table-row {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+}
+
+.table-row:last-child {
+    border-bottom: none;
+}
+
+.table-cell {
+    flex: 1;
+    padding: 12px 8px;
+    text-align: left;
+}
+
+.table-cell.header {
+    background: #2980b9;
+    color: white;
+    font-weight: bold;
+    flex: 0 0 40%;
+}
+
+.table-divider {
+    height: 2px;
+    background: #2c3e50;
+    margin: 5px 0;
+}
+
+/* Десктопная версия таблицы */
+.desktop-table {
+    display: none;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: white;
+}
+
+.desktop-table th, .desktop-table td {
+    border: 1px solid #bbb;
+    padding: 8px;
+    text-align: center;
+}
+
+.desktop-table th {
+    background: #2980b9;
+    color: white;
+}
+
+.desktop-table tr:nth-child(even) {
+    background: #f2f2f2;
+}
+
+/* Media Query для планшетов и десктопов */
+@media screen and (min-width: 768px) {
+    .mobile-table {
+        display: none;
+    }
+    
+    .desktop-table {
+        display: table;
+    }
+}
+
+/* Адаптивность для карты изображения */
+@media screen and (max-width: 480px) {
+    .image-map-container img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .map-label {
+        font-size: 14px;
+    }
+    
+    .rect-label {
+        top: 40px;
+        left: 50px;
+    }
+    
+    .circle-label {
+        top: 60px;
+        left: 180px;
+    }
+}
