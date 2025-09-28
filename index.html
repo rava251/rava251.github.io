@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -37,7 +36,7 @@
     </section>
 
     <!-- Основной контент -->
-    <main class="container" id="main">
+    <main class="container main-content" id="main">
         <!-- Список гиперссылок -->
         <section id="hyperlinks">
             <h2>Маркированный список гиперссылок</h2>
@@ -51,6 +50,13 @@
                              width="100"
                              height="100">
                     </a>
+                </li>
+                <li>ссылки из прямоугольных и круглых областей картинки (map):<br>
+                    <img src="map.svg" alt="карта изображения" width="320" height="160" usemap="#m">
+                    <map name="m">
+                        <area shape="rect" coords="20,20,140,80" href="https://kubsu.ru" alt="Переход на kubsu.ru">
+                        <area shape="circle" coords="230,80,36" href="https://developer.mozilla.org/" alt="Переход на MDN">
+                    </map>
                 </li>
                 <li><a href="#forma">На внутреннюю страницу (форма регистрации)</a></li>
                 <li><a href="#main">На главную страницу</a></li>
@@ -182,6 +188,7 @@
     </footer>
 </body>
 </html>
+
 
 
 
