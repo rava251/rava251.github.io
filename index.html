@@ -52,11 +52,15 @@
                     </a>
                 </li>
                 <li>ссылки из прямоугольных и круглых областей картинки (map):<br>
-                    <img src="map.svg" alt="карта изображения" width="320" height="160" usemap="#m">
-                    <map name="m">
-                        <area shape="rect" coords="20,20,140,80" href="https://kubsu.ru" alt="Переход на kubsu.ru">
-                        <area shape="circle" coords="230,80,36" href="https://developer.mozilla.org/" alt="Переход на MDN">
-                    </map>
+                    <div class="image-map-container">
+                        <img src="map.svg" alt="карта изображения" width="320" height="160" usemap="#m">
+                        <map name="m">
+                            <area shape="rect" coords="20,20,140,80" href="https://kubsu.ru" alt="Переход на kubsu.ru">
+                            <area shape="circle" coords="230,80,36" href="https://developer.mozilla.org/" alt="Переход на MDN">
+                        </map>
+                        <div class="map-label rect-label">КубГУ</div>
+                        <div class="map-label circle-label">GitHub</div>
+                    </div>
                 </li>
                 <li><a href="#forma">На внутреннюю страницу (форма регистрации)</a></li>
                 <li><a href="#main">На главную страницу</a></li>
@@ -102,7 +106,63 @@
         <!-- Таблица -->
         <section id="table-section">
             <h2>Таблица с информацией</h2>
-            <table class="data-table">
+            
+            <!-- Мобильная версия таблицы -->
+            <div class="mobile-table">
+                <div class="table-row">
+                    <div class="table-cell header">Факультет</div>
+                    <div class="table-cell">Математики и компьютерных наук</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-cell header">Студенты</div>
+                    <div class="table-cell">850</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-cell header">Преподаватели</div>
+                    <div class="table-cell">65</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-cell header">Год основания</div>
+                    <div class="table-cell">1970</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-cell header">Декан</div>
+                    <div class="table-cell">Иванов А.А.</div>
+                </div>
+                
+                <div class="table-divider"></div>
+                
+                <div class="table-row">
+                    <div class="table-cell header">Факультет</div>
+                    <div class="table-cell">Филологический</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-cell header">Студенты</div>
+                    <div class="table-cell">720</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-cell header">Преподаватели</div>
+                    <div class="table-cell">58</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-cell header">Год основания</div>
+                    <div class="table-cell">1965</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-cell header">Декан</div>
+                    <div class="table-cell">Петрова И.С.</div>
+                </div>
+                
+                <div class="table-divider"></div>
+                
+                <div class="table-row">
+                    <div class="table-cell header">Общее количество студентов</div>
+                    <div class="table-cell">4170</div>
+                </div>
+            </div>
+
+            <!-- Десктопная версия таблицы -->
+            <table class="data-table desktop-table">
                 <thead>
                     <tr>
                         <th>Факультет</th>
@@ -217,9 +277,6 @@
     </footer>
 </body>
 </html>
-
-
-
 
 
 
