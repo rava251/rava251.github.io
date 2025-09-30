@@ -44,76 +44,6 @@
 
     <!-- Основной контент -->
     <main class="container main-content" id="main" role="main">
-        <!-- Список гиперссылок -->
-        <section id="hyperlinks" aria-labelledby="links-title">
-            <h2 id="links-title">Маркированный список гиперссылок</h2>
-            <ul class="links-grid">
-                <li><a href="http://kubsu.ru/" title="Официальный сайт КубГУ по протоколу HTTP">КубГУ (http)</a></li>
-                <li><a href="https://kubsu.ru/" title="Официальный сайт КубГУ по защищенному протоколу HTTPS">КубГУ (https)</a></li>
-                <li class="image-link">
-                    <a href="https://kubsu.ru/" title="Перейти на официальный сайт КубГУ">
-                        <img src="https://upload.wikimedia.org/wikipedia/ru/a/a2/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%9A%D1%83%D0%B1%D0%93%D0%A3.png"
-                             alt="Логотип Кубанского государственного университета"
-                             width="80"
-                             height="80"
-                             loading="lazy">
-                    </a>
-                </li>
-                <li class="image-map-item">
-                    ссылки из прямоугольных и круглых областей картинки (map):<br>
-                    <div class="image-map-container">
-                        <img src="map.svg" alt="Интерактивная карта с ссылками на КубГУ и GitHub" usemap="#imagemap" loading="lazy">
-                        <map name="imagemap">
-                            <area shape="rect" coords="20,20,140,80" href="https://kubsu.ru" alt="Переход на официальный сайт КубГУ">
-                            <area shape="circle" coords="230,80,36" href="https://github.com/" alt="Переход на GitHub">
-                        </map>
-                        <div class="map-label rect-label">КубГУ</div>
-                        <div class="map-label circle-label">GitHub</div>
-                    </div>
-                </li>
-                <li><a href="#forma" title="Переход к форме регистрации">На внутреннюю страницу (форма регистрации)</a></li>
-                <li><a href="#main" title="Вернуться к началу страницы">На главную страницу</a></li>
-                <li><a href="#forma" title="Переход к форме регистрации">На фрагмент текущей страницы (форма регистрации)</a></li>
-                <li><a href="https://www.google.com/search?q=КубГУ&num=1&hl=ru" title="Поиск информации о КубГУ в Google">С тремя параметрами</a></li> 
-                <li><a href="https://www.kubsu.ru/ru/user" title="Профиль создателя сайта">С параметром id (Создатель сайта)</a></li>
-                <li><a href="otnos.html" title="Относительная ссылка">Относительная ссылка</a></li>
-                <li><a href="about/about.html" title="Страница в каталоге about">Относительная на страницу в каталоге about</a></li>
-                <li><a href="../higher.html" title="Страница уровнем выше">Относительная на главную страницу уровнем выше</a></li>
-                <li><a href="../../higher2.html" title="Страница двумя уровнями выше">Относительная двумя уровнями выше</a></li>
-                <li><a href="https://github.com/Youminava" title="Профиль на GitHub">На фрагмент стороннего сайта</a></li>
-                <li><a href="" title="Пустая ссылка">Пустая ссылка</a></li>
-                <li><span class="no-link">Ссылка без href</span></li>
-                <li><a href="https://kubsu.ru/" rel="nofollow" title="Ссылка запрещена для индексации">КубГУ (запрещен переход поисковикам)</a></li>
-                <li><a href="ftp://username:password@ftp.example.com/path/to/file.txt" title="Ссылка на FTP сервер">Ссылка на файл на FTP сервере</a></li>
-            </ul>
-
-            <h3>Нумерованный список ссылок</h3>
-            <ol class="numbered-links">
-                <li><a href="http://kubsu.ru/" title="Официальный сайт КубГУ по протоколу HTTP">КубГУ (http)</a></li>
-                <li><a href="https://kubsu.ru/" title="Официальный сайт КубГУ по защищенному протоколу HTTPS">КубГУ (https)</a></li>
-                <li><a href="#forma" title="Переход к форме регистрации на этой странице">На внутреннюю страницу (форма регистрации)</a></li>
-                <li><a href="#main" title="Вернуться к началу главной страницы">На главную страницу</a></li>
-                <li><a href="#forma" title="Переход к форме регистрации в пределах текущей страницы">На фрагмент текущей страницы (форма регистрации)</a></li>
-                <li><a href="https://www.google.com/search?q=КубГУ&num=1&hl=ru" title="Поиск информации о КубГУ в Google с ограничением результатов">С тремя параметрами</a></li>
-                <li><a href="https://www.kubsu.ru/ru/user" title="Профиль создателя сайта на платформе КубГУ">С параметром id (Создатель сайта)</a></li>
-            </ol>
-
-            <div class="info-grid">
-                <p>
-                    Кубанский государственный университет является одним из ведущих вузов Юга России.
-                    Более подробную информацию можно найти на
-                    <a href="https://kubsu.ru/ru/university" target="_blank" rel="noopener">официальной странице университета</a>.
-                </p>
-
-                <p>
-                    Также рекомендуем ознакомиться с
-                    <a href="https://kubsu.ru/ru/education" target="_blank" rel="noopener">образовательными программами</a>
-                    и
-                    <a href="https://kubsu.ru/ru/abiturient" target="_blank" rel="noopener">информацией для абитуриентов</a>.
-                </p>
-            </div>
-        </section>
-
         <!-- Таблица -->
         <section id="table-section" aria-labelledby="table-title">
             <h2 id="table-title">Таблица с информацией</h2>
@@ -252,6 +182,76 @@
                     </tr>
                 </tbody>
             </table>
+        </section>
+
+        <!-- Список гиперссылок -->
+        <section id="hyperlinks" aria-labelledby="links-title">
+            <h2 id="links-title">Маркированный список гиперссылок</h2>
+            <ul class="links-grid">
+                <li><a href="http://kubsu.ru/" title="Официальный сайт КубГУ по протоколу HTTP">КубГУ (http)</a></li>
+                <li><a href="https://kubsu.ru/" title="Официальный сайт КубГУ по защищенному протоколу HTTPS">КубГУ (https)</a></li>
+                <li class="image-link">
+                    <a href="https://kubsu.ru/" title="Перейти на официальный сайт КубГУ">
+                        <img src="https://upload.wikimedia.org/wikipedia/ru/a/a2/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%9A%D1%83%D0%B1%D0%93%D0%A3.png"
+                             alt="Логотип Кубанского государственного университета"
+                             width="80"
+                             height="80"
+                             loading="lazy">
+                    </a>
+                </li>
+                <li class="image-map-item">
+                    ссылки из прямоугольных и круглых областей картинки (map):<br>
+                    <div class="image-map-container">
+                        <img src="map.svg" alt="Интерактивная карта с ссылками на КубГУ и GitHub" usemap="#imagemap" loading="lazy">
+                        <map name="imagemap">
+                            <area shape="rect" coords="20,20,140,80" href="https://kubsu.ru" alt="Переход на официальный сайт КубГУ">
+                            <area shape="circle" coords="230,80,36" href="https://github.com/" alt="Переход на GitHub">
+                        </map>
+                        <div class="map-label rect-label">КубГУ</div>
+                        <div class="map-label circle-label">GitHub</div>
+                    </div>
+                </li>
+                <li><a href="#forma" title="Переход к форме регистрации">На внутреннюю страницу (форма регистрации)</a></li>
+                <li><a href="#main" title="Вернуться к началу страницы">На главную страницу</a></li>
+                <li><a href="#forma" title="Переход к форме регистрации">На фрагмент текущей страницы (форма регистрации)</a></li>
+                <li><a href="https://www.google.com/search?q=КубГУ&num=1&hl=ru" title="Поиск информации о КубГУ в Google">С тремя параметрами</a></li> 
+                <li><a href="https://www.kubsu.ru/ru/user" title="Профиль создателя сайта">С параметром id (Создатель сайта)</a></li>
+                <li><a href="otnos.html" title="Относительная ссылка">Относительная ссылка</a></li>
+                <li><a href="about/about.html" title="Страница в каталоге about">Относительная на страницу в каталоге about</a></li>
+                <li><a href="../higher.html" title="Страница уровнем выше">Относительная на главную страницу уровнем выше</a></li>
+                <li><a href="../../higher2.html" title="Страница двумя уровнями выше">Относительная двумя уровнями выше</a></li>
+                <li><a href="https://github.com/Youminava" title="Профиль на GitHub">На фрагмент стороннего сайта</a></li>
+                <li><a href="" title="Пустая ссылка">Пустая ссылка</a></li>
+                <li><span class="no-link">Ссылка без href</span></li>
+                <li><a href="https://kubsu.ru/" rel="nofollow" title="Ссылка запрещена для индексации">КубГУ (запрещен переход поисковикам)</a></li>
+                <li><a href="ftp://username:password@ftp.example.com/path/to/file.txt" title="Ссылка на FTP сервер">Ссылка на файл на FTP сервере</a></li>
+            </ul>
+
+            <h3>Нумерованный список ссылок</h3>
+            <ol class="numbered-links">
+                <li><a href="http://kubsu.ru/" title="Официальный сайт КубГУ по протоколу HTTP">КубГУ (http)</a></li>
+                <li><a href="https://kubsu.ru/" title="Официальный сайт КубГУ по защищенному протоколу HTTPS">КубГУ (https)</a></li>
+                <li><a href="#forma" title="Переход к форме регистрации на этой странице">На внутреннюю страницу (форма регистрации)</a></li>
+                <li><a href="#main" title="Вернуться к началу главной страницы">На главную страницу</a></li>
+                <li><a href="#forma" title="Переход к форме регистрации в пределах текущей страницы">На фрагмент текущей страницы (форма регистрации)</a></li>
+                <li><a href="https://www.google.com/search?q=КубГУ&num=1&hl=ru" title="Поиск информации о КубГУ в Google с ограничением результатов">С тремя параметрами</a></li>
+                <li><a href="https://www.kubsu.ru/ru/user" title="Профиль создателя сайта на платформе КубГУ">С параметром id (Создатель сайта)</a></li>
+            </ol>
+
+            <div class="info-grid">
+                <p>
+                    Кубанский государственный университет является одним из ведущих вузов Юга России.
+                    Более подробную информацию можно найти на
+                    <a href="https://kubsu.ru/ru/university" target="_blank" rel="noopener">официальной странице университета</a>.
+                </p>
+
+                <p>
+                    Также рекомендуем ознакомиться с
+                    <a href="https://kubsu.ru/ru/education" target="_blank" rel="noopener">образовательными программами</a>
+                    и
+                    <a href="https://kubsu.ru/ru/abiturient" target="_blank" rel="noopener">информацией для абитуриентов</a>.
+                </p>
+            </div>
         </section>
 
         <!-- Форма -->
