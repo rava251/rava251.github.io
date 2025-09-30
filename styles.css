@@ -501,4 +501,63 @@ form label {
   margin-bottom: var(--spacing-sm);
   font-weight: 600;
   font-size: var(--font-size-base);
-  color: var(--primary
+  color: var(--primary-color);
+}
+
+/* Поля ввода */
+input, select, textarea {
+  padding: var(--spacing-sm);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-base);
+  transition: var(--transition);
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px rgba(41, 128, 185, 0.2);
+}
+
+input[type="radio"], input[type="checkbox"] {
+  margin-right: var(--spacing-sm);
+}
+
+/* Кнопки */
+.submit-button, .reset-button {
+  padding: var(--spacing-md) var(--spacing-lg);
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-right: var(--spacing-md);
+}
+
+.submit-button {
+  background: var(--accent-color);
+  color: white;
+}
+
+.submit-button:hover {
+  background: #219653;
+  transform: translateY(-2px);
+}
+
+.reset-button {
+  background: var(--warning-color);
+  color: white;
+}
+
+.reset-button:hover {
+  background: #c0392b;
+  transform: translateY(-2px);
+}
+
+/* Сообщения об ошибках */
+.error-message {
+  color: var(--warning-color);
+  font-size: var(--font-size-sm
