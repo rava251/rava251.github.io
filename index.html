@@ -48,61 +48,140 @@
         <section id="table-section" aria-labelledby="table-title">
             <h2 id="table-title">Таблица с информацией</h2>
             
-            <!-- Единая адаптивная таблица -->
-            <div class="table-container">
-                <table class="responsive-table" role="table" aria-label="Подробная информация о факультетах университета">
-                    <thead role="rowgroup">
-                        <tr role="row">
-                            <th role="columnheader">Факультет</th>
-                            <th role="columnheader">Студенты</th>
-                            <th role="columnheader">Преподаватели</th>
-                            <th role="columnheader">Год основания</th>
-                            <th role="columnheader">Декан</th>
-                        </tr>
-                    </thead>
-                    <tbody role="rowgroup">
-                        <tr role="row">
-                            <td role="cell" data-label="Факультет">Математики и компьютерных наук</td>
-                            <td role="cell" data-label="Студенты">850</td>
-                            <td role="cell" data-label="Преподаватели">65</td>
-                            <td role="cell" data-label="Год основания">1970</td>
-                            <td role="cell" data-label="Декан">Иванов А.А.</td>
-                        </tr>
-                        <tr role="row">
-                            <td role="cell" data-label="Факультет">Филологический</td>
-                            <td role="cell" data-label="Студенты">720</td>
-                            <td role="cell" data-label="Преподаватели">58</td>
-                            <td role="cell" data-label="Год основания">1965</td>
-                            <td role="cell" data-label="Декан">Петрова И.С.</td>
-                        </tr>
-                        <tr role="row">
-                            <td role="cell" data-label="Факультет">Исторический</td>
-                            <td role="cell" data-label="Студенты">610</td>
-                            <td role="cell" data-label="Преподаватели">45</td>
-                            <td role="cell" data-label="Год основания">1972</td>
-                            <td role="cell" data-label="Декан">Сидоров П.В.</td>
-                        </tr>
-                        <tr role="row">
-                            <td role="cell" data-label="Факультет">Экономический</td>
-                            <td role="cell" data-label="Студенты">1100</td>
-                            <td role="cell" data-label="Преподаватели">75</td>
-                            <td role="cell" data-label="Год основания">1980</td>
-                            <td role="cell" data-label="Декан">Козлова М.И.</td>
-                        </tr>
-                        <tr role="row">
-                            <td role="cell" data-label="Факультет">Юридический</td>
-                            <td role="cell" data-label="Студенты">890</td>
-                            <td role="cell" data-label="Преподаватели">62</td>
-                            <td role="cell" data-label="Год основания">1978</td>
-                            <td role="cell" data-label="Декан">Николаев С.П.</td>
-                        </tr>
-                        <tr role="row" class="table-total">
-                            <td role="cell" colspan="3" data-label="Итог">Общее количество студентов</td>
-                            <td role="cell" colspan="2" data-label="Значение">4170</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <!-- Мобильная версия таблицы -->
+            <div class="mobile-table" role="region" aria-label="Информация о факультетах для мобильных устройств">
+                <!-- Факультет 1 -->
+                <div class="table-row">
+                    <div class="table-cell header">Факультет</div>
+                    <div class="table-cell">Математики и компьютерных наук</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-cell header">Студенты</div>
+                    <div class="table-cell">850</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-cell header">Преподаватели</div>
+                    <div class="table-cell">65</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-cell header">Год основания</div>
+                    <div class="table-cell">1970</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-cell header">Декан</div>
+                    <div class="table-cell">Иванов А.А.</div>
+                </div>
+                
+                <div class="table-divider"></div>
+                
+                <!-- Факультет 2 -->
+                <div class="table-row">
+                    <div class="table-cell header">Факультет</div>
+                    <div class="table-cell">Филологический</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-cell header">Студенты</div>
+                    <div class="table-cell">720</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-cell header">Преподаватели</div>
+                    <div class="table-cell">58</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-cell header">Год основания</div>
+                    <div class="table-cell">1965</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-cell header">Декан</div>
+                    <div class="table-cell">Петрова И.С.</div>
+                </div>
+                
+                <div class="table-divider"></div>
+                
+                <!-- Факультет 3 -->
+                <div class="table-row">
+                    <div class="table-cell header">Факультет</div>
+                    <div class="table-cell">Исторический</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-cell header">Студенты</div>
+                    <div class="table-cell">610</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-cell header">Преподаватели</div>
+                    <div class="table-cell">45</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-cell header">Год основания</div>
+                    <div class="table-cell">1972</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-cell header">Декан</div>
+                    <div class="table-cell">Сидоров П.В.</div>
+                </div>
+                
+                <div class="table-divider"></div>
+                
+                <!-- Итог -->
+                <div class="table-row">
+                    <div class="table-cell header">Общее количество студентов</div>
+                    <div class="table-cell">4170</div>
+                </div>
             </div>
+
+            <!-- Десктопная версия таблицы -->
+            <table class="desktop-table" role="table" aria-label="Подробная информация о факультетах университета">
+                <thead role="rowgroup">
+                    <tr role="row">
+                        <th role="columnheader">Факультет</th>
+                        <th role="columnheader">Количество студентов</th>
+                        <th role="columnheader">Количество преподавателей</th>
+                        <th role="columnheader">Год основания</th>
+                        <th role="columnheader">Декан</th>
+                    </tr>
+                </thead>
+                <tbody role="rowgroup">
+                    <tr role="row">
+                        <td role="cell">Математики и компьютерных наук</td>
+                        <td role="cell">850</td>
+                        <td role="cell">65</td>
+                        <td role="cell">1970</td>
+                        <td role="cell">Иванов А.А.</td>
+                    </tr>
+                    <tr role="row">
+                        <td role="cell">Филологический</td>
+                        <td role="cell">720</td>
+                        <td role="cell">58</td>
+                        <td role="cell">1965</td>
+                        <td role="cell">Петрова И.С.</td>
+                    </tr>
+                    <tr role="row">
+                        <td role="cell">Исторический</td>
+                        <td role="cell">610</td>
+                        <td role="cell">45</td>
+                        <td role="cell">1972</td>
+                        <td role="cell">Сидоров П.В.</td>
+                    </tr>
+                    <tr role="row">
+                        <td role="cell">Экономический</td>
+                        <td role="cell">1100</td>
+                        <td role="cell">75</td>
+                        <td role="cell">1980</td>
+                        <td role="cell">Козлова М.И.</td>
+                    </tr>
+                    <tr role="row">
+                        <td role="cell">Юридический</td>
+                        <td role="cell">890</td>
+                        <td role="cell">62</td>
+                        <td role="cell">1978</td>
+                        <td role="cell">Николаев С.П.</td>
+                    </tr>
+                    <tr role="row">
+                        <td role="cell" colspan="2">Общее количество студентов</td>
+                        <td role="cell" colspan="3">4170</td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
 
         <!-- Список гиперссылок -->
