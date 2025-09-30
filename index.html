@@ -38,23 +38,22 @@
     <!-- Основной контент -->
     <main class="container main-content" id="main">
         <!-- Список гиперссылок -->
-        <section id="hyperlinks">
+        <section id="hyperlinks" class="content-section">
             <h2>Маркированный список гиперссылок</h2>
             <ul class="links-grid">
-                <li><a href="http://kubsu.ru/">КубГУ (http)</a></li>
-                <li><a href="https://kubsu.ru/">КубГУ (https)</a></li>
-                <li class="image-link">
-                    <a href="https://kubsu.ru/">
+                <li class="link-item"><a href="http://kubsu.ru/" class="link">КубГУ (http)</a></li>
+                <li class="link-item"><a href="https://kubsu.ru/" class="link">КубГУ (https)</a></li>
+                <li class="link-item image-link">
+                    <a href="https://kubsu.ru/" class="link">
                         <img src="https://upload.wikimedia.org/wikipedia/ru/a/a2/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%9A%D1%83%D0%B1%D0%93%D0%A3.png"
                              alt="Логотип КубГУ"
-                             width="80"
-                             height="80">
+                             class="link-image">
                     </a>
                 </li>
-                <li class="image-map-item">
-                    ссылки из прямоугольных и круглых областей картинки (map):<br>
+                <li class="link-item image-map-item">
+                    <span class="link-label">ссылки из прямоугольных и круглых областей картинки (map):</span>
                     <div class="image-map-container">
-                        <img src="map.svg" alt="карта изображения" usemap="#m">
+                        <img src="map.svg" alt="карта изображения" usemap="#m" class="map-image">
                         <map name="m">
                             <area shape="rect" coords="20,20,140,80" href="https://kubsu.ru" alt="Переход на kubsu.ru">
                             <area shape="circle" coords="230,80,36" href="https://developer.mozilla.org/" alt="Переход на MDN">
@@ -63,131 +62,139 @@
                         <div class="map-label circle-label">GitHub</div>
                     </div>
                 </li>
-                <li><a href="#forma">На внутреннюю страницу (форма регистрации)</a></li>
-                <li><a href="#main">На главную страницу</a></li>
-                <li><a href="#forma">На фрагмент текущей страницы (форма регистрации)</a></li>
-                <li><a href="https://www.google.com/search?q=КубГУ&num=1&hl=ru">С тремя параметрами</a></li> 
-                <li><a href="https://www.kubsu.ru/ru/user">С параметром id (Создатель сайта)</a></li>
-                <li><a href="otnos.html">Относительная ссылка</a></li>
-                <li><a href="about/about.html">Относительная на страницу в каталоге about</a></li>
-                <li><a href="../higher.html">Относительная на главную страницу уровнем выше</a></li>
-                <li><a href="../../higher2.html">Относительная двумя уровнями выше</a></li>
-                <li><a href="https://github.com/Youminava">На фрагмент стороннего сайта</a></li>
-                <li><a href="">Пустая ссылка</a></li>
-                <li>Ссылка без href</li>
-                <li><a href="https://kubsu.ru/" rel="nofollow">КубГУ (запрещен переход поисковикам)</a></li>
-                <li><a href="ftp://username:password@ftp.example.com/path/to/file.txt">Ссылка на файл на FTP сервере</a></li>
+                <li class="link-item"><a href="#forma" class="link">На внутреннюю страницу (форма регистрации)</a></li>
+                <li class="link-item"><a href="#main" class="link">На главную страницу</a></li>
+                <li class="link-item"><a href="#forma" class="link">На фрагмент текущей страницы (форма регистрации)</a></li>
+                <li class="link-item"><a href="https://www.google.com/search?q=КубГУ&num=1&hl=ru" class="link">С тремя параметрами</a></li> 
+                <li class="link-item"><a href="https://www.kubsu.ru/ru/user" class="link">С параметром id (Создатель сайта)</a></li>
+                <li class="link-item"><a href="otnos.html" class="link">Относительная ссылка</a></li>
+                <li class="link-item"><a href="about/about.html" class="link">Относительная на страницу в каталоге about</a></li>
+                <li class="link-item"><a href="../higher.html" class="link">Относительная на главную страницу уровнем выше</a></li>
+                <li class="link-item"><a href="../../higher2.html" class="link">Относительная двумя уровнями выше</a></li>
+                <li class="link-item"><a href="https://github.com/Youminava" class="link">На фрагмент стороннего сайта</a></li>
+                <li class="link-item"><a href="" class="link">Пустая ссылка</a></li>
+                <li class="link-item">Ссылка без href</li>
+                <li class="link-item"><a href="https://kubsu.ru/" rel="nofollow" class="link">КубГУ (запрещен переход поисковикам)</a></li>
+                <li class="link-item"><a href="ftp://username:password@ftp.example.com/path/to/file.txt" class="link">Ссылка на файл на FTP сервере</a></li>
             </ul>
 
             <h3>Нумерованный список ссылок</h3>
             <ol class="numbered-links">
-                <li><a href="http://kubsu.ru/" title="Официальный сайт КубГУ по протоколу HTTP">КубГУ (http)</a></li>
-                <li><a href="https://kubsu.ru/" title="Официальный сайт КубГУ по защищенному протоколу HTTPS">КубГУ (https)</a></li>
-                <li><a href="#forma" title="Переход к форме регистрации на этой странице">На внутреннюю страницу (форма регистрации)</a></li>
-                <li><a href="#main" title="Вернуться к началу главной страницы">На главную страницу</a></li>
-                <li><a href="#forma" title="Переход к форме регистрации в пределах текущей страницы">На фрагмент текущей страницы (форма регистрации)</a></li>
-                <li><a href="https://www.google.com/search?q=КубГУ&num=1&hl=ru" title="Поиск информации о КубГУ в Google с ограничением результатов">С тремя параметрами</a></li>
-                <li><a href="https://www.kubsu.ru/ru/user" title="Профиль создателя сайта на платформе КубГУ">С параметром id (Создатель сайта)</a></li>
+                <li class="numbered-item"><a href="http://kubsu.ru/" title="Официальный сайт КубГУ по протоколу HTTP" class="link">КубГУ (http)</a></li>
+                <li class="numbered-item"><a href="https://kubsu.ru/" title="Официальный сайт КубГУ по защищенному протоколу HTTPS" class="link">КубГУ (https)</a></li>
+                <li class="numbered-item"><a href="#forma" title="Переход к форме регистрации на этой странице" class="link">На внутреннюю страницу (форма регистрации)</a></li>
+                <li class="numbered-item"><a href="#main" title="Вернуться к началу главной страницы" class="link">На главную страницу</a></li>
+                <li class="numbered-item"><a href="#forma" title="Переход к форме регистрации в пределах текущей страницы" class="link">На фрагмент текущей страницы (форма регистрации)</a></li>
+                <li class="numbered-item"><a href="https://www.google.com/search?q=КубГУ&num=1&hl=ru" title="Поиск информации о КубГУ в Google с ограничением результатов" class="link">С тремя параметрами</a></li>
+                <li class="numbered-item"><a href="https://www.kubsu.ru/ru/user" title="Профиль создателя сайта на платформе КубГУ" class="link">С параметром id (Создатель сайта)</a></li>
             </ol>
 
             <div class="info-grid">
-                <p>
+                <p class="info-text">
                     Кубанский государственный университет является одним из ведущих вузов Юга России.
                     Более подробную информацию можно найти на
-                    <a href="https://kubsu.ru/ru/university" target="_blank">официальной странице университета</a>.
+                    <a href="https://kubsu.ru/ru/university" target="_blank" class="link">официальной странице университета</a>.
                 </p>
 
-                <p>
+                <p class="info-text">
                     Также рекомендуем ознакомиться с
-                    <a href="https://kubsu.ru/ru/education" target="_blank">образовательными программами</a>
+                    <a href="https://kubsu.ru/ru/education" target="_blank" class="link">образовательными программами</a>
                     и
-                    <a href="https://kubsu.ru/ru/abiturient" target="_blank">информацией для абитуриентов</a>.
+                    <a href="https://kubsu.ru/ru/abiturient" target="_blank" class="link">информацией для абитуриентов</a>.
                 </p>
             </div>
         </section>
 
         <!-- Таблица -->
-        <section id="table-section">
+        <section id="table-section" class="content-section">
             <h2>Таблица с информацией</h2>
             
             <!-- Мобильная версия таблицы -->
             <div class="mobile-table">
                 <!-- Факультет 1 -->
-                <div class="table-row">
-                    <div class="table-cell header">Факультет</div>
-                    <div class="table-cell">Математики и компьютерных наук</div>
-                </div>
-                <div class="table-row">
-                    <div class="table-cell header">Студенты</div>
-                    <div class="table-cell">850</div>
-                </div>
-                <div class="table-row">
-                    <div class="table-cell header">Преподаватели</div>
-                    <div class="table-cell">65</div>
-                </div>
-                <div class="table-row">
-                    <div class="table-cell header">Год основания</div>
-                    <div class="table-cell">1970</div>
-                </div>
-                <div class="table-row">
-                    <div class="table-cell header">Декан</div>
-                    <div class="table-cell">Иванов А.А.</div>
+                <div class="table-block">
+                    <div class="table-row">
+                        <div class="table-cell header">Факультет</div>
+                        <div class="table-cell">Математики и компьютерных наук</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell header">Студенты</div>
+                        <div class="table-cell">850</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell header">Преподаватели</div>
+                        <div class="table-cell">65</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell header">Год основания</div>
+                        <div class="table-cell">1970</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell header">Декан</div>
+                        <div class="table-cell">Иванов А.А.</div>
+                    </div>
                 </div>
                 
                 <div class="table-divider"></div>
                 
                 <!-- Факультет 2 -->
-                <div class="table-row">
-                    <div class="table-cell header">Факультет</div>
-                    <div class="table-cell">Филологический</div>
-                </div>
-                <div class="table-row">
-                    <div class="table-cell header">Студенты</div>
-                    <div class="table-cell">720</div>
-                </div>
-                <div class="table-row">
-                    <div class="table-cell header">Преподаватели</div>
-                    <div class="table-cell">58</div>
-                </div>
-                <div class="table-row">
-                    <div class="table-cell header">Год основания</div>
-                    <div class="table-cell">1965</div>
-                </div>
-                <div class="table-row">
-                    <div class="table-cell header">Декан</div>
-                    <div class="table-cell">Петрова И.С.</div>
+                <div class="table-block">
+                    <div class="table-row">
+                        <div class="table-cell header">Факультет</div>
+                        <div class="table-cell">Филологический</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell header">Студенты</div>
+                        <div class="table-cell">720</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell header">Преподаватели</div>
+                        <div class="table-cell">58</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell header">Год основания</div>
+                        <div class="table-cell">1965</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell header">Декан</div>
+                        <div class="table-cell">Петрова И.С.</div>
+                    </div>
                 </div>
                 
                 <div class="table-divider"></div>
                 
                 <!-- Факультет 3 -->
-                <div class="table-row">
-                    <div class="table-cell header">Факультет</div>
-                    <div class="table-cell">Исторический</div>
-                </div>
-                <div class="table-row">
-                    <div class="table-cell header">Студенты</div>
-                    <div class="table-cell">610</div>
-                </div>
-                <div class="table-row">
-                    <div class="table-cell header">Преподаватели</div>
-                    <div class="table-cell">45</div>
-                </div>
-                <div class="table-row">
-                    <div class="table-cell header">Год основания</div>
-                    <div class="table-cell">1972</div>
-                </div>
-                <div class="table-row">
-                    <div class="table-cell header">Декан</div>
-                    <div class="table-cell">Сидоров П.В.</div>
+                <div class="table-block">
+                    <div class="table-row">
+                        <div class="table-cell header">Факультет</div>
+                        <div class="table-cell">Исторический</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell header">Студенты</div>
+                        <div class="table-cell">610</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell header">Преподаватели</div>
+                        <div class="table-cell">45</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell header">Год основания</div>
+                        <div class="table-cell">1972</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell header">Декан</div>
+                        <div class="table-cell">Сидоров П.В.</div>
+                    </div>
                 </div>
                 
                 <div class="table-divider"></div>
                 
                 <!-- Итог -->
-                <div class="table-row">
-                    <div class="table-cell header">Общее количество студентов</div>
-                    <div class="table-cell">4170</div>
+                <div class="table-block">
+                    <div class="table-row">
+                        <div class="table-cell header">Общее количество студентов</div>
+                        <div class="table-cell">4170</div>
+                    </div>
                 </div>
             </div>
 
@@ -238,7 +245,7 @@
                         <td>1978</td>
                         <td>Николаев С.П.</td>
                     </tr>
-                    <tr>
+                    <tr class="table-total">
                         <td colspan="2">Общее количество студентов</td>
                         <td colspan="3">4170</td>
                     </tr>
@@ -247,52 +254,50 @@
         </section>
 
         <!-- Форма -->
-        <section id="forma">
+        <section id="forma" class="content-section">
             <h2>Форма регистрации</h2>
             <form action="/" method="POST" class="form-grid">
                 <div class="form-group">
-                    <label for="field-name-1">
+                    <label for="field-name-1" class="form-label">
                         Введите ваше ФИО:
                     </label>
-                    <input id="field-name-1" name="field-name-1" placeholder="Фамилия Имя Отчество" required />
+                    <input id="field-name-1" name="field-name-1" placeholder="Фамилия Имя Отчество" required class="form-input" />
                 </div>
 
                 <div class="form-group">
-                    <label for="field-phone">
+                    <label for="field-phone" class="form-label">
                         Ваш номер телефона:
                     </label>
-                    <input id="field-phone" name="field-phone" placeholder="+7(___) ___-__-__" required />
+                    <input id="field-phone" name="field-phone" placeholder="+7(___) ___-__-__" required class="form-input" />
                 </div>
 
                 <div class="form-group">
-                    <label for="field-email">
+                    <label for="field-email" class="form-label">
                         Ваш email:
                     </label>
-                    <input id="field-email" name="field-email" type="email" placeholder="example@gmail.com" required />
+                    <input id="field-email" name="field-email" type="email" placeholder="example@gmail.com" required class="form-input" />
                 </div>
 
                 <div class="form-group">
-                    <label for="field-date">
+                    <label for="field-date" class="form-label">
                         Ваша дата рождения:
                     </label>
-                    <input id="field-date" name="field-date" type="date" />
+                    <input id="field-date" name="field-date" type="date" class="form-input" />
                 </div>
 
                 <div class="form-group">
-                    <label>
-                        Ваш пол:
-                    </label>
+                    <span class="form-label">Ваш пол:</span>
                     <div class="radio-group">
-                        <label><input type="radio" name="radio-group-1" value="Мужской" checked /> Мужской</label>
-                        <label><input type="radio" name="radio-group-1" value="Женский" /> Женский</label>
+                        <label class="radio-label"><input type="radio" name="radio-group-1" value="Мужской" checked class="radio-input" /> Мужской</label>
+                        <label class="radio-label"><input type="radio" name="radio-group-1" value="Женский" class="radio-input" /> Женский</label>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="field-name-4">
+                    <label for="field-name-4" class="form-label">
                         Ваш любимый язык программирования:
                     </label>
-                    <select id="field-name-4" name="field-name-4[]" multiple>
+                    <select id="field-name-4" name="field-name-4[]" multiple class="form-select">
                         <option value="C">C</option>
                         <option value="C++">C++</option>
                         <option value="Python">Python</option>
@@ -302,20 +307,20 @@
                 </div>
 
                 <div class="form-group full-width">
-                    <label for="field-name-2">
+                    <label for="field-name-2" class="form-label">
                         Ваша биография:
                     </label>
-                    <textarea id="field-name-2" name="field-name-2" placeholder="Расскажите о себе..."></textarea>
+                    <textarea id="field-name-2" name="field-name-2" placeholder="Расскажите о себе..." class="form-textarea"></textarea>
                 </div>
 
                 <div class="form-group full-width">
-                    <label>
-                        <input type="checkbox" checked /> С контрактом ознакомлен(а)
+                    <label class="checkbox-label">
+                        <input type="checkbox" checked class="checkbox-input" /> С контрактом ознакомлен(а)
                     </label>
                 </div>
 
                 <div class="form-group full-width">
-                    <input type="submit" value="Сохранить" />
+                    <input type="submit" value="Сохранить" class="submit-button" />
                 </div>
             </form>
         </section>
