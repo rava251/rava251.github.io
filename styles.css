@@ -341,62 +341,61 @@ a:focus {
   left: 65%;
 }
 
-/* Таблицы */
-.mobile-table {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0;
-  border: 1px solid var(--border-color);
+/* Адаптивная таблица */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: var(--spacing-lg) 0;
   border-radius: var(--border-radius);
-  overflow: hidden;
-  margin: var(--spacing-md) 0;
-  background: var(--bg-card);
   box-shadow: var(--shadow);
+  background: var(--bg-card);
 }
 
-.table-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.responsive-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-base);
+  min-width: 600px;
+}
+
+.responsive-table th,
+.responsive-table td {
+  padding: var(--spacing-md);
+  text-align: left;
   border-bottom: 1px solid var(--border-color);
   transition: var(--transition-fast);
 }
 
-.table-row:hover {
+.responsive-table th {
+  background: var(--secondary-color);
+  color: white;
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  position: sticky;
+  top: 0;
+}
+
+.responsive-table tr:hover {
   background: rgba(41, 128, 185, 0.05);
 }
 
-.table-cell {
-  padding: var(--spacing-md);
-  text-align: left;
-  border-right: 1px solid var(--border-color);
+.responsive-table tr:last-child td {
+  border-bottom: none;
 }
 
-.table-cell:last-child {
-  border-right: none;
-}
-
-.table-cell.header {
-  background: var(--secondary-color);
+/* Строка с итогами */
+.table-total {
+  background: var(--primary-color) !important;
   color: white;
   font-weight: bold;
-  font-size: var(--font-size-sm);
 }
 
-.table-divider {
-  grid-column: 1 / -1;
-  height: 3px;
+.table-total td {
   background: var(--primary-color);
-}
-
-.desktop-table {
-  display: none;
-  width: 100%;
-  border-collapse: collapse;
-  margin: var(--spacing-lg) 0;
-  background: var(--bg-card);
-  box-shadow: var(--shadow);
-  border-radius: var(--border-radius);
-  overflow: hidden;
+  color: white;
+  border-bottom: none;
+  text-align: center;
+  font-size: var(--font-size-lg);
 }
 
 /* Форма регистрации */
@@ -568,4 +567,123 @@ input[type="radio"], input[type="checkbox"] {
   color: var(--warning-color);
   font-size: var(--font-size-sm);
   margin-top: var(--spacing-xs);
-  display: none
+  display: none;
+}
+
+.help-text {
+  color: var(--text-light);
+  font-size: var(--font-size-sm);
+  margin-top: var(--spacing-xs);
+}
+
+/* Кнопки */
+.submit-button, .reset-button {
+  padding: var(--spacing-md) var(--spacing-xl);
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-right: var(--spacing-md);
+}
+
+.submit-button {
+  background: var(--accent-color);
+  color: white;
+}
+
+.submit-button:hover {
+  background: #219a52;
+  transform: translateY(-2px);
+}
+
+.reset-button {
+  background: var(--text-light);
+  color: white;
+}
+
+.reset-button:hover {
+  background: #555;
+  transform: translateY(-2px);
+}
+
+/* Подвал */
+#site-footer {
+  background: var(--primary-color);
+  color: white;
+  padding: var(--spacing-xl) 0;
+  margin-top: var(--spacing-2xl);
+  text-align: center;
+}
+
+/* Адаптивность для мобильных устройств */
+@media screen and (max-width: 768px) {
+  .responsive-table {
+    min-width: 100%;
+    display: block;
+  }
+  
+  .responsive-table thead {
+    display: none;
+  }
+  
+  .responsive-table tbody,
+  .responsive-table tr,
+  .responsive-table td {
+    display: block;
+    width: 100%;
+  }
+  
+  .responsive-table tr {
+    margin-bottom: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background: var(--bg-card);
+    box-shadow: var(--shadow);
+    padding: var(--spacing-sm);
+  }
+  
+  .responsive-table td {
+    text-align: right;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+    padding-left: 50%;
+  }
+  
+  .responsive-table td:last-child {
+    border-bottom: none;
+  }
+  
+  .responsive-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: var(--spacing-md);
+    width: 45%;
+    padding-right: var(--spacing-md);
+    text-align: left;
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: var(--font-size-sm);
+  }
+  
+  .table-total td {
+    text-align: center;
+    padding: var(--spacing-md);
+    font-size: var(--font-size-base);
+  }
+  
+  .table-total td::before {
+    display: none;
+  }
+}
+
+/* Для очень маленьких экранов */
+@media screen and (max-width: 480px) {
+  .responsive-table td {
+    padding-left: 40%;
+  }
+  
+  .responsive-table td::before {
+    width:
