@@ -389,6 +389,28 @@ footer {
   color: white;
 }
 
+footer a {
+  color: white;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+footer a:hover {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+footer h5 {
+  color: white;
+  margin-bottom: var(--spacing-md);
+  font-weight: 600;
+}
+
+footer ul li {
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+}
+
 /* Анимации и переходы */
 .fade-in {
   animation: fadeIn 0.5s ease-in;
@@ -427,6 +449,15 @@ footer {
   .form-container {
     padding: var(--spacing-md) !important;
   }
+  
+  .map-label {
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-xs);
+  }
+  
+  footer .row > div {
+    margin-bottom: var(--spacing-lg);
+  }
 }
 
 @media (max-width: 768px) {
@@ -440,6 +471,10 @@ footer {
   
   .btn-group-vertical .btn {
     margin-bottom: var(--spacing-sm);
+  }
+  
+  footer .row {
+    text-align: center;
   }
 }
 
@@ -519,6 +554,42 @@ textarea:focus {
   outline-offset: 2px;
 }
 
+/* Стили для валидации формы */
+.form-control:invalid:not(:focus):not(:placeholder-shown) {
+  border-color: var(--warning-color);
+}
+
+.form-control:valid:not(:focus):not(:placeholder-shown) {
+  border-color: var(--accent-color);
+}
+
+/* Стили для выбранных элементов формы */
+.form-select option:checked {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+/* Стили для карточек со ссылками */
+.card-custom .card-body .card-link {
+  position: relative;
+  z-index: 1;
+  color: var(--secondary-color);
+  font-weight: 500;
+}
+
+.card-custom .card-body .card-link:hover {
+  color: var(--primary-color);
+}
+
+/* Стили для изображения в карточке ссылки */
+.card-custom .card-body.text-center img {
+  transition: var(--transition);
+}
+
+.card-custom:hover .card-body.text-center img {
+  transform: scale(1.1);
+}
+
 /* Высококонтрастный режим */
 @media (prefers-contrast: high) {
   :root {
@@ -528,6 +599,10 @@ textarea:focus {
   }
   
   .card-custom {
+    border: 2px solid var(--border-color);
+  }
+  
+  .form-container {
     border: 2px solid var(--border-color);
   }
 }
@@ -542,5 +617,17 @@ textarea:focus {
   
   html {
     scroll-behavior: auto;
+  }
+  
+  .card-custom:hover {
+    transform: none;
+  }
+  
+  .navbar-brand img:hover {
+    transform: none;
+  }
+  
+  .image-map-container img:hover {
+    transform: none;
   }
 }
