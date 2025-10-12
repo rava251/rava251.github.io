@@ -1,3 +1,6 @@
+# Готовый HTML файл с калькулятором:
+
+```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -579,15 +582,18 @@
                     
                     <div class="col-md-6">
                         <label for="product-select" class="form-label fw-semibold custom-text-primary">
-                            Выберите товар:
+                            Выберите товар(ы):
                         </label>
-                        <select class="form-select" id="product-select">
+                        <select class="form-select" id="product-select" multiple size="5">
                             <option value="1500">Учебник по программированию - 1500 руб.</option>
                             <option value="800">Курс по веб-разработке - 800 руб.</option>
                             <option value="2500">Ноутбук для учебы - 2500 руб.</option>
                             <option value="500">Комплект канцелярии - 500 руб.</option>
                             <option value="1200">Подписка на образовательную платформу - 1200 руб.</option>
+                            <option value="300">Научный калькулятор - 300 руб.</option>
+                            <option value="2000">Графический планшет - 2000 руб.</option>
                         </select>
+                        <div class="form-text">Для выбора нескольких товаров удерживайте Ctrl (Cmd на Mac)</div>
                     </div>
                     
                     <div class="col-12">
@@ -721,13 +727,4 @@
                         } else if (!isPhoneValid) {
                             phoneInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
                         } else if (!isEmailValid) {
-                            emailInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        } else if (!isAgreementValid) {
-                            agreementInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        }
-                    }
-                });
-            }
-            
-            // Плавная прокрутка для якорных ссылок
-            document.querySelectorAll('a[href^="#"]').forEach(anchor
+                            emailInput.scrollIntoView({ behavior: 'smooth', block:

@@ -701,3 +701,42 @@ textarea:focus {
     animation: none;
   }
 }
+/* Дополнительные стили для калькулятора с множественным выбором */
+#product-select {
+    min-height: 120px;
+}
+
+#product-select option {
+    padding: var(--spacing-sm);
+    margin: 2px 0;
+    border-radius: var(--border-radius-sm);
+    transition: var(--transition-fast);
+}
+
+#product-select option:hover {
+    background-color: rgba(41, 128, 185, 0.1);
+}
+
+#product-select option:checked {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+/* Стили для отображения выбранных товаров */
+.calculation-item {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.calculation-item:last-child {
+    border-bottom: none;
+}
+
+/* Адаптивность для множественного выбора */
+@media (max-width: 768px) {
+    #product-select {
+        min-height: 100px;
+        font-size: var(--font-size-sm);
+    }
+}
