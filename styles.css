@@ -590,6 +590,68 @@ textarea:focus {
   transform: scale(1.1);
 }
 
+/* Стили для калькулятора */
+#calculator .alert-success {
+  border-left: 4px solid var(--accent-color);
+  background: var(--bg-card);
+  border-radius: var(--border-radius);
+}
+
+#calculator .alert-heading {
+  color: var(--primary-color);
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+#calculation-result {
+  line-height: 1.8;
+}
+
+#calculate-btn {
+  transition: var(--transition);
+}
+
+#calculate-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Анимация появления результата */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#result-container[style*="display: block"] {
+  animation: slideInUp 0.5s ease-out;
+}
+
+/* Стили для невалидного поля */
+.is-invalid {
+  border-color: var(--warning-color) !important;
+}
+
+.is-invalid:focus {
+  box-shadow: 0 0 0 0.25rem rgba(231, 76, 60, 0.25) !important;
+}
+
+/* Адаптивность для калькулятора */
+@media (max-width: 768px) {
+  #calculator .form-container {
+    padding: var(--spacing-md) !important;
+  }
+  
+  #calculation-result {
+    font-size: var(--font-size-sm);
+  }
+}
+
 /* Высококонтрастный режим */
 @media (prefers-contrast: high) {
   :root {
@@ -629,5 +691,13 @@ textarea:focus {
   
   .image-map-container img:hover {
     transform: none;
+  }
+  
+  #calculate-btn:hover {
+    transform: none;
+  }
+  
+  #result-container[style*="display: block"] {
+    animation: none;
   }
 }

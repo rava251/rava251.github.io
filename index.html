@@ -51,6 +51,11 @@
                                 <i class="bi bi-pencil-square me-1"></i>Форма
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#calculator">
+                                <i class="bi bi-calculator me-1"></i>Калькулятор
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -552,6 +557,54 @@
                 </form>
             </div>
         </section>
+
+        <!-- Калькулятор стоимости заказа -->
+        <section id="calculator" class="mb-5">
+            <h2 class="section-title custom-text-primary">Калькулятор стоимости заказа</h2>
+            
+            <div class="form-container p-4">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="product-quantity" class="form-label fw-semibold custom-text-primary">
+                            Количество товара:
+                        </label>
+                        <input type="number" 
+                               class="form-control" 
+                               id="product-quantity" 
+                               min="1" 
+                               value="1"
+                               placeholder="Введите количество">
+                        <div class="error-message mt-1" id="quantity-error">Пожалуйста, введите корректное количество</div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <label for="product-select" class="form-label fw-semibold custom-text-primary">
+                            Выберите товар:
+                        </label>
+                        <select class="form-select" id="product-select">
+                            <option value="1500">Учебник по программированию - 1500 руб.</option>
+                            <option value="800">Курс по веб-разработке - 800 руб.</option>
+                            <option value="2500">Ноутбук для учебы - 2500 руб.</option>
+                            <option value="500">Комплект канцелярии - 500 руб.</option>
+                            <option value="1200">Подписка на образовательную платформу - 1200 руб.</option>
+                        </select>
+                    </div>
+                    
+                    <div class="col-12">
+                        <button type="button" class="btn btn-primary px-4" id="calculate-btn">
+                            <i class="bi bi-calculator me-2"></i>Рассчитать стоимость
+                        </button>
+                    </div>
+                    
+                    <div class="col-12">
+                        <div class="alert alert-success mt-3" id="result-container" style="display: none;">
+                            <h5 class="alert-heading">Результат расчета:</h5>
+                            <p class="mb-0" id="calculation-result"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Подвал сайта -->
@@ -576,6 +629,7 @@
                         <li><a href="#table-section" class="text-white">Таблица</a></li>
                         <li><a href="#hyperlinks" class="text-white">Ссылки</a></li>
                         <li><a href="#forma" class="text-white">Форма</a></li>
+                        <li><a href="#calculator" class="text-white">Калькулятор</a></li>
                     </ul>
                 </div>
             </div>
@@ -676,23 +730,4 @@
             }
             
             // Плавная прокрутка для якорных ссылок
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+            document.querySelectorAll('a[href^="#"]').forEach(anchor
