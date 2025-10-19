@@ -400,6 +400,7 @@ footer a:hover {
   text-decoration: underline;
 }
 
+footer h3,
 footer h5 {
   color: white;
   margin-bottom: var(--spacing-md);
@@ -758,7 +759,7 @@ textarea:focus {
 
 .selected-item {
     display: flex;
-    justify-content: between;
+    justify-content: space-between;
     align-items: center;
     padding: var(--spacing-sm);
     margin-bottom: var(--spacing-xs);
@@ -874,4 +875,9 @@ textarea:focus {
 
 #product-select option[data-category="Подписки"] {
     background-color: rgba(243, 156, 18, 0.1);
+}
+
+/* Граница для подвала */
+footer .border-top {
+    border-color: rgba(255, 255, 255, 0.3) !important;
 }

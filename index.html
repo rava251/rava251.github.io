@@ -33,7 +33,7 @@
                     <span class="d-inline d-md-none">КубГУ</span>
                 </a>
                 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-expanded="false" aria-label="Переключить навигацию">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 
@@ -90,7 +90,7 @@
                     <div class="col-12 col-sm-6">
                         <div class="card card-custom h-100">
                             <div class="card-header custom-bg-secondary text-white">
-                                <h5 class="card-title mb-0">Математики и компьютерных наук</h5>
+                                <h3 class="card-title h5 mb-0">Математики и компьютерных наук</h3>
                             </div>
                             <div class="card-body">
                                 <p class="card-text"><strong>Студенты:</strong> 850</p>
@@ -105,7 +105,7 @@
                     <div class="col-12 col-sm-6">
                         <div class="card card-custom h-100">
                             <div class="card-header custom-bg-secondary text-white">
-                                <h5 class="card-title mb-0">Филологический</h5>
+                                <h3 class="card-title h5 mb-0">Филологический</h3>
                             </div>
                             <div class="card-body">
                                 <p class="card-text"><strong>Студенты:</strong> 720</p>
@@ -120,7 +120,7 @@
                     <div class="col-12 col-sm-6">
                         <div class="card card-custom h-100">
                             <div class="card-header custom-bg-secondary text-white">
-                                <h5 class="card-title mb-0">Исторический</h5>
+                                <h3 class="card-title h5 mb-0">Исторический</h3>
                             </div>
                             <div class="card-body">
                                 <p class="card-text"><strong>Студенты:</strong> 610</p>
@@ -135,7 +135,7 @@
                     <div class="col-12 col-sm-6">
                         <div class="card card-custom h-100">
                             <div class="card-header custom-bg-secondary text-white">
-                                <h5 class="card-title mb-0">Экономический</h5>
+                                <h3 class="card-title h5 mb-0">Экономический</h3>
                             </div>
                             <div class="card-body">
                                 <p class="card-text"><strong>Студенты:</strong> 1100</p>
@@ -150,7 +150,7 @@
                     <div class="col-12 col-sm-6">
                         <div class="card card-custom h-100">
                             <div class="card-header custom-bg-secondary text-white">
-                                <h5 class="card-title mb-0">Юридический</h5>
+                                <h3 class="card-title h5 mb-0">Юридический</h3>
                             </div>
                             <div class="card-body">
                                 <p class="card-text"><strong>Студенты:</strong> 890</p>
@@ -165,7 +165,7 @@
                     <div class="col-12">
                         <div class="card border-success">
                             <div class="card-body text-center">
-                                <h5 class="card-title text-success">Общее количество студентов</h5>
+                                <h3 class="card-title h5 text-success">Общее количество студентов</h3>
                                 <p class="card-text fs-4 fw-bold">4170</p>
                             </div>
                         </div>
@@ -177,46 +177,47 @@
             <div class="d-none d-lg-block">
                 <div class="table-responsive shadow-sm rounded">
                     <table class="table table-striped table-hover table-custom mb-0">
+                        <caption class="visually-hidden">Информация о факультетах Кубанского государственного университета</caption>
                         <thead>
                             <tr>
-                                <th>Факультет</th>
-                                <th>Количество студентов</th>
-                                <th>Количество преподавателей</th>
-                                <th>Год основания</th>
-                                <th>Декан</th>
+                                <th scope="col">Факультет</th>
+                                <th scope="col">Количество студентов</th>
+                                <th scope="col">Количество преподавателей</th>
+                                <th scope="col">Год основания</th>
+                                <th scope="col">Декан</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Математики и компьютерных наук</td>
+                                <th scope="row">Математики и компьютерных наук</th>
                                 <td>850</td>
                                 <td>65</td>
                                 <td>1970</td>
                                 <td>Иванов А.А.</td>
                             </tr>
                             <tr>
-                                <td>Филологический</td>
+                                <th scope="row">Филологический</th>
                                 <td>720</td>
                                 <td>58</td>
                                 <td>1965</td>
                                 <td>Петрова И.С.</td>
                             </tr>
                             <tr>
-                                <td>Исторический</td>
+                                <th scope="row">Исторический</th>
                                 <td>610</td>
                                 <td>45</td>
                                 <td>1972</td>
                                 <td>Сидоров П.В.</td>
                             </tr>
                             <tr>
-                                <td>Экономический</td>
+                                <th scope="row">Экономический</th>
                                 <td>1100</td>
                                 <td>75</td>
                                 <td>1980</td>
                                 <td>Козлова М.И.</td>
                             </tr>
                             <tr>
-                                <td>Юридический</td>
+                                <th scope="row">Юридический</th>
                                 <td>890</td>
                                 <td>62</td>
                                 <td>1978</td>
@@ -259,7 +260,7 @@
                         <div class="card-body text-center">
                             <a href="https://kubsu.ru/" title="Перейти на официальный сайт КубГУ" class="stretched-link">
                                 <img src="https://upload.wikimedia.org/wikipedia/ru/a/a2/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%9A%D1%83%D0%B1%D0%93%D0%A3.png"
-                                     alt="Логотип Кубанского государственного университета"
+                                     alt="Логотип Кубанского государственного университета - ссылка на официальный сайт"
                                      width="80"
                                      height="80"
                                      class="img-fluid">
@@ -309,7 +310,7 @@
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="card card-custom h-100">
                         <div class="card-body">
-                            <a href="#forma" class="card-link stretched-link" title="Переход к форме регистрации">На фрагмент текущей страницы (форма регистрации)</a>
+                            <a href="#forma" class="card-link stretched-link" title="Переход к форме регистрации в пределах текущей страницы">На фрагмент текущей страницы (форма регистрации)</a>
                         </div>
                     </div>
                 </div>
@@ -571,9 +572,9 @@
                     <div class="col-lg-6">
                         <div class="card card-custom h-100">
                             <div class="card-header custom-bg-secondary text-white">
-                                <h5 class="card-title mb-0">
+                                <h3 class="card-title h5 mb-0">
                                     <i class="bi bi-cart me-2"></i>Выбор товаров
-                                </h5>
+                                </h3>
                             </div>
                             <div class="card-body">
                                 <div class="mb-4">
@@ -631,9 +632,9 @@
                     <div class="col-lg-6">
                         <div class="card card-custom h-100">
                             <div class="card-header custom-bg-secondary text-white">
-                                <h5 class="card-title mb-0">
+                                <h3 class="card-title h5 mb-0">
                                     <i class="bi bi-calculator me-2"></i>Расчет стоимости
-                                </h5>
+                                </h3>
                             </div>
                             <div class="card-body">
                                 <div class="text-center mb-4">
@@ -644,9 +645,9 @@
                                 
                                 <!-- Предварительный просмотр выбранных товаров -->
                                 <div class="selected-preview mb-4" id="selected-preview" style="display: none;">
-                                    <h6 class="custom-text-primary mb-3">
+                                    <h4 class="h6 custom-text-primary mb-3">
                                         <i class="bi bi-cart-check me-1"></i>Выбранные товары:
-                                    </h6>
+                                    </h4>
                                     <div id="selected-items-list" class="small"></div>
                                 </div>
                                 
@@ -654,7 +655,7 @@
                                 <div class="alert alert-success" id="result-container" style="display: none;">
                                     <div class="d-flex align-items-center mb-2">
                                         <i class="bi bi-receipt text-success me-2 fs-5"></i>
-                                        <h5 class="alert-heading mb-0 text-success">Детали заказа</h5>
+                                        <h4 class="alert-heading h5 mb-0 text-success">Детали заказа</h4>
                                     </div>
                                     <hr>
                                     <div id="calculation-result"></div>
@@ -678,11 +679,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h5>Кубанский государственный университет</h5>
+                    <h3 class="h5">Кубанский государственный университет</h3>
                     <p>Один из ведущих вузов Юга России, предоставляющий качественное образование с 1920 года.</p>
                 </div>
                 <div class="col-md-3">
-                    <h5>Контакты</h5>
+                    <h3 class="h5">Контакты</h3>
                     <ul class="list-unstyled">
                         <li>Адрес: г. Краснодар, ул. Ставропольская, 149</li>
                         <li>Телефон: +7 (861) 219-95-30</li>
@@ -690,10 +691,24 @@
                     </ul>
                 </div>
                 <div class="col-md-3">
-                    <h5>Быстрые ссылки</h5>
+                    <h3 class="h5">Быстрые ссылки</h3>
                     <ul class="list-unstyled">
                         <li><a href="#table-section" class="text-white">Таблица</a></li>
                         <li><a href="#hyperlinks" class="text-white">Ссылки</a></li>
                         <li><a href="#forma" class="text-white">Форма</a></li>
                         <li><a href="#calculator" class="text-white">Калькулятор</a></li>
-                    </
+                    </ul>
+                </div>
+            </div>
+            <div class="row mt-4 pt-3 border-top border-white-50">
+                <div class="col-12 text-center">
+                    <p class="mb-0">&copy; 2024 Мирсултанов Раван. Кубанский государственный университет. Все права защищены.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -21,6 +21,12 @@ function initCalculator() {
     const selectAllBtn = document.getElementById('select-all');
     const clearSelectionBtn = document.getElementById('clear-selection');
 
+    // Проверка существования элементов
+    if (!calculateBtn || !quantityInput || !productSelect) {
+        console.error('Не найдены необходимые элементы для калькулятора');
+        return;
+    }
+
     // Регулярное выражение для проверки количества (только цифры)
     const quantityRegex = /^\d+$/;
     
@@ -32,25 +38,33 @@ function initCalculator() {
         
         if (selectedOptions.length === 0) {
             selectedPreview.style.display = 'none';
-            emptyState.style.display = 'block';
+            if (emptyState) emptyState.style.display = 'block';
         } else {
             selectedPreview.style.display = 'block';
-            emptyState.style.display = 'none';
+            if (emptyState) emptyState.style.display = 'none';
             
             let previewHTML = '';
             Array.from(selectedOptions).forEach(function(option) {
                 const price = parseInt(option.value);
                 const productText = option.text;
-                const category = option.getAttribute('data-category');
                 
                 previewHTML += '<div class="selected-item">';
-                previewHTML += '<div class="selected-item-name">' + productText + '</div>';
+                previewHTML += '<div class="selected-item-name">' + escapeHtml(productText) + '</div>';
                 previewHTML += '<div class="selected-item-price">' + formatPrice(price) + '</div>';
                 previewHTML += '</div>';
             });
             
             selectedItemsList.innerHTML = previewHTML;
         }
+    }
+    
+    /**
+     * Экранирование HTML для безопасности
+     */
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
     }
     
     /**
@@ -102,11 +116,19 @@ function initCalculator() {
             }
             if (resultContainer) {
                 resultContainer.style.display = 'block';
+                resultContainer.classList.remove('alert-success');
+                resultContainer.classList.add('alert-warning');
             }
             if (productSelect) {
                 productSelect.focus();
             }
             return;
+        }
+        
+        // Восстанавливаем успешный стиль
+        if (resultContainer) {
+            resultContainer.classList.remove('alert-warning');
+            resultContainer.classList.add('alert-success');
         }
         
         let totalCost = 0;
@@ -137,14 +159,14 @@ function initCalculator() {
         Object.keys(itemsByCategory).forEach(function(category) {
             resultHTML += '<div class="cost-breakdown">';
             resultHTML += '<div class="d-flex justify-content-between align-items-center mb-2">';
-            resultHTML += '<strong class="text-primary">' + category + '</strong>';
+            resultHTML += '<strong class="text-primary">' + escapeHtml(category) + '</strong>';
             resultHTML += '<span class="product-category">' + itemsByCategory[category].length + ' товар(ов)</span>';
             resultHTML += '</div>';
             
             itemsByCategory[category].forEach(function(item, index) {
                 resultHTML += '<div class="calculation-item">';
                 resultHTML += '<div class="d-flex justify-content-between align-items-center">';
-                resultHTML += '<span>' + (index + 1) + '. ' + item.name + '</span>';
+                resultHTML += '<span>' + (index + 1) + '. ' + escapeHtml(item.name) + '</span>';
                 resultHTML += '<span class="text-end">';
                 resultHTML += quantity + ' × ' + formatPrice(item.price) + '<br>';
                 resultHTML += '<strong class="text-success">' + formatPrice(item.cost) + '</strong>';
@@ -208,44 +230,48 @@ function initCalculator() {
             option.selected = false;
         });
         updateSelectedPreview();
-        resultContainer.style.display = 'none';
-        emptyState.style.display = 'block';
+        if (resultContainer) {
+            resultContainer.style.display = 'none';
+        }
+        if (emptyState) {
+            emptyState.style.display = 'block';
+        }
     }
     
     // Обработчики событий
-    if (calculateBtn && quantityInput && productSelect) {
-        calculateBtn.addEventListener('click', calculateOrder);
-        
-        // Валидация при вводе
-        quantityInput.addEventListener('input', function() {
-            if (quantityInput.classList.contains('is-invalid')) {
-                validateQuantity();
-            }
-        });
-        
-        quantityInput.addEventListener('blur', validateQuantity);
-        
-        // Обновление предпросмотра при изменении выбора
-        productSelect.addEventListener('change', updateSelectedPreview);
-        
-        // Обработка клавиши Enter в поле количества
-        quantityInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                calculateOrder();
-            }
-        });
-        
-        // Кнопки быстрого выбора
-        if (selectAllBtn) {
-            selectAllBtn.addEventListener('click', selectAllProducts);
+    calculateBtn.addEventListener('click', calculateOrder);
+    
+    // Валидация при вводе
+    quantityInput.addEventListener('input', function() {
+        if (quantityInput.classList.contains('is-invalid')) {
+            validateQuantity();
         }
-        
-        if (clearSelectionBtn) {
-            clearSelectionBtn.addEventListener('click', clearSelection);
+    });
+    
+    quantityInput.addEventListener('blur', validateQuantity);
+    
+    // Обновление предпросмотра при изменении выбора
+    productSelect.addEventListener('change', updateSelectedPreview);
+    
+    // Обработка клавиши Enter в поле количества
+    quantityInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            calculateOrder();
         }
-        
-        // Инициализация предпросмотра
-        updateSelectedPreview();
+    });
+    
+    // Кнопки быстрого выбора
+    if (selectAllBtn) {
+        selectAllBtn.addEventListener('click', selectAllProducts);
     }
+    
+    if (clearSelectionBtn) {
+        clearSelectionBtn.addEventListener('click', clearSelection);
+    }
+    
+    // Инициализация предпросмотра
+    updateSelectedPreview();
+    
+    console.log('Калькулятор инициализирован успешно');
 }
