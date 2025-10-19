@@ -566,44 +566,106 @@
             <h2 class="section-title custom-text-primary">Калькулятор стоимости заказа</h2>
             
             <div class="form-container p-4">
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <label for="product-quantity" class="form-label fw-semibold custom-text-primary">
-                            Количество товара:
-                        </label>
-                        <input type="number" 
-                               class="form-control" 
-                               id="product-quantity" 
-                               min="1" 
-                               value="1"
-                               placeholder="Введите количество">
-                        <div class="error-message mt-1" id="quantity-error">Пожалуйста, введите корректное количество</div>
+                <div class="row g-4">
+                    <!-- Выбор товаров -->
+                    <div class="col-lg-6">
+                        <div class="card card-custom h-100">
+                            <div class="card-header custom-bg-secondary text-white">
+                                <h5 class="card-title mb-0">
+                                    <i class="bi bi-cart me-2"></i>Выбор товаров
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-4">
+                                    <label for="product-quantity" class="form-label fw-semibold custom-text-primary">
+                                        <i class="bi bi-123 me-1"></i>Количество каждого товара:
+                                    </label>
+                                    <input type="number" 
+                                           class="form-control" 
+                                           id="product-quantity" 
+                                           min="1" 
+                                           value="1"
+                                           placeholder="Введите количество">
+                                    <div class="error-message mt-1" id="quantity-error">Пожалуйста, введите корректное количество (от 1)</div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="product-select" class="form-label fw-semibold custom-text-primary">
+                                        <i class="bi bi-list-ul me-1"></i>Выберите товары:
+                                    </label>
+                                    <select class="form-select" id="product-select" multiple size="6">
+                                        <option value="1500" data-category="Книги">📚 Учебник по программированию - 1 500 руб.</option>
+                                        <option value="800" data-category="Курсы">🎓 Курс по веб-разработке - 800 руб.</option>
+                                        <option value="2500" data-category="Техника">💻 Ноутбук для учебы - 2 500 руб.</option>
+                                        <option value="500" data-category="Канцелярия">✏️ Комплект канцелярии - 500 руб.</option>
+                                        <option value="1200" data-category="Подписки">📱 Подписка на образовательную платформу - 1 200 руб.</option>
+                                        <option value="300" data-category="Канцелярия">🧮 Научный калькулятор - 300 руб.</option>
+                                        <option value="2000" data-category="Техника">🎨 Графический планшет - 2 000 руб.</option>
+                                        <option value="1800" data-category="Книги">📖 Комплект учебников - 1 800 руб.</option>
+                                    </select>
+                                    <div class="form-text">
+                                        <i class="bi bi-info-circle me-1"></i>
+                                        Для выбора нескольких товаров удерживайте Ctrl (Cmd на Mac)
+                                    </div>
+                                </div>
+                                
+                                <!-- Быстрый выбор -->
+                                <div class="quick-selection mt-3">
+                                    <label class="form-label fw-semibold custom-text-primary">
+                                        <i class="bi bi-lightning me-1"></i>Быстрый выбор:
+                                    </label>
+                                    <div class="btn-group-vertical w-100" role="group">
+                                        <button type="button" class="btn btn-outline-primary btn-sm" id="select-all">
+                                            <i class="bi bi-check-all me-1"></i>Выбрать все
+                                        </button>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm" id="clear-selection">
+                                            <i class="bi bi-x-circle me-1"></i>Очистить выбор
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="col-md-6">
-                        <label for="product-select" class="form-label fw-semibold custom-text-primary">
-                            Выберите товар(ы):
-                        </label>
-                        <select class="form-select" id="product-select" multiple size="5">
-                            <option value="1500">Учебник по программированию - 1500 руб.</option>
-                            <option value="800">Курс по веб-разработке - 800 руб.</option>
-                            <option value="2500">Ноутбук для учебы - 2500 руб.</option>
-                            <option value="500">Комплект канцелярии - 500 руб.</option>
-                            <option value="1200">Подписка на образовательную платформу - 1200 руб.</option>
-                        </select>
-                        <div class="form-text">Для выбора нескольких товаров удерживайте Ctrl (Cmd на Mac)</div>
-                    </div>
-                    
-                    <div class="col-12">
-                        <button type="button" class="btn btn-primary px-4" id="calculate-btn">
-                            <i class="bi bi-calculator me-2"></i>Рассчитать стоимость
-                        </button>
-                    </div>
-                    
-                    <div class="col-12">
-                        <div class="alert alert-success mt-3" id="result-container" style="display: none;">
-                            <h5 class="alert-heading">Результат расчета:</h5>
-                            <p class="mb-0" id="calculation-result"></p>
+                    <!-- Расчет и результат -->
+                    <div class="col-lg-6">
+                        <div class="card card-custom h-100">
+                            <div class="card-header custom-bg-secondary text-white">
+                                <h5 class="card-title mb-0">
+                                    <i class="bi bi-calculator me-2"></i>Расчет стоимости
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="text-center mb-4">
+                                    <button type="button" class="btn btn-primary btn-lg px-5" id="calculate-btn">
+                                        <i class="bi bi-calculator me-2"></i>Рассчитать стоимость
+                                    </button>
+                                </div>
+                                
+                                <!-- Предварительный просмотр выбранных товаров -->
+                                <div class="selected-preview mb-4" id="selected-preview" style="display: none;">
+                                    <h6 class="custom-text-primary mb-3">
+                                        <i class="bi bi-cart-check me-1"></i>Выбранные товары:
+                                    </h6>
+                                    <div id="selected-items-list" class="small"></div>
+                                </div>
+                                
+                                <!-- Результат расчета -->
+                                <div class="alert alert-success" id="result-container" style="display: none;">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="bi bi-receipt text-success me-2 fs-5"></i>
+                                        <h5 class="alert-heading mb-0 text-success">Детали заказа</h5>
+                                    </div>
+                                    <hr>
+                                    <div id="calculation-result"></div>
+                                </div>
+                                
+                                <!-- Пустое состояние -->
+                                <div class="text-center text-muted py-4" id="empty-state">
+                                    <i class="bi bi-cart-x display-4 mb-3"></i>
+                                    <p class="mb-0">Выберите товары и нажмите "Рассчитать стоимость"</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -634,17 +696,4 @@
                         <li><a href="#hyperlinks" class="text-white">Ссылки</a></li>
                         <li><a href="#forma" class="text-white">Форма</a></li>
                         <li><a href="#calculator" class="text-white">Калькулятор</a></li>
-                    </ul>
-                </div>
-            </div>
-            <hr class="my-4">
-            <div class="text-center">
-                <p class="mb-0">&copy; 2024 Мирсултанов Раван. Кубанский государственный университет. Все права защищены.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Bootstrap JS и Popper.js -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+                    </
