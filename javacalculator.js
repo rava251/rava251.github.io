@@ -1,5 +1,5 @@
 // javacalculator.js - Калькулятор стоимости услуги с динамическим изменением DOM
-// Улучшенная версия с полным соответствием требованиям задания
+// Исправленная версия с полным соответствием требованиям задания
 
 document.addEventListener('DOMContentLoaded', function() {
     // Инициализация калькулятора стоимости услуги
@@ -57,16 +57,20 @@ function initServiceCalculator() {
      */
     function updateDynamicElements() {
         // Скрываем все дополнительные контейнеры
-        optionsContainer.style.display = 'none';
-        propertyContainer.style.display = 'none';
-        optionCostRow.style.display = 'none';
-        propertyCostRow.style.display = 'none';
+        if (optionsContainer) optionsContainer.style.display = 'none';
+        if (propertyContainer) propertyContainer.style.display = 'none';
+        if (optionCostRow) optionCostRow.style.display = 'none';
+        if (propertyCostRow) propertyCostRow.style.display = 'none';
         
         // Сбрасываем значения
-        if (serviceOptions) serviceOptions.value = 'none';
-        if (serviceProperty) serviceProperty.checked = false;
-        currentOption = 'none';
-        currentProperty = false;
+        if (serviceOptions) {
+            serviceOptions.value = 'none';
+            currentOption = 'none';
+        }
+        if (serviceProperty) {
+            serviceProperty.checked = false;
+            currentProperty = false;
+        }
         
         // Показываем нужные элементы в зависимости от типа услуги
         switch (currentType) {
@@ -134,7 +138,7 @@ function initServiceCalculator() {
         
         // Обновление стоимости опций (если есть)
         if (optionCostElement && optionCostRow) {
-            if (optionCost > 0) {
+            if (optionCost > 0 && currentType === 'standard') {
                 optionCostElement.textContent = formatPrice(optionCost);
                 optionCostRow.style.display = 'flex';
             } else {
@@ -144,7 +148,7 @@ function initServiceCalculator() {
         
         // Обновление стоимости свойства (если есть)
         if (propertyCostElement && propertyCostRow) {
-            if (propertyCost > 0) {
+            if (propertyCost > 0 && currentType === 'premium') {
                 propertyCostElement.textContent = formatPrice(propertyCost);
                 propertyCostRow.style.display = 'flex';
             } else {
@@ -172,7 +176,7 @@ function initServiceCalculator() {
      * Валидация ввода количества
      */
     function validateQuantity(input) {
-        let value = parseInt(input.value);
+        let value = parseInt(input.value, 10);
         
         if (isNaN(value) || value < 1) {
             value = 1;
@@ -229,7 +233,6 @@ function initServiceCalculator() {
         if (quantityInput) {
             quantityInput.addEventListener('input', handleQuantityChange);
             quantityInput.addEventListener('change', handleQuantityChange);
-            quantityInput.addEventListener('blur', handleQuantityChange);
         }
         
         // Обработка изменения типа услуги
