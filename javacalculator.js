@@ -1,277 +1,288 @@
-// javacalculator.js - Улучшенный калькулятор стоимости заказа с поддержкой нескольких товаров
+// javacalculator.js - Калькулятор стоимости услуги с динамическим изменением DOM
+// Улучшенная версия с полным соответствием требованиям задания
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Инициализация калькулятора стоимости
-    initCalculator();
+    // Инициализация калькулятора стоимости услуги
+    initServiceCalculator();
 });
 
 /**
- * Инициализация калькулятора стоимости заказа
+ * Инициализация калькулятора стоимости услуги
  */
-function initCalculator() {
-    const calculateBtn = document.getElementById('calculate-btn');
-    const quantityInput = document.getElementById('product-quantity');
-    const productSelect = document.getElementById('product-select');
+function initServiceCalculator() {
+    // Элементы формы
+    const quantityInput = document.getElementById('service-quantity');
+    const serviceTypeRadios = document.querySelectorAll('input[name="service-type"]');
+    const optionsContainer = document.getElementById('options-container');
+    const serviceOptions = document.getElementById('service-options');
+    const propertyContainer = document.getElementById('property-container');
+    const serviceProperty = document.getElementById('service-property');
+    
+    // Элементы для отображения результата
+    const baseCostElement = document.getElementById('base-cost');
+    const optionCostElement = document.getElementById('option-cost');
+    const optionCostRow = document.getElementById('option-cost-row');
+    const propertyCostElement = document.getElementById('property-cost');
+    const propertyCostRow = document.getElementById('property-cost-row');
+    const quantityDisplay = document.getElementById('quantity-display');
+    const totalCostElement = document.getElementById('total-cost');
     const resultContainer = document.getElementById('result-container');
-    const calculationResult = document.getElementById('calculation-result');
-    const quantityError = document.getElementById('quantity-error');
-    const selectedPreview = document.getElementById('selected-preview');
-    const selectedItemsList = document.getElementById('selected-items-list');
-    const emptyState = document.getElementById('empty-state');
-    const selectAllBtn = document.getElementById('select-all');
-    const clearSelectionBtn = document.getElementById('clear-selection');
-
-    // Проверка существования элементов
-    if (!calculateBtn || !quantityInput || !productSelect) {
-        console.error('Не найдены необходимые элементы для калькулятора');
-        return;
-    }
-
-    // Регулярное выражение для проверки количества (только цифры)
-    const quantityRegex = /^\d+$/;
+    
+    // Базовая стоимость для каждого типа услуги
+    const basePrices = {
+        basic: 1000,
+        standard: 2500,
+        premium: 5000
+    };
+    
+    // Стоимость дополнительных опций
+    const optionPrices = {
+        none: 0,
+        design: 500,
+        analytics: 800,
+        support: 1200
+    };
+    
+    // Стоимость свойства
+    const propertyPrice = 1500;
+    
+    // Текущие значения
+    let currentType = 'basic';
+    let currentQuantity = 1;
+    let currentOption = 'none';
+    let currentProperty = false;
     
     /**
-     * Обновление предварительного просмотра выбранных товаров
+     * Обновление отображения дополнительных элементов в зависимости от типа услуги
      */
-    function updateSelectedPreview() {
-        const selectedOptions = productSelect.selectedOptions;
+    function updateDynamicElements() {
+        // Скрываем все дополнительные контейнеры
+        optionsContainer.style.display = 'none';
+        propertyContainer.style.display = 'none';
+        optionCostRow.style.display = 'none';
+        propertyCostRow.style.display = 'none';
         
-        if (selectedOptions.length === 0) {
-            selectedPreview.style.display = 'none';
-            if (emptyState) emptyState.style.display = 'block';
-        } else {
-            selectedPreview.style.display = 'block';
-            if (emptyState) emptyState.style.display = 'none';
-            
-            let previewHTML = '';
-            Array.from(selectedOptions).forEach(function(option) {
-                const price = parseInt(option.value);
-                const productText = option.text;
-                
-                previewHTML += '<div class="selected-item">';
-                previewHTML += '<div class="selected-item-name">' + escapeHtml(productText) + '</div>';
-                previewHTML += '<div class="selected-item-price">' + formatPrice(price) + '</div>';
-                previewHTML += '</div>';
-            });
-            
-            selectedItemsList.innerHTML = previewHTML;
+        // Сбрасываем значения
+        if (serviceOptions) serviceOptions.value = 'none';
+        if (serviceProperty) serviceProperty.checked = false;
+        currentOption = 'none';
+        currentProperty = false;
+        
+        // Показываем нужные элементы в зависимости от типа услуги
+        switch (currentType) {
+            case 'basic':
+                // Для basic не показываем дополнительные опции и свойства
+                break;
+            case 'standard':
+                // Для standard показываем только опции (селект)
+                if (optionsContainer) {
+                    optionsContainer.style.display = 'block';
+                    optionsContainer.classList.add('dynamic-element');
+                }
+                break;
+            case 'premium':
+                // Для premium показываем только свойство (чекбокс)
+                if (propertyContainer) {
+                    propertyContainer.style.display = 'block';
+                    propertyContainer.classList.add('dynamic-element');
+                }
+                break;
+            default:
+                console.warn('Неизвестный тип услуги:', currentType);
+        }
+        
+        // Пересчитываем стоимость
+        calculateTotalCost();
+    }
+    
+    /**
+     * Расчет общей стоимости
+     */
+    function calculateTotalCost() {
+        // Базовая стоимость
+        let baseCost = basePrices[currentType] || 0;
+        
+        // Стоимость опций
+        let optionCost = optionPrices[currentOption] || 0;
+        
+        // Стоимость свойства
+        let propertyCost = currentProperty ? propertyPrice : 0;
+        
+        // Общая стоимость за единицу
+        let unitCost = baseCost + optionCost + propertyCost;
+        
+        // Итоговая стоимость
+        let totalCost = unitCost * currentQuantity;
+        
+        // Обновление отображения
+        updateDisplay(baseCost, optionCost, propertyCost, totalCost);
+        
+        return totalCost;
+    }
+    
+    /**
+     * Обновление отображения результатов расчета
+     */
+    function updateDisplay(baseCost, optionCost, propertyCost, totalCost) {
+        // Форматирование чисел
+        const formatPrice = (price) => new Intl.NumberFormat('ru-RU').format(price) + ' руб.';
+        
+        // Обновление базовой стоимости
+        if (baseCostElement) {
+            baseCostElement.textContent = formatPrice(baseCost);
+        }
+        
+        // Обновление стоимости опций (если есть)
+        if (optionCostElement && optionCostRow) {
+            if (optionCost > 0) {
+                optionCostElement.textContent = formatPrice(optionCost);
+                optionCostRow.style.display = 'flex';
+            } else {
+                optionCostRow.style.display = 'none';
+            }
+        }
+        
+        // Обновление стоимости свойства (если есть)
+        if (propertyCostElement && propertyCostRow) {
+            if (propertyCost > 0) {
+                propertyCostElement.textContent = formatPrice(propertyCost);
+                propertyCostRow.style.display = 'flex';
+            } else {
+                propertyCostRow.style.display = 'none';
+            }
+        }
+        
+        // Обновление количества
+        if (quantityDisplay) {
+            quantityDisplay.textContent = currentQuantity;
+        }
+        
+        // Обновление итоговой стоимости
+        if (totalCostElement) {
+            totalCostElement.textContent = formatPrice(totalCost);
+        }
+        
+        // Показываем контейнер с результатами
+        if (resultContainer) {
+            resultContainer.style.display = 'block';
         }
     }
     
     /**
-     * Экранирование HTML для безопасности
+     * Валидация ввода количества
      */
-    function escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
-    }
-    
-    /**
-     * Форматирование цены
-     */
-    function formatPrice(price) {
-        return new Intl.NumberFormat('ru-RU').format(price) + ' руб.';
-    }
-    
-    /**
-     * Валидация поля количества товара
-     */
-    function validateQuantity() {
-        const value = quantityInput.value.trim();
-        const isValid = quantityRegex.test(value) && parseInt(value) > 0;
+    function validateQuantity(input) {
+        let value = parseInt(input.value);
         
-        if (quantityError) {
-            quantityError.style.display = isValid ? 'none' : 'block';
+        if (isNaN(value) || value < 1) {
+            value = 1;
+            input.value = 1;
         }
+        
+        if (value > 1000) {
+            value = 1000;
+            input.value = 1000;
+        }
+        
+        return value;
+    }
+    
+    /**
+     * Обработчик изменения количества
+     */
+    function handleQuantityChange() {
+        currentQuantity = validateQuantity(quantityInput);
+        calculateTotalCost();
+    }
+    
+    /**
+     * Обработчик изменения типа услуги
+     */
+    function handleServiceTypeChange(event) {
+        currentType = event.target.value;
+        updateDynamicElements();
+    }
+    
+    /**
+     * Обработчик изменения опций
+     */
+    function handleOptionsChange() {
+        if (serviceOptions) {
+            currentOption = serviceOptions.value;
+            calculateTotalCost();
+        }
+    }
+    
+    /**
+     * Обработчик изменения свойства
+     */
+    function handlePropertyChange() {
+        if (serviceProperty) {
+            currentProperty = serviceProperty.checked;
+            calculateTotalCost();
+        }
+    }
+    
+    // Инициализация событий
+    function initEvents() {
+        // Обработка изменения количества
         if (quantityInput) {
-            quantityInput.classList.toggle('is-invalid', !isValid);
+            quantityInput.addEventListener('input', handleQuantityChange);
+            quantityInput.addEventListener('change', handleQuantityChange);
+            quantityInput.addEventListener('blur', handleQuantityChange);
         }
         
-        return isValid;
+        // Обработка изменения типа услуги
+        if (serviceTypeRadios.length > 0) {
+            serviceTypeRadios.forEach(radio => {
+                radio.addEventListener('change', handleServiceTypeChange);
+            });
+        }
+        
+        // Обработка изменения опций
+        if (serviceOptions) {
+            serviceOptions.addEventListener('change', handleOptionsChange);
+        }
+        
+        // Обработка изменения свойства
+        if (serviceProperty) {
+            serviceProperty.addEventListener('change', handlePropertyChange);
+        }
     }
     
-    /**
-     * Расчет стоимости заказа
-     */
-    function calculateOrder() {
-        // Валидация количества
-        if (!validateQuantity()) {
-            if (resultContainer) {
-                resultContainer.style.display = 'none';
-            }
-            if (quantityInput) {
-                quantityInput.focus();
-            }
+    // Инициализация калькулятора
+    function initCalculator() {
+        // Проверяем наличие необходимых элементов
+        if (!quantityInput) {
+            console.error('Элемент service-quantity не найден');
             return;
         }
         
-        const quantity = parseInt(quantityInput.value);
-        const selectedOptions = productSelect.selectedOptions;
-        
-        // Проверка выбора товаров
-        if (selectedOptions.length === 0) {
-            if (calculationResult) {
-                calculationResult.innerHTML = '<div class="text-center text-muted"><i class="bi bi-cart-x me-2"></i>Пожалуйста, выберите хотя бы один товар.</div>';
-            }
-            if (resultContainer) {
-                resultContainer.style.display = 'block';
-                resultContainer.classList.remove('alert-success');
-                resultContainer.classList.add('alert-warning');
-            }
-            if (productSelect) {
-                productSelect.focus();
-            }
+        if (serviceTypeRadios.length === 0) {
+            console.error('Радиокнопки service-type не найдены');
             return;
         }
         
-        // Восстанавливаем успешный стиль
-        if (resultContainer) {
-            resultContainer.classList.remove('alert-warning');
-            resultContainer.classList.add('alert-success');
+        // Устанавливаем начальные значения
+        currentQuantity = validateQuantity(quantityInput);
+        
+        const checkedRadio = document.querySelector('input[name="service-type"]:checked');
+        if (checkedRadio) {
+            currentType = checkedRadio.value;
         }
         
-        let totalCost = 0;
-        let resultHTML = '';
-        let itemsByCategory = {};
+        // Инициализируем динамические элементы
+        updateDynamicElements();
         
-        // Группировка товаров по категориям
-        Array.from(selectedOptions).forEach(function(option) {
-            const price = parseInt(option.value);
-            const productName = option.text.split(' - ')[0];
-            const productCost = price * quantity;
-            const category = option.getAttribute('data-category') || 'Разное';
-            
-            if (!itemsByCategory[category]) {
-                itemsByCategory[category] = [];
-            }
-            
-            itemsByCategory[category].push({
-                name: productName,
-                price: price,
-                cost: productCost
-            });
-            
-            totalCost += productCost;
-        });
+        // Инициализируем обработчики событий
+        initEvents();
         
-        // Формирование детализированного отчета по категориям
-        Object.keys(itemsByCategory).forEach(function(category) {
-            resultHTML += '<div class="cost-breakdown">';
-            resultHTML += '<div class="d-flex justify-content-between align-items-center mb-2">';
-            resultHTML += '<strong class="text-primary">' + escapeHtml(category) + '</strong>';
-            resultHTML += '<span class="product-category">' + itemsByCategory[category].length + ' товар(ов)</span>';
-            resultHTML += '</div>';
-            
-            itemsByCategory[category].forEach(function(item, index) {
-                resultHTML += '<div class="calculation-item">';
-                resultHTML += '<div class="d-flex justify-content-between align-items-center">';
-                resultHTML += '<span>' + (index + 1) + '. ' + escapeHtml(item.name) + '</span>';
-                resultHTML += '<span class="text-end">';
-                resultHTML += quantity + ' × ' + formatPrice(item.price) + '<br>';
-                resultHTML += '<strong class="text-success">' + formatPrice(item.cost) + '</strong>';
-                resultHTML += '</span>';
-                resultHTML += '</div>';
-                resultHTML += '</div>';
-            });
-            
-            // Сумма по категории
-            const categoryTotal = itemsByCategory[category].reduce(function(sum, item) {
-                return sum + item.cost;
-            }, 0);
-            
-            resultHTML += '<div class="border-top mt-2 pt-2 text-end">';
-            resultHTML += '<strong>Итого по категории: ' + formatPrice(categoryTotal) + '</strong>';
-            resultHTML += '</div>';
-            resultHTML += '</div>';
-        });
+        // Первоначальный расчет
+        calculateTotalCost();
         
-        // Добавление итоговой стоимости
-        resultHTML += '<div class="calculation-summary">';
-        resultHTML += '<div class="text-center mb-2">';
-        resultHTML += '<small class="text-muted">Общее количество товаров: ' + (selectedOptions.length * quantity) + '</small>';
-        resultHTML += '</div>';
-        resultHTML += '<div class="total-cost">';
-        resultHTML += '<div class="fs-6 text-muted">Общая стоимость заказа:</div>';
-        resultHTML += '<div>' + formatPrice(totalCost) + '</div>';
-        resultHTML += '</div>';
-        resultHTML += '</div>';
-        
-        // Дополнительная информация
-        resultHTML += '<div class="text-center mt-3">';
-        resultHTML += '<small class="text-muted">';
-        resultHTML += '<i class="bi bi-info-circle me-1"></i>';
-        resultHTML += 'Выбрано ' + selectedOptions.length + ' товар(ов) × ' + quantity + ' шт. каждого';
-        resultHTML += '</small>';
-        resultHTML += '</div>';
-        
-        calculationResult.innerHTML = resultHTML;
-        resultContainer.style.display = 'block';
-        
-        // Прокрутка к результату
-        resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        console.log('Калькулятор стоимости услуги инициализирован успешно');
     }
     
-    /**
-     * Выбрать все товары
-     */
-    function selectAllProducts() {
-        Array.from(productSelect.options).forEach(function(option) {
-            option.selected = true;
-        });
-        updateSelectedPreview();
-    }
-    
-    /**
-     * Очистить выбор товаров
-     */
-    function clearSelection() {
-        Array.from(productSelect.options).forEach(function(option) {
-            option.selected = false;
-        });
-        updateSelectedPreview();
-        if (resultContainer) {
-            resultContainer.style.display = 'none';
-        }
-        if (emptyState) {
-            emptyState.style.display = 'block';
-        }
-    }
-    
-    // Обработчики событий
-    calculateBtn.addEventListener('click', calculateOrder);
-    
-    // Валидация при вводе
-    quantityInput.addEventListener('input', function() {
-        if (quantityInput.classList.contains('is-invalid')) {
-            validateQuantity();
-        }
-    });
-    
-    quantityInput.addEventListener('blur', validateQuantity);
-    
-    // Обновление предпросмотра при изменении выбора
-    productSelect.addEventListener('change', updateSelectedPreview);
-    
-    // Обработка клавиши Enter в поле количества
-    quantityInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            calculateOrder();
-        }
-    });
-    
-    // Кнопки быстрого выбора
-    if (selectAllBtn) {
-        selectAllBtn.addEventListener('click', selectAllProducts);
-    }
-    
-    if (clearSelectionBtn) {
-        clearSelectionBtn.addEventListener('click', clearSelection);
-    }
-    
-    // Инициализация предпросмотра
-    updateSelectedPreview();
-    
-    console.log('Калькулятор инициализирован успешно');
+    // Запуск инициализации
+    initCalculator();
 }

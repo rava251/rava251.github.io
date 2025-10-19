@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Официальный сайт Кубанского государственного университета - информация о факультетах, образовательных программах и поступлении">
-    <meta name="keywords" content="КубГУ, университет, образование, Краснодар, факультеты">
+    <meta name="description" content="Калькулятор стоимости услуг - расчет цены в зависимости от типа услуги и дополнительных опций">
+    <meta name="keywords" content="калькулятор, услуги, стоимость, расчет">
     <meta name="author" content="Мирсултанов Раван">
-    <title>Кубанский государственный университет | КубГУ</title>
+    <title>Калькулятор стоимости услуг | КубГУ</title>
     
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -275,7 +275,7 @@
                         <div class="card-body">
                             <p class="card-text">Ссылки из прямоугольных и круглых областей картинки (map):</p>
                             <div class="image-map-container">
-                                <img src="map.svg" 
+                                <img src="https://via.placeholder.com/300x150/2980b9/ffffff?text=КубГУ+GitHub" 
                                      alt="Интерактивная карта с ссылками на КубГУ и GitHub" 
                                      usemap="#imagemap" 
                                      class="img-fluid rounded shadow-sm">
@@ -366,7 +366,7 @@
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="card card-custom h-100">
                         <div class="card-body">
-                            <a href="https://github.com/Youminava" class="card-link stretched-link" title="Профиль на GitHub">На фрагмент стороннего сайта</a>
+                            <a href="https://github.com/rava251/rava251.github.io" class="card-link stretched-link" title="Профиль на GitHub">На фрагмент стороннего сайта</a>
                         </div>
                     </div>
                 </div>
@@ -562,109 +562,121 @@
             </div>
         </section>
 
-        <!-- Калькулятор стоимости заказа -->
+        <!-- Калькулятор стоимости услуги -->
         <section id="calculator" class="mb-5">
-            <h2 class="section-title custom-text-primary">Калькулятор стоимости заказа</h2>
+            <h2 class="section-title custom-text-primary">Калькулятор стоимости услуги</h2>
             
             <div class="form-container p-4">
                 <div class="row g-4">
-                    <!-- Выбор товаров -->
-                    <div class="col-lg-6">
-                        <div class="card card-custom h-100">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="card card-custom">
                             <div class="card-header custom-bg-secondary text-white">
                                 <h3 class="card-title h5 mb-0">
-                                    <i class="bi bi-cart me-2"></i>Выбор товаров
+                                    <i class="bi bi-calculator me-2"></i>Расчет стоимости услуги
                                 </h3>
                             </div>
                             <div class="card-body">
+                                <!-- Поле для ввода количества -->
                                 <div class="mb-4">
-                                    <label for="product-quantity" class="form-label fw-semibold custom-text-primary">
-                                        <i class="bi bi-123 me-1"></i>Количество каждого товара:
+                                    <label for="service-quantity" class="form-label fw-semibold custom-text-primary">
+                                        <i class="bi bi-123 me-1"></i>Количество:
                                     </label>
                                     <input type="number" 
                                            class="form-control" 
-                                           id="product-quantity" 
+                                           id="service-quantity" 
+                                           name="service-quantity"
                                            min="1" 
+                                           max="1000"
                                            value="1"
                                            placeholder="Введите количество">
-                                    <div class="error-message mt-1" id="quantity-error">Пожалуйста, введите корректное количество (от 1)</div>
+                                    <div class="form-text">Минимальное количество: 1, максимальное: 1000</div>
                                 </div>
                                 
-                                <div class="mb-3">
-                                    <label for="product-select" class="form-label fw-semibold custom-text-primary">
-                                        <i class="bi bi-list-ul me-1"></i>Выберите товары:
+                                <!-- Выбор типа услуги радиокнопками -->
+                                <div class="mb-4">
+                                    <label class="form-label fw-semibold custom-text-primary d-block">
+                                        <i class="bi bi-list-check me-1"></i>Тип услуги:
                                     </label>
-                                    <select class="form-select" id="product-select" multiple size="6">
-                                        <option value="1500" data-category="Книги">📚 Учебник по программированию - 1 500 руб.</option>
-                                        <option value="800" data-category="Курсы">🎓 Курс по веб-разработке - 800 руб.</option>
-                                        <option value="2500" data-category="Техника">💻 Ноутбук для учебы - 2 500 руб.</option>
-                                        <option value="500" data-category="Канцелярия">✏️ Комплект канцелярии - 500 руб.</option>
-                                        <option value="1200" data-category="Подписки">📱 Подписка на образовательную платформу - 1 200 руб.</option>
-                                        <option value="300" data-category="Канцелярия">🧮 Научный калькулятор - 300 руб.</option>
-                                        <option value="2000" data-category="Техника">🎨 Графический планшет - 2 000 руб.</option>
-                                        <option value="1800" data-category="Книги">📖 Комплект учебников - 1 800 руб.</option>
+                                    <div class="form-check">
+                                        <input class="form-check-input service-type" type="radio" name="service-type" id="type-basic" value="basic" checked>
+                                        <label class="form-check-label" for="type-basic">
+                                            Базовая консультация - 1 000 руб.
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input service-type" type="radio" name="service-type" id="type-standard" value="standard">
+                                        <label class="form-check-label" for="type-standard">
+                                            Стандартная разработка - 2 500 руб.
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input service-type" type="radio" name="service-type" id="type-premium" value="premium">
+                                        <label class="form-check-label" for="type-premium">
+                                            Премиум поддержка - 5 000 руб.
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <!-- Опции товара (селект) - отображается только для type-standard -->
+                                <div class="mb-4" id="options-container" style="display: none;">
+                                    <label for="service-options" class="form-label fw-semibold custom-text-primary">
+                                        <i class="bi bi-gear me-1"></i>Дополнительные опции:
+                                    </label>
+                                    <select class="form-select" id="service-options" name="service-options">
+                                        <option value="none">Без дополнительных опций (+0 руб.)</option>
+                                        <option value="design">Улучшенный дизайн (+500 руб.)</option>
+                                        <option value="analytics">Аналитика и отчеты (+800 руб.)</option>
+                                        <option value="support">Техническая поддержка (+1 200 руб.)</option>
                                     </select>
-                                    <div class="form-text">
-                                        <i class="bi bi-info-circle me-1"></i>
-                                        Для выбора нескольких товаров удерживайте Ctrl (Cmd на Mac)
-                                    </div>
                                 </div>
                                 
-                                <!-- Быстрый выбор -->
-                                <div class="quick-selection mt-3">
-                                    <label class="form-label fw-semibold custom-text-primary">
-                                        <i class="bi bi-lightning me-1"></i>Быстрый выбор:
-                                    </label>
-                                    <div class="btn-group-vertical w-100" role="group">
-                                        <button type="button" class="btn btn-outline-primary btn-sm" id="select-all">
-                                            <i class="bi bi-check-all me-1"></i>Выбрать все
-                                        </button>
-                                        <button type="button" class="btn btn-outline-secondary btn-sm" id="clear-selection">
-                                            <i class="bi bi-x-circle me-1"></i>Очистить выбор
-                                        </button>
+                                <!-- Свойство товара (чекбокс) - отображается только для type-premium -->
+                                <div class="mb-4" id="property-container" style="display: none;">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="service-property" name="service-property" value="priority">
+                                        <label class="form-check-label fw-semibold custom-text-primary" for="service-property">
+                                            <i class="bi bi-lightning me-1"></i>Приоритетное обслуживание (+1 500 руб.)
+                                        </label>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Расчет и результат -->
-                    <div class="col-lg-6">
-                        <div class="card card-custom h-100">
-                            <div class="card-header custom-bg-secondary text-white">
-                                <h3 class="card-title h5 mb-0">
-                                    <i class="bi bi-calculator me-2"></i>Расчет стоимости
-                                </h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="text-center mb-4">
-                                    <button type="button" class="btn btn-primary btn-lg px-5" id="calculate-btn">
-                                        <i class="bi bi-calculator me-2"></i>Рассчитать стоимость
-                                    </button>
-                                </div>
-                                
-                                <!-- Предварительный просмотр выбранных товаров -->
-                                <div class="selected-preview mb-4" id="selected-preview" style="display: none;">
-                                    <h4 class="h6 custom-text-primary mb-3">
-                                        <i class="bi bi-cart-check me-1"></i>Выбранные товары:
-                                    </h4>
-                                    <div id="selected-items-list" class="small"></div>
                                 </div>
                                 
                                 <!-- Результат расчета -->
-                                <div class="alert alert-success" id="result-container" style="display: none;">
+                                <div class="alert alert-success mt-4" id="result-container">
                                     <div class="d-flex align-items-center mb-2">
                                         <i class="bi bi-receipt text-success me-2 fs-5"></i>
-                                        <h4 class="alert-heading h5 mb-0 text-success">Детали заказа</h4>
+                                        <h4 class="alert-heading h5 mb-0 text-success">Стоимость услуги</h4>
                                     </div>
                                     <hr>
-                                    <div id="calculation-result"></div>
+                                    <div class="calculation-details">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span>Базовая стоимость:</span>
+                                            <span id="base-cost">1 000 руб.</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-2" id="option-cost-row" style="display: none;">
+                                            <span>Дополнительные опции:</span>
+                                            <span id="option-cost">0 руб.</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-2" id="property-cost-row" style="display: none;">
+                                            <span>Приоритетное обслуживание:</span>
+                                            <span id="property-cost">0 руб.</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span>Количество:</span>
+                                            <span id="quantity-display">1</span>
+                                        </div>
+                                        <hr>
+                                        <div class="d-flex justify-content-between fs-5 fw-bold">
+                                            <span>Итого:</span>
+                                            <span id="total-cost">1 000 руб.</span>
+                                        </div>
+                                    </div>
                                 </div>
                                 
-                                <!-- Пустое состояние -->
-                                <div class="text-center text-muted py-4" id="empty-state">
-                                    <i class="bi bi-cart-x display-4 mb-3"></i>
-                                    <p class="mb-0">Выберите товары и нажмите "Рассчитать стоимость"</p>
+                                <div class="text-center mt-4">
+                                    <small class="text-muted">
+                                        <i class="bi bi-info-circle me-1"></i>
+                                        Стоимость пересчитывается автоматически при изменении параметров
+                                    </small>
                                 </div>
                             </div>
                         </div>

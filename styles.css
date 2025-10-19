@@ -596,6 +596,7 @@ textarea:focus {
   border-left: 4px solid var(--accent-color);
   background: var(--bg-card);
   border-radius: var(--border-radius);
+  border: 1px solid var(--accent-color);
 }
 
 #calculator .alert-heading {
@@ -629,7 +630,7 @@ textarea:focus {
   }
 }
 
-#result-container[style*="display: block"] {
+#result-container {
   animation: slideInUp 0.5s ease-out;
 }
 
@@ -698,186 +699,78 @@ textarea:focus {
     transform: none;
   }
   
-  #result-container[style*="display: block"] {
+  #result-container {
     animation: none;
   }
 }
 
-/* Дополнительные стили для калькулятора с множественным выбором */
-#product-select {
-    min-height: 120px;
+/* Стили для калькулятора стоимости услуги */
+.calculation-details {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: var(--border-radius-sm);
+  padding: var(--spacing-md);
 }
 
-#product-select option {
-    padding: var(--spacing-sm);
-    margin: 2px 0;
-    border-radius: var(--border-radius-sm);
-    transition: var(--transition-fast);
+.calculation-details .d-flex {
+  padding: var(--spacing-xs) 0;
+  border-bottom: 1px solid var(--border-color);
 }
 
-#product-select option:hover {
-    background-color: rgba(41, 128, 185, 0.1);
+.calculation-details .d-flex:last-child {
+  border-bottom: none;
 }
 
-#product-select option:checked {
-    background-color: var(--secondary-color);
-    color: white;
+.calculation-details hr {
+  margin: var(--spacing-sm) 0;
+  border-color: var(--border-color);
 }
 
-/* Стили для отображения выбранных товаров */
-.calculation-item {
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: var(--spacing-sm);
-    margin-bottom: var(--spacing-sm);
+/* Анимации для динамических элементов */
+.dynamic-element {
+  animation: fadeIn 0.3s ease-in-out;
 }
 
-.calculation-item:last-child {
-    border-bottom: none;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Адаптивность для множественного выбора */
-@media (max-width: 768px) {
-    #product-select {
-        min-height: 100px;
-        font-size: var(--font-size-sm);
-    }
+/* Стили для выбранных опций в калькуляторе */
+#service-options option:checked {
+  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+  color: white;
 }
 
-/* Стили для улучшенного калькулятора */
-.quick-selection .btn-group-vertical .btn {
-    margin-bottom: 0.5rem;
-    text-align: left;
-    padding: 0.5rem 1rem;
-}
-
-.selected-preview {
-    background: var(--bg-color);
-    border-radius: var(--border-radius);
-    padding: var(--spacing-md);
-    border: 2px dashed var(--border-color);
-}
-
-.selected-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--spacing-sm);
-    margin-bottom: var(--spacing-xs);
-    background: white;
-    border-radius: var(--border-radius-sm);
-    border-left: 4px solid var(--secondary-color);
-}
-
-.selected-item:last-child {
-    margin-bottom: 0;
-}
-
-.selected-item-name {
-    flex: 1;
-    font-weight: 500;
-}
-
-.selected-item-price {
-    font-weight: 600;
-    color: var(--secondary-color);
-}
-
-.calculation-summary {
-    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-    border-radius: var(--border-radius);
-    padding: var(--spacing-md);
-    margin: var(--spacing-md) 0;
-}
-
-.total-cost {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--accent-color);
-    text-align: center;
-    padding: var(--spacing-md);
-    background: white;
-    border-radius: var(--border-radius);
-    border: 3px solid var(--accent-color);
-}
-
-.cost-breakdown {
-    background: white;
-    border-radius: var(--border-radius-sm);
-    padding: var(--spacing-sm);
-    margin-bottom: var(--spacing-sm);
-    border-left: 3px solid var(--secondary-color);
-}
-
-.cost-breakdown:last-child {
-    margin-bottom: 0;
-}
-
-.product-category {
-    font-size: 0.875rem;
-    color: var(--text-light);
-    font-style: italic;
-}
-
-/* Анимации для калькулятора */
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.calculation-item {
-    animation: slideInRight 0.3s ease-out;
-}
-
-/* Стили для выбранных опций */
-#product-select option:checked {
-    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-    color: white;
-}
-
-/* Адаптивность для калькулятора */
-@media (max-width: 768px) {
-    .selected-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .selected-item-price {
-        margin-top: 0.25rem;
-    }
-    
-    .total-cost {
-        font-size: 1.25rem;
-    }
-}
-
-/* Стили для иконок в выпадающем списке */
-#product-select option[data-category="Книги"] {
-    background-color: rgba(52, 152, 219, 0.1);
-}
-
-#product-select option[data-category="Курсы"] {
-    background-color: rgba(155, 89, 182, 0.1);
-}
-
-#product-select option[data-category="Техника"] {
-    background-color: rgba(231, 76, 60, 0.1);
-}
-
-#product-select option[data-category="Канцелярия"] {
-    background-color: rgba(39, 174, 96, 0.1);
-}
-
-#product-select option[data-category="Подписки"] {
-    background-color: rgba(243, 156, 18, 0.1);
+/* Стили для чекбокса в калькуляторе */
+#service-property:checked {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
 }
 
 /* Граница для подвала */
 footer .border-top {
-    border-color: rgba(255, 255, 255, 0.3) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Стили для результата калькулятора */
+#total-cost {
+  color: var(--accent-color);
+  font-weight: 700;
+}
+
+/* Адаптивность для калькулятора */
+@media (max-width: 768px) {
+  .calculation-details {
+    font-size: var(--font-size-sm);
+  }
+  
+  #calculator .card-body {
+    padding: var(--spacing-sm);
+  }
 }
