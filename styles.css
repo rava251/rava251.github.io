@@ -428,6 +428,108 @@ footer ul li {
   }
 }
 
+/* Стили для галереи */
+.gallery-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.gallery-slider {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  background-color: var(--bg-card);
+}
+
+.slider-wrapper {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  flex: 0 0 33.333%;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.slide-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.slide-image:hover {
+  transform: scale(1.03);
+}
+
+.slider-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.slider-btn {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: var(--transition);
+  margin: 0 15px;
+}
+
+.slider-btn:hover {
+  background-color: var(--primary-color);
+  transform: scale(1.1);
+}
+
+.slider-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.pager {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  font-size: 1.1rem;
+  color: var(--primary-color);
+}
+
+.pager-dots {
+  display: flex;
+  margin: 0 15px;
+}
+
+.pager-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #cccccc;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.pager-dot.active {
+  background-color: var(--secondary-color);
+  transform: scale(1.2);
+}
+
 /* Mobile First адаптации */
 @media (max-width: 576px) {
   .container {
@@ -459,6 +561,21 @@ footer ul li {
   footer .row > div {
     margin-bottom: var(--spacing-lg);
   }
+  
+  /* Адаптивность для галереи на мобильных */
+  .slide {
+    flex: 0 0 100%;
+  }
+  
+  .slide-image {
+    height: 250px;
+  }
+  
+  .slider-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -476,6 +593,17 @@ footer ul li {
   
   footer .row {
     text-align: center;
+  }
+  
+  /* Адаптивность для галереи на планшетах */
+  .slide-image {
+    height: 250px;
+  }
+  
+  .slider-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
   }
 }
 
@@ -702,6 +830,18 @@ textarea:focus {
   #result-container {
     animation: none;
   }
+  
+  .slider-wrapper {
+    transition: none;
+  }
+  
+  .slide-image:hover {
+    transform: none;
+  }
+  
+  .slider-btn:hover {
+    transform: none;
+  }
 }
 
 /* Стили для калькулятора стоимости услуги */
@@ -772,5 +912,22 @@ footer .border-top {
   
   #calculator .card-body {
     padding: var(--spacing-sm);
+  }
+}
+
+/* Адаптивность для галереи на очень маленьких экранах */
+@media (max-width: 480px) {
+  .slide-image {
+    height: 200px;
+  }
+  
+  .slider-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  .pager {
+    font-size: 1rem;
   }
 }

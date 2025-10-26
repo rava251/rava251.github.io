@@ -59,6 +59,11 @@
                                 <i class="bi bi-calculator me-1"></i>Калькулятор
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#gallery">
+                                <i class="bi bi-images me-1"></i>Галерея
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -684,6 +689,39 @@
                 </div>
             </div>
         </section>
+
+        <!-- Галерея изображений -->
+        <section id="gallery" class="mb-5">
+            <h2 class="section-title custom-text-primary">Галерея Кубанского государственного университета</h2>
+            
+            <div class="gallery-container">
+                <div class="gallery-slider">
+                    <div class="slider-wrapper" id="sliderWrapper">
+                        <!-- Слайды будут добавлены через JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="slider-nav">
+                    <button class="slider-btn" id="prevBtn" aria-label="Предыдущее изображение">
+                        <i class="bi bi-chevron-left"></i>
+                    </button>
+                    
+                    <div class="pager">
+                        <span id="currentPage">1</span>
+                        <span> из </span>
+                        <span id="totalPages">3</span>
+                        
+                        <div class="pager-dots" id="pagerDots">
+                            <!-- Точки пейджера будут добавлены через JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <button class="slider-btn" id="nextBtn" aria-label="Следующее изображение">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Подвал сайта -->
@@ -709,6 +747,7 @@
                         <li><a href="#hyperlinks" class="text-white">Ссылки</a></li>
                         <li><a href="#forma" class="text-white">Форма</a></li>
                         <li><a href="#calculator" class="text-white">Калькулятор</a></li>
+                        <li><a href="#gallery" class="text-white">Галерея</a></li>
                     </ul>
                 </div>
             </div>
@@ -722,5 +761,194 @@
 
     <!-- Bootstrap 5 JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Скрипт для галереи-слайдера
+        document.addEventListener('DOMContentLoaded', function() {
+            // Массив с URL изображений КубГУ
+            const images = [
+                {
+                    url: 'https://avatars.mds.yandex.net/i?id=7d59c265d37c81aca35c2faa8bc5a1d0_l-3518654-images-thumbs&n=13',
+                    title: 'Главный корпус КубГУ'
+                },
+                {
+                    url: 'https://kubnews.ru/upload/resize_cache/iblock/af5/1200_630_2/af59aadd2bf8711ee26c17473794ddd3.jpg',
+                    title: 'Студенты КубГУ'
+                },
+                {
+                    url: 'https://img0.liveinternet.ru/images/attach/c/9/126/184/126184088__00_1.jpg',
+                    title: 'Библиотека КубГУ'
+                },
+                {
+                    url: 'https://www.yugopolis.ru/wp-content/uploads/2024/10/kubgu_1_valeriy_godadze-2048x1152.jpg',
+                    title: 'Научная деятельность КубГУ'
+                },
+                {
+                    url: 'https://kubnews.ru/upload/resize_cache/iblock/f1f/1200_630_2/kd373koujagyvje3lf4cep04tbd74agk.jpg',
+                    title: 'Выпускники КубГУ'
+                },
+                {
+                    url: 'https://diomen.ru/upload/iblock/df7/df7303567b2e3bc621100cba6d55c41b/KubGU.jpg',
+                    title: 'Кампус КубГУ'
+                },
+                {
+                    url: 'https://kuban.bfm.ru/storage/article/June2025/89a0nQ0c4yhFJdF08TzHKj37pPA6C4ywGFwj7MrQ.jpg',
+                    title: 'Лаборатории КубГУ'
+                },
+                {
+                    url: 'https://krd.ru/upload/resize_cache/iblock/64a/4anhfqbzg4gaej4qjcqxzsgxefy3nrvj/1284_720_2/k2.jpeg',
+                    title: 'Спортивные мероприятия КубГУ'
+                }
+            ];
+            
+            // Элементы DOM
+            const sliderWrapper = document.getElementById('sliderWrapper');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const currentPageEl = document.getElementById('currentPage');
+            const totalPagesEl = document.getElementById('totalPages');
+            const pagerDots = document.getElementById('pagerDots');
+            
+            // Переменные состояния
+            let currentSlide = 0;
+            let slidesPerView = 3; // По умолчанию для десктопов
+            let totalSlides = images.length;
+            
+            // Определение количества слайдов для отображения в зависимости от ширины экрана
+            function updateSlidesPerView() {
+                if (window.innerWidth <= 768) {
+                    slidesPerView = 1; // Для мобильных устройств
+                } else {
+                    slidesPerView = 3; // Для десктопов
+                }
+                updateSlider();
+            }
+            
+            // Расчет общего количества страниц
+            function calculateTotalPages() {
+                return Math.ceil(totalSlides / slidesPerView);
+            }
+            
+            // Инициализация слайдера
+            function initSlider() {
+                // Очистка контейнера
+                sliderWrapper.innerHTML = '';
+                
+                // Создание слайдов
+                images.forEach((image, index) => {
+                    const slide = document.createElement('div');
+                    slide.className = 'slide';
+                    
+                    const img = document.createElement('img');
+                    img.src = image.url;
+                    img.alt = image.title;
+                    img.className = 'slide-image';
+                    img.title = image.title;
+                    
+                    slide.appendChild(img);
+                    sliderWrapper.appendChild(slide);
+                });
+                
+                // Обновление отображения
+                updateSlidesPerView();
+                
+                // Создание пейджера
+                updatePager();
+                
+                // Обновление состояния кнопок
+                updateNavButtons();
+            }
+            
+            // Обновление позиции слайдера
+            function updateSlider() {
+                const slideWidth = 100 / slidesPerView;
+                const translateX = -currentSlide * slideWidth;
+                sliderWrapper.style.transform = `translateX(${translateX}%)`;
+                
+                // Обновление информации о странице
+                currentPageEl.textContent = currentSlide + 1;
+                totalPagesEl.textContent = calculateTotalPages();
+                
+                // Обновление активной точки пейджера
+                updatePagerDots();
+                
+                // Обновление состояния кнопок
+                updateNavButtons();
+            }
+            
+            // Обновление пейджера
+            function updatePager() {
+                pagerDots.innerHTML = '';
+                const totalPages = calculateTotalPages();
+                
+                for (let i = 0; i < totalPages; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = `pager-dot ${i === currentSlide ? 'active' : ''}`;
+                    dot.addEventListener('click', () => {
+                        goToSlide(i);
+                    });
+                    pagerDots.appendChild(dot);
+                }
+            }
+            
+            // Обновление активной точки пейджера
+            function updatePagerDots() {
+                const dots = pagerDots.querySelectorAll('.pager-dot');
+                dots.forEach((dot, index) => {
+                    if (index === currentSlide) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Обновление состояния кнопок навигации
+            function updateNavButtons() {
+                const totalPages = calculateTotalPages();
+                
+                prevBtn.disabled = currentSlide === 0;
+                nextBtn.disabled = currentSlide === totalPages - 1;
+            }
+            
+            // Переход к определенному слайду
+            function goToSlide(slideIndex) {
+                const totalPages = calculateTotalPages();
+                
+                if (slideIndex >= 0 && slideIndex < totalPages) {
+                    currentSlide = slideIndex;
+                    updateSlider();
+                }
+            }
+            
+            // Переход к следующему слайду
+            function nextSlide() {
+                const totalPages = calculateTotalPages();
+                
+                if (currentSlide < totalPages - 1) {
+                    currentSlide++;
+                    updateSlider();
+                }
+            }
+            
+            // Переход к предыдущему слайду
+            function prevSlide() {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updateSlider();
+                }
+            }
+            
+            // Обработчики событий
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+            
+            // Обработчик изменения размера окна
+            window.addEventListener('resize', updateSlidesPerView);
+            
+            // Инициализация слайдера при загрузке страницы
+            initSlider();
+        });
+    </script>
 </body>
 </html>
