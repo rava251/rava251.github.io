@@ -418,14 +418,8 @@ footer ul li {
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Стили для галереи */
@@ -463,9 +457,7 @@ footer ul li {
   transition: var(--transition);
 }
 
-.slide-image:hover {
-  transform: scale(1.03);
-}
+.slide-image:hover { transform: scale(1.03); }
 
 .slider-nav {
   display: flex;
@@ -490,16 +482,8 @@ footer ul li {
   margin: 0 15px;
 }
 
-.slider-btn:hover {
-  background-color: var(--primary-color);
-  transform: scale(1.1);
-}
-
-.slider-btn:disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
-  transform: none;
-}
+.slider-btn:hover { background-color: var(--primary-color); transform: scale(1.1); }
+.slider-btn:disabled { background-color: #cccccc; cursor: not-allowed; transform: none; }
 
 .pager {
   display: flex;
@@ -532,402 +516,119 @@ footer ul li {
 
 /* Mobile First адаптации */
 @media (max-width: 576px) {
-  .container {
-    padding-left: var(--spacing-md);
-    padding-right: var(--spacing-md);
-  }
-  
-  .navbar-brand span {
-    font-size: var(--font-size-base);
-  }
-  
-  .section-title {
-    font-size: var(--font-size-lg);
-  }
-  
-  .card-custom .card-body {
-    padding: var(--spacing-sm);
-  }
-  
-  .form-container {
-    padding: var(--spacing-md) !important;
-  }
-  
-  .map-label {
-    font-size: var(--font-size-xs);
-    padding: var(--spacing-xs);
-  }
-  
-  footer .row > div {
-    margin-bottom: var(--spacing-lg);
-  }
-  
-  /* Адаптивность для галереи на мобильных */
-  .slide {
-    flex: 0 0 100%;
-  }
-  
-  .slide-image {
-    height: 250px;
-  }
-  
-  .slider-btn {
-    width: 45px;
-    height: 45px;
-    font-size: 1.3rem;
-  }
-}
+  .container { padding-left: var(--spacing-md); padding-right: var(--spacing-md); }
+  .navbar-brand span { font-size: var(--font-size-base); }
+  .section-title { font-size: var(--font-size-lg); }
+  .card-custom .card-body { padding: var(--spacing-sm); }
+  .form-container { padding: var(--spacing-md) !important; }
+  .map-label { font-size: var(--font-size-xs); padding: var(--spacing-xs); }
+  footer .row > div { margin-bottom: var(--spacing-lg); }
 
-@media (max-width: 768px) {
-  .table-responsive {
-    font-size: var(--font-size-sm);
-  }
-  
-  .btn-group-vertical {
+  .slide { flex: 0 0 100%; }
+  .slide-image { height: 250px; }
+  .slider-btn { width: 45px; height: 45px; font-size: 1.3rem; }
+
+  /* Модалка на мобильных */
+  .feedback-modal { align-items: flex-end; }
+  .feedback-modal .modal-card {
     width: 100%;
+    border-radius: 12px 12px 0 0;
+    padding: 10px;
+    max-height: 100vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
   }
-  
-  .btn-group-vertical .btn {
-    margin-bottom: var(--spacing-sm);
-  }
-  
-  footer .row {
-    text-align: center;
-  }
-  
-  /* Адаптивность для галереи на планшетах */
-  .slide-image {
-    height: 250px;
-  }
-  
-  .slider-btn {
-    width: 45px;
-    height: 45px;
-    font-size: 1.3rem;
-  }
+  .feedback-modal .modal-body { padding-top: 6px; padding-bottom: 12px; overflow: auto; }
+  .feedback-modal .modal-card .form-control,
+  .feedback-modal .modal-card .form-check-label { font-size: 0.95rem; }
+  .feedback-modal .modal-card .mb-2 { margin-bottom: 8px; }
+  .feedback-modal .modal-card .modal-header { padding-bottom: 8px; }
 }
 
-@media (min-width: 992px) {
-  .section-title {
-    font-size: var(--font-size-2xl);
-  }
+/* -------------------- Стили для попапа обратной связи -------------------- */
+.feedback-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1080;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Утилиты для отступов */
-.mt-custom {
-  margin-top: var(--spacing-xl);
-}
-
-.mb-custom {
-  margin-bottom: var(--spacing-xl);
-}
-
-.p-custom {
-  padding: var(--spacing-xl);
-}
-
-/* Кастомные тени */
-.shadow-custom {
-  box-shadow: var(--shadow) !important;
-}
-
-.shadow-custom-hover {
-  box-shadow: var(--shadow-hover) !important;
-}
-
-/* Состояния загрузки */
-.loading {
-  opacity: 0.7;
-  pointer-events: none;
-}
-
-.loading::after {
-  content: '';
+.feedback-modal .modal-backdrop {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 20px;
-  height: 20px;
-  margin: -10px 0 0 -10px;
-  border: 2px solid var(--secondary-color);
-  border-top: 2px solid transparent;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(2px);
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Улучшенная доступность */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-/* Фокус состояния для доступности */
-a:focus,
-button:focus,
-input:focus,
-select:focus,
-textarea:focus {
-  outline: 2px solid var(--secondary-color);
-  outline-offset: 2px;
-}
-
-/* Стили для валидации формы */
-.form-control:invalid:not(:focus):not(:placeholder-shown) {
-  border-color: var(--warning-color);
-}
-
-.form-control:valid:not(:focus):not(:placeholder-shown) {
-  border-color: var(--accent-color);
-}
-
-/* Стили для выбранных элементов формы */
-.form-select option:checked {
-  background-color: var(--secondary-color);
-  color: white;
-}
-
-/* Стили для карточек со ссылками */
-.card-custom .card-body .card-link {
+.feedback-modal .modal-card {
   position: relative;
-  z-index: 1;
-  color: var(--secondary-color);
-  font-weight: 500;
+  z-index: 2;
+  width: 560px;
+  max-width: calc(100% - 32px);
+  background: var(--bg-card);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 18px;
+  max-height: calc(100vh - 40px);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
 }
 
-.card-custom .card-body .card-link:hover {
-  color: var(--primary-color);
+.feedback-modal[aria-hidden="false"] { display: flex; }
+
+.feedback-modal .modal-body {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  overflow: auto;
+  flex: 1 1 auto;
 }
 
-/* Стили для изображения в карточке ссылки */
-.card-custom .card-body.text-center img {
-  transition: var(--transition);
+/* Сообщения */
+#feedbackMessage {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+}
+#feedbackMessage.success {
+  background: rgba(39,174,96,0.08);
+  color: var(--accent-color);
+  border-color: rgba(39,174,96,0.2);
+}
+#feedbackMessage.error {
+  background: rgba(231,76,60,0.06);
+  color: var(--warning-color);
+  border-color: rgba(231,76,60,0.15);
 }
 
-.card-custom:hover .card-body.text-center img {
-  transform: scale(1.1);
+/* Кнопка закрытия */
+.btn-close {
+  background: transparent;
+  border: none;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text-light);
 }
+.btn-close::before { content: "✕"; font-size: 18px; }
 
-/* Стили для калькулятора */
+/* Убираем скролл страницы когда попап открыт */
+body.modal-open { overflow: hidden; }
+
+/* Доп. стили для калькулятора */
 #calculator .alert-success {
   border-left: 4px solid var(--accent-color);
   background: var(--bg-card);
   border-radius: var(--border-radius);
   border: 1px solid var(--accent-color);
-}
-
-#calculator .alert-heading {
-  color: var(--primary-color);
-  font-size: var(--font-size-lg);
-  margin-bottom: var(--spacing-md);
-}
-
-#calculation-result {
-  line-height: 1.8;
-}
-
-#calculate-btn {
-  transition: var(--transition);
-}
-
-#calculate-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-hover);
-}
-
-/* Анимация появления результата */
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-#result-container {
-  animation: slideInUp 0.5s ease-out;
-}
-
-/* Стили для невалидного поля */
-.is-invalid {
-  border-color: var(--warning-color) !important;
-}
-
-.is-invalid:focus {
-  box-shadow: 0 0 0 0.25rem rgba(231, 76, 60, 0.25) !important;
-}
-
-/* Адаптивность для калькулятора */
-@media (max-width: 768px) {
-  #calculator .form-container {
-    padding: var(--spacing-md) !important;
-  }
-  
-  #calculation-result {
-    font-size: var(--font-size-sm);
-  }
-}
-
-/* Высококонтрастный режим */
-@media (prefers-contrast: high) {
-  :root {
-    --text-color: #000000;
-    --bg-color: #ffffff;
-    --border-color: #000000;
-  }
-  
-  .card-custom {
-    border: 2px solid var(--border-color);
-  }
-  
-  .form-container {
-    border: 2px solid var(--border-color);
-  }
-}
-
-/* Режим уменьшения движения */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-  
-  html {
-    scroll-behavior: auto;
-  }
-  
-  .card-custom:hover {
-    transform: none;
-  }
-  
-  .navbar-brand img:hover {
-    transform: none;
-  }
-  
-  .image-map-container img:hover {
-    transform: none;
-  }
-  
-  #calculate-btn:hover {
-    transform: none;
-  }
-  
-  #result-container {
-    animation: none;
-  }
-  
-  .slider-wrapper {
-    transition: none;
-  }
-  
-  .slide-image:hover {
-    transform: none;
-  }
-  
-  .slider-btn:hover {
-    transform: none;
-  }
-}
-
-/* Стили для калькулятора стоимости услуги */
-.calculation-details {
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: var(--border-radius-sm);
-  padding: var(--spacing-md);
-}
-
-.calculation-details .d-flex {
-  padding: var(--spacing-xs) 0;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.calculation-details .d-flex:last-child {
-  border-bottom: none;
-}
-
-.calculation-details hr {
-  margin: var(--spacing-sm) 0;
-  border-color: var(--border-color);
-}
-
-/* Анимации для динамических элементов */
-.dynamic-element {
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Стили для выбранных опций в калькуляторе */
-#service-options option:checked {
-  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-  color: white;
-}
-
-/* Стили для чекбокса в калькуляторе */
-#service-property:checked {
-  background-color: var(--accent-color);
-  border-color: var(--accent-color);
-}
-
-/* Граница для подвала */
-footer .border-top {
-  border-color: rgba(255, 255, 255, 0.3) !important;
-}
-
-/* Стили для результата калькулятора */
-#total-cost {
-  color: var(--accent-color);
-  font-weight: 700;
-}
-
-/* Адаптивность для калькулятора */
-@media (max-width: 768px) {
-  .calculation-details {
-    font-size: var(--font-size-sm);
-  }
-  
-  #calculator .card-body {
-    padding: var(--spacing-sm);
-  }
-}
-
-/* Адаптивность для галереи на очень маленьких экранах */
-@media (max-width: 480px) {
-  .slide-image {
-    height: 200px;
-  }
-  
-  .slider-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
-  }
-  
-  .pager {
-    font-size: 1rem;
-  }
 }
