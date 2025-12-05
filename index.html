@@ -280,16 +280,14 @@
                         <div class="card-body">
                             <p class="card-text">Ссылки из прямоугольных и круглых областей картинки (map):</p>
                             <div class="image-map-container">
-                                <img src="https://via.placeholder.com/300x150/2980b9/ffffff?text=КубГУ+GitHub" 
-                                     alt="Интерактивная карта с ссылками на КубГУ и GitHub" 
-                                     usemap="#imagemap" 
-                                     class="img-fluid rounded shadow-sm">
-                                <map name="imagemap">
-                                    <area shape="rect" coords="20,20,140,80" href="https://kubsu.ru" alt="Переход на официальный сайт КубГУ">
-                                    <area shape="circle" coords="230,80,36" href="https://github.com/" alt="Переход на GitHub">
-                                </map>
-                                <div class="map-label rect-label">КубГУ</div>
-                                <div class="map-label circle-label">GitHub</div>
+                                <div class="interactive-map rounded shadow-sm">
+                                    <a href="https://kubsu.ru" class="map-link rect-link" title="Переход на официальный сайт КубГУ">
+                                        <span>КубГУ</span>
+                                    </a>
+                                    <a href="https://github.com/" class="map-link circle-link" title="Переход на GitHub">
+                                        <span>GitHub</span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -798,12 +796,12 @@
                     title: 'Кампус КубГУ'
                 },
                 {
-                    url: 'https://kuban.bfm.ru/storage/article/June2025/89a0nQ0c4yhFJdF08TzHKj37pPA6C4ywGFwj7MrQ.jpg',
-                    title: 'Лаборатории КубГУ'
+                    url: 'images/kubsu-building.svg',
+                    title: 'Главный корпус КубГУ'
                 },
                 {
-                    url: 'https://krd.ru/upload/resize_cache/iblock/64a/4anhfqbzg4gaej4qjcqxzsgxefy3nrvj/1284_720_2/k2. jpeg',
-                    title: 'Спортивные мероприятия КубГУ'
+                    url: 'images/kubsu-graduates.svg',
+                    title: 'Выпускники КубГУ'
                 }
             ];
             
