@@ -1310,3 +1310,23 @@ textarea:focus {
 body. feedback-open {
     overflow: hidden;
 }
+/* Кнопка обратной связи в шапке */
+.nav-feedback-btn {
+    padding: 6px 15px;
+    font-weight: 500;
+    border-radius: 20px;
+    transition: all 0. 3s ease;
+}
+
+.nav-feedback-btn:hover {
+    background-color: white;
+    color: #2980b9 !important;
+    transform: scale(1.05);
+}
+
+@media (max-width: 991px) {
+    .nav-feedback-btn {
+        margin-top: 10px;
+        width: 100%;
+    }
+}
