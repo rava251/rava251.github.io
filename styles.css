@@ -308,6 +308,57 @@ body {
   border-color: var(--secondary-color);
 }
 
+/* Интерактивная карта с кликабельными областями */
+.interactive-map {
+  position: relative;
+  width: 300px;
+  height: 150px;
+  background: linear-gradient(135deg, var(--secondary-color), #1a5276);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.map-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.map-link.rect-link {
+  width: 120px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: var(--border-radius-sm);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.map-link.rect-link:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.map-link.circle-link {
+  width: 72px;
+  height: 72px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.map-link.circle-link:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
 . map-label {
   position: absolute;
   color: var(--text-color);

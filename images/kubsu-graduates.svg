@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#27ae60"/>
+  <circle cx="200" cy="300" r="60" fill="#f5cba7"/>
+  <rect x="150" y="360" width="100" height="120" fill="#2c3e50"/>
+  <polygon points="200,180 260,260 140,260" fill="#2c3e50"/>
+  <circle cx="400" cy="300" r="60" fill="#f5cba7"/>
+  <rect x="350" y="360" width="100" height="120" fill="#2c3e50"/>
+  <polygon points="400,180 460,260 340,260" fill="#2c3e50"/>
+  <circle cx="600" cy="300" r="60" fill="#f5cba7"/>
+  <rect x="550" y="360" width="100" height="120" fill="#2c3e50"/>
+  <polygon points="600,180 660,260 540,260" fill="#2c3e50"/>
+  <text x="400" y="550" text-anchor="middle" font-family="Arial" font-size="24" fill="white">Выпускники КубГУ</text>
+</svg>
