@@ -7,6 +7,7 @@
     <meta name="keywords" content="калькулятор, услуги, стоимость, расчет">
     <meta name="author" content="Мирсултанов Раван">
     <title>Калькулятор стоимости услуг | КубГУ</title>
+    <link rel="icon" href="map.svg" type="image/svg+xml">
     
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -75,7 +76,7 @@
         <div class="container">
             <div class="bg-white p-4 rounded shadow-sm">
                 <p class="mb-0">
-                    Этот сайт создан в учебных целях и содержит примеры ссылок, таблиц и форм.   
+                    Этот сайт создан в учебных целях и содержит примеры ссылок, таблиц и форм. 
                     Здесь собрана информация о факультетах КубГУ, а также предоставлены интерактивные элементы для демонстрации. 
                 </p>
             </div>
@@ -274,22 +275,34 @@
                     </div>
                 </div>
                 
-                <!-- Карта изображения -->
+                <!-- Карта изображения - ИСПРАВЛЕННАЯ ВЕРСИЯ с SVG -->
                 <div class="col-12">
                     <div class="card card-custom">
                         <div class="card-body">
                             <p class="card-text">Ссылки из прямоугольных и круглых областей картинки (map):</p>
                             <div class="image-map-container">
-                                <img src="https://via.placeholder.com/300x150/2980b9/ffffff?text=КубГУ+GitHub" 
-                                     alt="Интерактивная карта с ссылками на КубГУ и GitHub" 
-                                     usemap="#imagemap" 
-                                     class="img-fluid rounded shadow-sm">
-                                <map name="imagemap">
-                                    <area shape="rect" coords="20,20,140,80" href="https://kubsu.ru" alt="Переход на официальный сайт КубГУ">
-                                    <area shape="circle" coords="230,80,36" href="https://github.com/" alt="Переход на GitHub">
-                                </map>
-                                <div class="map-label rect-label">КубГУ</div>
-                                <div class="map-label circle-label">GitHub</div>
+                                <svg width="320" height="160" viewBox="0 0 320 160" class="img-fluid rounded shadow-sm image-map-svg">
+                                    <!-- Фон -->
+                                    <defs>
+                                        <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#2980b9;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#1a5276;stop-opacity:1" />
+                                        </linearGradient>
+                                    </defs>
+                                    <rect width="320" height="160" fill="url(#bgGradient)" rx="8"/>
+                                    
+                                    <!-- Прямоугольная область для КубГУ -->
+                                    <a href="https://kubsu.ru" target="_blank" rel="noopener">
+                                        <rect x="25" y="40" width="120" height="60" rx="8" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="2" class="map-area"/>
+                                        <text x="85" y="77" text-anchor="middle" fill="white" font-size="18" font-weight="bold">КубГУ</text>
+                                    </a>
+                                    
+                                    <!-- Круглая область для GitHub -->
+                                    <a href="https://github.com/" target="_blank" rel="noopener">
+                                        <circle cx="235" cy="80" r="45" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="2" class="map-area"/>
+                                        <text x="235" y="85" text-anchor="middle" fill="white" font-size="16" font-weight="bold">GitHub</text>
+                                    </a>
+                                </svg>
                             </div>
                         </div>
                     </div>
@@ -432,7 +445,7 @@
                             <a href="https://www.google.com/search? q=КубГУ&num=1&hl=ru" title="Поиск информации о КубГУ в Google с ограничением результатов">С текстовым параметром (Google)</a>
                         </li>
                         <li class="list-group-item">
-                            <a href="https://www.kubsu.ru/ru/user" title="Профиль создателя сайта на платформе КубГУ">С параметром id (Создатель)</a>
+                            <a href="https://www. kubsu.ru/ru/user" title="Профиль создателя сайта на платформе КубГУ">С параметром id (Создатель)</a>
                         </li>
                     </ol>
                 </div>
@@ -611,13 +624,13 @@
                                     <div class="form-check">
                                         <input class="form-check-input service-type" type="radio" name="service-type" id="type-basic" value="basic" checked>
                                         <label class="form-check-label" for="type-basic">
-                                            Базовая консультация - 1 000 руб. 
+                                            Базовая консультация - 1 000 руб.
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input service-type" type="radio" name="service-type" id="type-standard" value="standard">
                                         <label class="form-check-label" for="type-standard">
-                                            Стандартная разработка - 2 500 руб.
+                                            Стандартная разработка - 2 500 руб. 
                                         </label>
                                     </div>
                                     <div class="form-check">
@@ -759,7 +772,7 @@
             </div>
             <div class="row mt-4 pt-3 border-top border-white-50">
                 <div class="col-12 text-center">
-                    <p class="mb-0">&copy; 2024 Мирсултанов Раван. Кубанский государственный университет. Все права защищены.</p>
+                    <p class="mb-0">&copy; 2024 Мирсултанов Раван.  Кубанский государственный университет. Все права защищены.</p>
                 </div>
             </div>
         </div>
@@ -771,39 +784,32 @@
     <script>
         // Скрипт для галереи-слайдера
         document.addEventListener('DOMContentLoaded', function() {
-            // Массив с URL изображений КубГУ
+            // Массив с URL изображений КубГУ - ЛОКАЛЬНЫЕ И НАДЁЖНЫЕ ВНЕШНИЕ ССЫЛКИ
+            // Без зависимости от placeholder-сервисов
             const images = [
                 {
-                    url: 'https://avatars.mds.yandex.net/i? id=7d59c265d37c81aca35c2faa8bc5a1d0_l-3518654-images-thumbs&n=13',
+                    url: 'images/korpus.jpg',
                     title: 'Главный корпус КубГУ'
                 },
                 {
-                    url: 'https://kubnews.ru/upload/resize_cache/iblock/af5/1200_630_2/af59aadd2bf8711ee26c17473794ddd3.jpg',
+                    url: 'https://kubsu.ru/sites/default/files/insert-images/news/foto_1_26.jpg',
                     title: 'Студенты КубГУ'
                 },
                 {
-                    url: 'https://img0.liveinternet.ru/images/attach/c/9/126/184/126184088__00_1.jpg',
+                    url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Kuban_State_University_1.jpg/1280px-Kuban_State_University_1.jpg',
                     title: 'Библиотека КубГУ'
                 },
                 {
-                    url: 'https://www.yugopolis.ru/wp-content/uploads/2024/10/kubgu_1_valeriy_godadze-2048x1152.jpg',
+                    url: 'https://kubsu. ru/sites/default/files/insert-images/news/1_282.jpg',
                     title: 'Научная деятельность КубГУ'
                 },
                 {
-                    url: 'https://kubnews.ru/upload/resize_cache/iblock/f1f/1200_630_2/kd373koujagyvje3lf4cep04tbd74agk.jpg',
+                    url: 'images/vypuskniki.jpg',
                     title: 'Выпускники КубГУ'
                 },
                 {
-                    url: 'https://diomen.ru/upload/iblock/df7/df7303567b2e3bc621100cba6d55c41b/KubGU. jpg',
+                    url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Kuban_State_University_2.jpg/1280px-Kuban_State_University_2. jpg',
                     title: 'Кампус КубГУ'
-                },
-                {
-                    url: 'https://kuban.bfm.ru/storage/article/June2025/89a0nQ0c4yhFJdF08TzHKj37pPA6C4ywGFwj7MrQ.jpg',
-                    title: 'Лаборатории КубГУ'
-                },
-                {
-                    url: 'https://krd.ru/upload/resize_cache/iblock/64a/4anhfqbzg4gaej4qjcqxzsgxefy3nrvj/1284_720_2/k2. jpeg',
-                    title: 'Спортивные мероприятия КубГУ'
                 }
             ];
             
@@ -830,7 +836,7 @@
             }
             
             function calculateTotalPages() {
-                return Math. ceil(totalSlides / slidesPerView);
+                return Math.ceil(totalSlides / slidesPerView);
             }
             
             function initSlider() {
@@ -845,6 +851,7 @@
                     img.alt = image.title;
                     img.className = 'slide-image';
                     img.title = image.title;
+                    img.loading = 'lazy';
                     
                     slide.appendChild(img);
                     sliderWrapper.appendChild(slide);
@@ -874,7 +881,7 @@
                 for (let i = 0; i < totalPages; i++) {
                     const dot = document.createElement('div');
                     dot.className = `pager-dot ${i === currentSlide ? 'active' : ''}`;
-                    dot.addEventListener('click', () => {
+                    dot. addEventListener('click', () => {
                         goToSlide(i);
                     });
                     pagerDots.appendChild(dot);
@@ -883,7 +890,7 @@
             
             function updatePagerDots() {
                 const dots = pagerDots.querySelectorAll('.pager-dot');
-                dots. forEach((dot, index) => {
+                dots.forEach((dot, index) => {
                     if (index === currentSlide) {
                         dot.classList. add('active');
                     } else {

@@ -1111,3 +1111,29 @@ textarea:focus {
     animation: none;
   }
 }
+/* ===== СТИЛИ ДЛЯ SVG IMAGE MAP ===== */
+.image-map-svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    cursor: default;
+}
+
+. image-map-svg . map-area {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.image-map-svg .map-area:hover {
+    fill: rgba(255, 255, 255, 0. 3);
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+
+. image-map-svg a {
+    outline: none;
+}
+
+.image-map-svg a:focus . map-area {
+    fill: rgba(255, 255, 255, 0.35);
+    stroke-width: 3;
+}
