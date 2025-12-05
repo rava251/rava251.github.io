@@ -1330,3 +1330,559 @@ body. feedback-open {
         width: 100%;
     }
 }
+/* ===== УЛУЧШЕННАЯ ТАБЛИЦА ===== */
+. table-section-wrapper {
+    background: var(--bg-card);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    position: relative;
+}
+
+.table-section-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+}
+
+/* Десктопная таблица */
+.table-custom {
+    margin-bottom: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table-custom thead th {
+    background: linear-gradient(135deg, var(--secondary-color), #1a5276);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    padding: 18px 15px;
+    border: none;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.table-custom thead th:first-child {
+    border-radius: 0;
+}
+
+.table-custom thead th:last-child {
+    border-radius: 0;
+}
+
+.table-custom tbody td,
+.table-custom tbody th {
+    padding: 15px;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.table-custom tbody tr {
+    transition: var(--transition);
+}
+
+. table-custom tbody tr:hover {
+    background: linear-gradient(135deg, rgba(41, 128, 185, 0. 08), rgba(39, 174, 96, 0.05));
+    transform: none;
+}
+
+. table-custom tbody tr:hover td,
+.table-custom tbody tr:hover th {
+    color: var(--primary-color);
+}
+
+.table-custom tbody th[scope="row"] {
+    font-weight: 600;
+    color: var(--primary-color);
+    background: rgba(41, 128, 185, 0. 03);
+}
+
+.table-custom . table-success {
+    background: linear-gradient(135deg, rgba(39, 174, 96, 0. 15), rgba(39, 174, 96, 0. 08)) !important;
+}
+
+.table-custom .table-success td {
+    color: var(--accent-color);
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+/* ===== МОБИЛЬНЫЕ КАРТОЧКИ ТАБЛИЦЫ ===== */
+.faculty-cards-container {
+    display: grid;
+    gap: 15px;
+}
+
+.faculty-card {
+    background: var(--bg-card);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+}
+
+.faculty-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.faculty-card . card-header {
+    background: linear-gradient(135deg, var(--secondary-color), #1a5276);
+    color: white;
+    padding: 15px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.faculty-card .card-body {
+    padding: 15px;
+}
+
+.faculty-card .info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.faculty-card .info-row:last-child {
+    border-bottom: none;
+}
+
+.faculty-card .info-label {
+    color: var(--text-light);
+    font-size: 0. 9rem;
+    font-weight: 500;
+}
+
+.faculty-card . info-value {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* Карточка итога */
+.total-card {
+    background: linear-gradient(135deg, rgba(39, 174, 96, 0. 1), rgba(39, 174, 96, 0. 05));
+    border: 2px solid var(--accent-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.total-card . total-label {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.total-card . total-value {
+    color: var(--accent-color);
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+/* ===== УЛУЧШЕННАЯ МОБИЛЬНАЯ НАВИГАЦИЯ ===== */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background: var(--primary-color);
+        margin: 10px -12px -8px;
+        padding: 15px;
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 12px 15px ! important;
+        margin: 3px 0;
+        border-radius: var(--border-radius-sm);
+    }
+    
+    .navbar-nav .nav-link:hover {
+        background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .nav-feedback-btn {
+        margin-top: 10px;
+        width: 100%;
+        padding: 12px ! important;
+    }
+}
+
+/* ===== МОБИЛЬНЫЕ ФИКСЫ ===== */
+@media (max-width: 576px) {
+    /* Фикс для шапки */
+    . navbar-brand {
+        max-width: 70%;
+    }
+    
+    . navbar-brand img {
+        width: 40px ! important;
+        height: 40px ! important;
+    }
+    
+    /* Улучшенные отступы */
+    .container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    
+    main. container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    
+    /* Секции */
+    section {
+        margin-bottom: 30px ! important;
+    }
+    
+    . section-title {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+    
+    /* Формы */
+    . form-container {
+        padding: 15px ! important;
+    }
+    
+    . form-control,
+    .form-select {
+        padding: 10px 12px;
+        font-size: 16px !important; /* Предотвращает зум на iOS */
+    }
+    
+    /* Кнопки */
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    . d-flex. gap-3 {
+        flex-direction: column;
+        gap: 10px ! important;
+    }
+    
+    /* Карточки */
+    .card-custom {
+        margin-bottom: 15px;
+    }
+    
+    .card-custom:hover {
+        transform: none; /* Отключаем на мобильных */
+    }
+    
+    /* Попап обратной связи */
+    .feedback-popup {
+        padding: 15px;
+        max-height: calc(100vh - 20px);
+        margin: 10px;
+        width: calc(100% - 20px);
+    }
+    
+    . feedback-title {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+    
+    .feedback-form-group {
+        margin-bottom: 10px;
+    }
+    
+    . feedback-form-group . form-control {
+        padding: 10px;
+    }
+    
+    .feedback-form-group textarea {
+        min-height: 60px;
+    }
+    
+    /* Footer */
+    footer {
+        text-align: center;
+    }
+    
+    footer .col-md-6,
+    footer .col-md-3 {
+        margin-bottom: 25px;
+    }
+    
+    footer h3. h5 {
+        font-size: 1.1rem;
+    }
+    
+    footer p,
+    footer li {
+        font-size: 0.85rem;
+    }
+}
+
+/* ===== ПЛАНШЕТНАЯ ВЕРСИЯ ===== */
+@media (min-width: 577px) and (max-width: 768px) {
+    .faculty-cards-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .form-container {
+        padding: 20px !important;
+    }
+}
+
+/* ===== КНОПКА ОБРАТНОЙ СВЯЗИ В ШАПКЕ ===== */
+.nav-feedback-btn {
+    padding: 8px 16px;
+    font-weight: 600;
+    border-radius: 25px;
+    transition: var(--transition);
+    border: 2px solid white;
+    background: transparent;
+    color: white ! important;
+}
+
+.nav-feedback-btn:hover {
+    background: white;
+    color: var(--primary-color) !important;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0. 3);
+}
+
+. nav-feedback-btn i {
+    margin-right: 5px;
+}
+
+/* ===== ПОПАП УЛУЧШЕНИЯ ДЛЯ МОБИЛЬНЫХ ===== */
+.feedback-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 10px;
+    backdrop-filter: blur(5px);
+}
+
+.feedback-overlay. active {
+    display: flex;
+}
+
+. feedback-popup {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 25px;
+    width: 100%;
+    max-width: 450px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: popupSlideIn 0. 3s ease;
+}
+
+@keyframes popupSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+. feedback-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--bg-color);
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--text-light);
+}
+
+.feedback-close:hover {
+    background: var(--warning-color);
+    color: white;
+    transform: rotate(90deg);
+}
+
+.feedback-title {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.feedback-form-group {
+    margin-bottom: 15px;
+}
+
+.feedback-form-group .form-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.feedback-message {
+    padding: 12px;
+    border-radius: var(--border-radius-sm);
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 500;
+}
+
+. feedback-message.success {
+    background: linear-gradient(135deg, #d4edda, #c3e6cb);
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.feedback-message.error {
+    background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+#feedbackSubmitBtn {
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--border-radius);
+    margin-top: 10px;
+}
+
+/* Блокировка скролла */
+body. feedback-open {
+    overflow: hidden;
+}
+
+/* ===== SVG КАРТА АДАПТИВНОСТЬ ===== */
+.image-map-svg {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 400px) {
+    .image-map-svg {
+        width: 280px ! important;
+        height: 140px !important;
+    }
+    
+    .image-map-svg text {
+        font-size: 14px !important;
+    }
+}
+
+/* ===== ГАЛЕРЕЯ МОБИЛЬНАЯ ===== */
+@media (max-width: 576px) {
+    .gallery-container {
+        padding: 10px;
+    }
+    
+    .slide {
+        padding: 10px;
+    }
+    
+    .slide-image {
+        height: 200px;
+        border-radius: 8px;
+    }
+    
+    . slider-nav {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .slider-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        margin: 0 5px;
+    }
+    
+    . pager {
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+        font-size: 0.9rem;
+    }
+    
+    .pager-dot {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+/* ===== КАЛЬКУЛЯТОР МОБИЛЬНЫЙ ===== */
+@media (max-width: 576px) {
+    #calculator .card-custom {
+        margin: 0 -12px;
+        border-radius: 0;
+    }
+    
+    #calculator .card-header {
+        padding: 12px;
+    }
+    
+    #calculator . card-body {
+        padding: 15px;
+    }
+    
+    . calculation-details {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+    
+    #total-cost {
+        font-size: 1.2rem;
+    }
+    
+    . form-check-label {
+        font-size: 0. 9rem;
+    }
+}
+
+/* ===== ИСПРАВЛЕНИЕ ПЕРЕПОЛНЕНИЯ ===== */
+html, body {
+    overflow-x: hidden;
+}
+
+.container,
+.container-fluid {
+    overflow-x: hidden;
+}
+
+/* Плавный скролл для всех устройств */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
