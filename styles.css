@@ -264,15 +264,15 @@ body {
 .card-custom .card-body {
   padding: var(--spacing-md);
 }
-/* ===== ТАБЛИЦА С МЯГКИМИ ЦВЕТАМИ ===== */
+/* ===== ТАБЛИЦА С ТУСКЛЫМИ ПРИЯТНЫМИ ЦВЕТАМИ ===== */
 
 /* Обёртка таблицы */
-.table-responsive. shadow-sm {
-    background: white;
+. table-responsive. shadow-sm {
+    background: #fefefe;
     border-radius: 12px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
     overflow: hidden;
-    border: 1px solid #e5e7eb;
+    border: 1px solid #e5e5e5;
 }
 
 /* Основные стили таблицы */
@@ -283,10 +283,10 @@ body {
     width: 100%;
 }
 
-/* Шапка таблицы - мягкий серый */
+/* Шапка таблицы - тусклый бежево-серый */
 .table-custom thead th {
-    background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
-    color: #f9fafb;
+    background: linear-gradient(135deg, #a8a29e 0%, #8a8680 100%);
+    color: #fafaf9;
     font-weight: 500;
     text-transform: uppercase;
     font-size: 0.75rem;
@@ -299,89 +299,85 @@ body {
 /* Убираем Bootstrap стили */
 .table-custom. table-striped > tbody > tr:nth-of-type(odd) > * {
     --bs-table-accent-bg: transparent;
-    background-color: #fafafa;
+    background-color: #fafaf9;
 }
 
-.table-custom.table-striped > tbody > tr:nth-of-type(even) > * {
+. table-custom.table-striped > tbody > tr:nth-of-type(even) > * {
     --bs-table-accent-bg: transparent;
     background-color: #ffffff;
 }
 
 /* Ячейки таблицы */
-. table-custom tbody td,
+.table-custom tbody td,
 .table-custom tbody th {
     padding: 14px 18px;
     vertical-align: middle;
-    border-bottom: 1px solid #e5e7eb;
-    color: #374151;
+    border-bottom: 1px solid #e7e5e4;
+    color: #57534e;
     font-size: 0.9rem;
     transition: all 0.25s ease;
 }
 
 /* Первая колонка */
-. table-custom tbody th[scope="row"] {
+.table-custom tbody th[scope="row"] {
     font-weight: 500;
-    color: #1f2937;
-    background: linear-gradient(90deg, rgba(156, 163, 175, 0. 08) 0%, transparent 100%);
-    border-left: 3px solid #9ca3af;
+    color: #44403c;
+    background: linear-gradient(90deg, rgba(168, 162, 158, 0.08) 0%, transparent 100%);
+    border-left: 3px solid #a8a29e;
 }
 
 /* Hover эффект */
-.table-custom. table-hover > tbody > tr:hover > * {
+. table-custom. table-hover > tbody > tr:hover > * {
     --bs-table-accent-bg: transparent;
-    background-color: rgba(107, 114, 128, 0.06);
-}
-
-. table-custom tbody tr:hover {
-    transform: none;
+    background-color: rgba(168, 162, 158, 0. 08);
 }
 
 . table-custom tbody tr:hover td,
 .table-custom tbody tr:hover th {
-    color: #111827;
+    color: #292524;
 }
 
 /* Числовые колонки */
 . table-custom tbody td:nth-child(2),
 .table-custom tbody td:nth-child(3) {
     font-weight: 500;
-    color: #4b5563;
+    color: #57534e;
     text-align: center;
 }
 
 . table-custom tbody td:nth-child(4) {
-    color: #6b7280;
+    color: #78716c;
     text-align: center;
 }
 
 . table-custom tbody td:nth-child(5) {
-    color: #6b7280;
+    color: #78716c;
     font-style: italic;
 }
 
-/* Итоговая строка */
-.table-custom . table-success,
+/* Итоговая строка - мягкий бежево-зелёный */
+. table-custom . table-success,
 .table-custom tbody tr. table-success {
     --bs-table-accent-bg: transparent;
-    background: rgba(134, 239, 172, 0.15) !important;
+    background: rgba(163, 177, 138, 0.15) !important;
 }
 
-.table-custom . table-success td,
+.table-custom .table-success td,
 .table-custom . table-success th,
 .table-custom tbody tr.table-success > * {
-    background: rgba(134, 239, 172, 0.15) ! important;
-    color: #166534;
+    background: rgba(163, 177, 138, 0.15) ! important;
+    color: #5c6b4a;
     font-weight: 600;
     border-bottom: none;
     padding: 18px;
 }
 
-. table-custom .table-success td strong {
-    color: #166534;
+. table-custom . table-success td strong {
+    color: #5c6b4a;
 }
 
 /* Анимация появления строк */
-.table-custom tbody tr {
+. table-custom tbody tr {
     animation: tableRowFadeIn 0.4s ease-out forwards;
     opacity: 0;
 }
@@ -422,7 +418,7 @@ body {
 
 /* Подсветка ячейки */
 .table-custom tbody td:hover {
-    background: rgba(107, 114, 128, 0.04);
+    background: rgba(168, 162, 158, 0. 06);
 }
 
 /* Скролл таблицы */
@@ -435,41 +431,41 @@ body {
 }
 
 .table-responsive::-webkit-scrollbar-track {
-    background: #f3f4f6;
+    background: #f5f5f4;
     border-radius: 3px;
 }
 
 .table-responsive::-webkit-scrollbar-thumb {
-    background: #d1d5db;
+    background: #d6d3d1;
     border-radius: 3px;
 }
 
-/* Мобильные карточки */
+/* Мобильные карточки - тусклые цвета */
 . card-custom . card-header. custom-bg-secondary {
-    background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%) !important;
+    background: linear-gradient(135deg, #a8a29e 0%, #8a8680 100%) !important;
 }
 
-.card-custom .card-header.custom-bg-secondary .card-title,
+.card-custom .card-header. custom-bg-secondary .card-title,
 .card-custom .card-header. custom-bg-secondary h3 {
-    color: #f9fafb;
+    color: #fafaf9;
     font-size: 0.95rem;
     font-weight: 500;
 }
 
-. card. border-success {
-    background: rgba(134, 239, 172, 0.15) !important;
-    border: 1px solid #86efac ! important;
+.card. border-success {
+    background: rgba(163, 177, 138, 0.15) !important;
+    border: 1px solid #a3b18a ! important;
     border-radius: 12px;
 }
 
 .card.border-success .card-title {
-    color: #166534;
+    color: #5c6b4a;
     font-size: 0.9rem;
 }
 
 . card.border-success .card-text {
-    color: #15803d;
-    font-size: 1.75rem;
+    color: #5c6b4a;
+    font-size: 1. 75rem;
     font-weight: 600;
 }
 /* ===== КАРТА ИЗОБРАЖЕНИЯ ===== */
