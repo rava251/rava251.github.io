@@ -1137,3 +1137,176 @@ textarea:focus {
     fill: rgba(255, 255, 255, 0.35);
     stroke-width: 3;
 }
+/* ===== ПОПАП ОБРАТНОЙ СВЯЗИ ===== */
+. feedback-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.feedback-overlay.active {
+    display: flex;
+}
+
+. feedback-popup {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    width: 100%;
+    max-width: 450px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: feedbackSlideIn 0. 3s ease;
+}
+
+@keyframes feedbackSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.feedback-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #666;
+    cursor: pointer;
+    padding: 5px;
+    line-height: 1;
+    transition: color 0. 2s;
+}
+
+.feedback-close:hover {
+    color: #333;
+}
+
+. feedback-title {
+    margin: 0 0 20px 0;
+    color: #2980b9;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+. feedback-form-group {
+    margin-bottom: 12px;
+}
+
+.feedback-form-group . form-label {
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+. feedback-form-group . form-control {
+    font-size: 0.95rem;
+    padding: 8px 12px;
+}
+
+.feedback-form-group textarea. form-control {
+    resize: none;
+}
+
+. feedback-form-group . form-check-label {
+    font-size: 0.85rem;
+}
+
+.feedback-message {
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.feedback-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+. feedback-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+#feedbackSubmitBtn {
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+#feedbackSubmitBtn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Мобильная адаптация - форма полностью на экране */
+@media (max-width: 576px) {
+    .feedback-overlay {
+        padding: 10px;
+        align-items: flex-start;
+    }
+    
+    .feedback-popup {
+        padding: 20px 15px;
+        max-height: calc(100vh - 20px);
+        margin-top: 10px;
+    }
+    
+    . feedback-title {
+        font-size: 1. 3rem;
+        margin-bottom: 15px;
+    }
+    
+    . feedback-form-group {
+        margin-bottom: 10px;
+    }
+    
+    .feedback-form-group .form-label {
+        font-size: 0.85rem;
+        margin-bottom: 3px;
+    }
+    
+    . feedback-form-group . form-control {
+        font-size: 0.9rem;
+        padding: 6px 10px;
+    }
+    
+    . feedback-form-group textarea.form-control {
+        rows: 2;
+    }
+    
+    . feedback-form-group .form-check-label {
+        font-size: 0.8rem;
+    }
+    
+    #feedbackSubmitBtn {
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+}
+
+/* Блокировка прокрутки страницы при открытом попапе */
+body. feedback-open {
+    overflow: hidden;
+}

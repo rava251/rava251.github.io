@@ -741,6 +741,67 @@
                 </div>
             </div>
         </section>
+        <!-- Кнопка обратной связи -->
+<div class="container mb-5">
+    <div class="text-center">
+        <button type="button" class="btn btn-primary btn-lg" id="openFeedbackBtn">
+            <i class="bi bi-envelope me-2"></i>Обратная связь
+        </button>
+    </div>
+</div>
+
+<!-- Попап формы обратной связи -->
+<div class="feedback-overlay" id="feedbackOverlay">
+    <div class="feedback-popup" id="feedbackPopup">
+        <button type="button" class="feedback-close" id="closeFeedbackBtn" aria-label="Закрыть">
+            <i class="bi bi-x-lg"></i>
+        </button>
+        
+        <h2 class="feedback-title">Обратная связь</h2>
+        
+        <form id="feedbackForm" novalidate>
+            <div class="feedback-form-group">
+                <label for="feedback-name" class="form-label">ФИО <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="feedback-name" name="name" required placeholder="Иванов Иван Иванович">
+            </div>
+            
+            <div class="feedback-form-group">
+                <label for="feedback-email" class="form-label">Email <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" id="feedback-email" name="email" required placeholder="example@mail.ru">
+            </div>
+            
+            <div class="feedback-form-group">
+                <label for="feedback-phone" class="form-label">Телефон <span class="text-danger">*</span></label>
+                <input type="tel" class="form-control" id="feedback-phone" name="phone" required placeholder="+7 (999) 123-45-67">
+            </div>
+            
+            <div class="feedback-form-group">
+                <label for="feedback-org" class="form-label">Организация</label>
+                <input type="text" class="form-control" id="feedback-org" name="organization" placeholder="Название организации">
+            </div>
+            
+            <div class="feedback-form-group">
+                <label for="feedback-message" class="form-label">Сообщение <span class="text-danger">*</span></label>
+                <textarea class="form-control" id="feedback-message" name="message" rows="3" required placeholder="Введите ваше сообщение..."></textarea>
+            </div>
+            
+            <div class="feedback-form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="feedback-consent" name="consent" required>
+                    <label class="form-check-label" for="feedback-consent">
+                        Согласен с <a href="#" class="link-primary">политикой обработки персональных данных</a> <span class="text-danger">*</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div id="feedbackMessage" class="feedback-message" style="display: none;"></div>
+            
+            <button type="submit" class="btn btn-primary w-100" id="feedbackSubmitBtn">
+                <i class="bi bi-send me-2"></i>Отправить
+            </button>
+        </form>
+    </div>
+</div>
     </main>
 
     <!-- Подвал сайта -->
@@ -921,6 +982,229 @@ const images = [
             
             initSlider();
         });
+        // ===== ФОРМА ОБРАТНОЙ СВЯЗИ =====
+(function() {
+    // Элементы DOM
+    const overlay = document.getElementById('feedbackOverlay');
+    const popup = document.getElementById('feedbackPopup');
+    const openBtn = document.getElementById('openFeedbackBtn');
+    const closeBtn = document.getElementById('closeFeedbackBtn');
+    const form = document.getElementById('feedbackForm');
+    const messageDiv = document.getElementById('feedbackMessage');
+    const submitBtn = document.getElementById('feedbackSubmitBtn');
+    
+    // Ключ для LocalStorage
+    const STORAGE_KEY = 'feedbackFormData';
+    
+    // URL для отправки формы (замени на свой endpoint из formcarry.com)
+    // Зарегистрируйся на formcarry.com и получи свой endpoint
+    const FORM_ENDPOINT = 'https://formcarry. com/s/XXXXXXXX';
+    
+    // Поля формы для сохранения
+    const formFields = ['feedback-name', 'feedback-email', 'feedback-phone', 'feedback-org', 'feedback-message'];
+    
+    // Открытие попапа
+    function openPopup() {
+        overlay.classList.add('active');
+        document.body.classList.add('feedback-open');
+        
+        // History API - добавляем состояние
+        history.pushState({ feedbackOpen: true }, '', '?feedback=1');
+        
+        // Восстанавливаем данные из LocalStorage
+        loadFormData();
+        
+        // Фокус на первое поле
+        document.getElementById('feedback-name').focus();
+    }
+    
+    // Закрытие попапа
+    function closePopup() {
+        overlay.classList.remove('active');
+        document.body.classList.remove('feedback-open');
+        hideMessage();
+        
+        // Если URL содержит ? feedback=1, убираем его
+        if (window.location. search.includes('feedback=1')) {
+            history.pushState({}, '', window.location.pathname);
+        }
+    }
+    
+    // Сохранение данных в LocalStorage
+    function saveFormData() {
+        const data = {};
+        formFields. forEach(id => {
+            const field = document.getElementById(id);
+            if (field) {
+                data[id] = field.value;
+            }
+        });
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+    
+    // Загрузка данных из LocalStorage
+    function loadFormData() {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+            try {
+                const data = JSON.parse(saved);
+                formFields.forEach(id => {
+                    const field = document. getElementById(id);
+                    if (field && data[id]) {
+                        field. value = data[id];
+                    }
+                });
+            } catch (e) {
+                console. error('Ошибка загрузки данных:', e);
+            }
+        }
+    }
+    
+    // Очистка LocalStorage
+    function clearFormData() {
+        localStorage.removeItem(STORAGE_KEY);
+    }
+    
+    // Показать сообщение
+    function showMessage(text, type) {
+        messageDiv.textContent = text;
+        messageDiv.className = 'feedback-message ' + type;
+        messageDiv.style. display = 'block';
+    }
+    
+    // Скрыть сообщение
+    function hideMessage() {
+        messageDiv.style.display = 'none';
+    }
+    
+    // Валидация формы
+    function validateForm() {
+        const name = document.getElementById('feedback-name').value.trim();
+        const email = document. getElementById('feedback-email').value.trim();
+        const phone = document.getElementById('feedback-phone').value. trim();
+        const message = document.getElementById('feedback-message').value.trim();
+        const consent = document.getElementById('feedback-consent').checked;
+        
+        if (!name) {
+            showMessage('Пожалуйста, введите ФИО', 'error');
+            return false;
+        }
+        
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            showMessage('Пожалуйста, введите корректный Email', 'error');
+            return false;
+        }
+        
+        if (!phone) {
+            showMessage('Пожалуйста, введите номер телефона', 'error');
+            return false;
+        }
+        
+        if (! message) {
+            showMessage('Пожалуйста, введите сообщение', 'error');
+            return false;
+        }
+        
+        if (! consent) {
+            showMessage('Необходимо согласие с политикой обработки данных', 'error');
+            return false;
+        }
+        
+        return true;
+    }
+    
+    // Отправка формы
+    async function submitForm(e) {
+        e.preventDefault();
+        
+        hideMessage();
+        
+        if (!validateForm()) {
+            return;
+        }
+        
+        // Блокируем кнопку
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Отправка... ';
+        
+        // Собираем данные формы
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData. entries());
+        
+        try {
+            const response = await fetch(FORM_ENDPOINT, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+            
+            if (response.ok) {
+                showMessage('Сообщение успешно отправлено!  Спасибо за обращение.', 'success');
+                form.reset();
+                clearFormData();
+                
+                // Закрываем попап через 2 секунды
+                setTimeout(() => {
+                    closePopup();
+                }, 2000);
+            } else {
+                throw new Error('Ошибка сервера');
+            }
+        } catch (error) {
+            console.error('Ошибка отправки:', error);
+            showMessage('Ошибка при отправке.  Попробуйте позже.', 'error');
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="bi bi-send me-2"></i>Отправить';
+        }
+    }
+    
+    // Обработчики событий
+    openBtn.addEventListener('click', openPopup);
+    closeBtn.addEventListener('click', closePopup);
+    
+    // Закрытие по клику на overlay
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) {
+            closePopup();
+        }
+    });
+    
+    // Закрытие по Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.classList. contains('active')) {
+            closePopup();
+        }
+    });
+    
+    // Сохранение данных при вводе
+    formFields.forEach(id => {
+        const field = document.getElementById(id);
+        if (field) {
+            field.addEventListener('input', saveFormData);
+        }
+    });
+    
+    // Отправка формы
+    form.addEventListener('submit', submitForm);
+    
+    // History API - обработка кнопки "Назад"
+    window.addEventListener('popstate', function(e) {
+        if (overlay.classList.contains('active')) {
+            overlay.classList.remove('active');
+            document.body.classList. remove('feedback-open');
+            hideMessage();
+        }
+    });
+    
+    // Проверка URL при загрузке страницы
+    if (window.location. search. includes('feedback=1')) {
+        openPopup();
+    }
+})();
     </script>
 </body>
 </html>
