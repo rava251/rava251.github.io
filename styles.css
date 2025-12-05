@@ -1,4 +1,4 @@
-/* styles.css - Адаптивная версия с Bootstrap 5 и Mobile First подходом */
+/* styles.css - Улучшенная адаптивная версия с Bootstrap 5 и Modern UI */
 
 /* CSS Custom Properties для темизации */
 :root {
@@ -12,8 +12,8 @@
   --bg-color: #f8f9fa;
   --bg-card: #ffffff;
   --border-color: #e1e8ed;
-  --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  --shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.15);
+  --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
   
   /* Типографика */
   --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
@@ -22,7 +22,7 @@
   --font-size-base: 1rem;
   --font-size-lg: 1.125rem;
   --font-size-xl: 1.25rem;
-  --font-size-2xl: 1.5rem;
+  --font-size-2xl: 1. 5rem;
   --font-size-3xl: 2rem;
   
   /* Размеры */
@@ -36,8 +36,8 @@
   --spacing-2xl: 3rem;
   
   /* Анимации */
-  --transition: all 0.3s ease;
-  --transition-fast: all 0.15s ease;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0. 15s ease;
 }
 
 /* Базовые стили - Mobile First */
@@ -69,7 +69,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--secondary-color);
+  background: linear-gradient(180deg, var(--secondary-color), var(--primary-color));
   border-radius: 4px;
 }
 
@@ -79,11 +79,11 @@ body {
 
 /* Утилитарные классы */
 .visually-hidden {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
+  position: absolute ! important;
+  width: 1px ! important;
+  height: 1px ! important;
+  padding: 0 ! important;
+  margin: -1px ! important;
   overflow: hidden !important;
   clip: rect(0, 0, 0, 0) !important;
   white-space: nowrap !important;
@@ -100,27 +100,100 @@ body {
 }
 
 .custom-text-primary {
-  color: var(--primary-color) !important;
+  color: var(--primary-color) ! important;
 }
 
+/* ===== УЛУЧШЕННЫЕ КНОПКИ ===== */
 .btn-primary {
-  background-color: var(--secondary-color);
-  border-color: var(--secondary-color);
+  background: linear-gradient(135deg, var(--secondary-color), #1a5276);
+  border: none;
+  padding: 12px 28px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
 }
 
-.btn-primary:hover,
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  transition: left 0.4s ease;
+  z-index: -1;
+}
+
+. btn-primary:hover::before {
+  left: 0;
+}
+
+. btn-primary:hover,
 .btn-primary:focus {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(41, 128, 185, 0. 4);
+  background: linear-gradient(135deg, var(--secondary-color), #1a5276);
+  border: none;
+}
+
+.btn-primary:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(41, 128, 185, 0.3);
+}
+
+. btn-outline-secondary {
+  border: 2px solid var(--secondary-color);
+  color: var(--secondary-color);
+  padding: 10px 26px;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  background: transparent;
+  transition: var(--transition);
+  z-index: 1;
+}
+
+.btn-outline-secondary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: var(--primary-color);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+  z-index: -1;
+}
+
+.btn-outline-secondary:hover::before {
+  width: 300px;
+  height: 300px;
 }
 
 .btn-outline-secondary:hover {
-  background-color: var(--primary-color);
+  background: transparent;
   border-color: var(--primary-color);
   color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(44, 62, 80, 0. 3);
 }
 
-/* Заголовки секций */
+/* Улучшенные большие кнопки */
+.btn-lg {
+  padding: 14px 32px;
+  font-size: var(--font-size-lg);
+  border-radius: var(--border-radius);
+}
+
+/* ===== ЗАГОЛОВКИ СЕКЦИЙ ===== */
 .section-title {
   border-bottom: 3px solid var(--secondary-color);
   padding-bottom: var(--spacing-sm);
@@ -139,9 +212,14 @@ body {
   width: 50px;
   height: 3px;
   background: var(--accent-color);
+  transition: width 0. 3s ease;
 }
 
-/* Кастомные карточки */
+.section-title:hover::after {
+  width: 100px;
+}
+
+/* ===== УЛУЧШЕННЫЕ КАРТОЧКИ ===== */
 .card-custom {
   border: none;
   box-shadow: var(--shadow);
@@ -149,15 +227,34 @@ body {
   height: 100%;
   border-radius: var(--border-radius);
   overflow: hidden;
+  position: relative;
+  background: var(--bg-card);
 }
 
-.card-custom:hover {
-  transform: translateY(-5px);
+. card-custom::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+  transform-origin: left;
+}
+
+. card-custom:hover {
+  transform: translateY(-8px);
   box-shadow: var(--shadow-hover);
 }
 
-.card-custom .card-header {
-  background-color: var(--secondary-color);
+. card-custom:hover::before {
+  transform: scaleX(1);
+}
+
+. card-custom . card-header {
+  background: linear-gradient(135deg, var(--secondary-color), #1a5276);
   color: white;
   border: none;
   font-weight: 600;
@@ -168,9 +265,9 @@ body {
   padding: var(--spacing-md);
 }
 
-/* Таблицы */
+/* ===== ТАБЛИЦЫ ===== */
 .table-custom th {
-  background-color: var(--secondary-color);
+  background: linear-gradient(135deg, var(--secondary-color), #1a5276);
   color: white;
   border: none;
   font-weight: 600;
@@ -180,13 +277,15 @@ body {
 .table-custom td {
   padding: var(--spacing-md);
   border-color: var(--border-color);
+  transition: var(--transition);
 }
 
-.table-custom tbody tr:hover {
-  background-color: rgba(41, 128, 185, 0.05);
+. table-custom tbody tr:hover {
+  background-color: rgba(41, 128, 185, 0. 08);
+  transform: scale(1. 01);
 }
 
-/* Карта изображения */
+/* ===== КАРТА ИЗОБРАЖЕНИЯ ===== */
 .image-map-container {
   position: relative;
   display: inline-block;
@@ -195,7 +294,7 @@ body {
 }
 
 .image-map-container img {
-  border: 1px solid var(--border-color);
+  border: 2px solid var(--border-color);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
   transition: var(--transition);
@@ -204,11 +303,12 @@ body {
 }
 
 .image-map-container img:hover {
-  transform: scale(1.02);
+  transform: scale(1. 02);
   box-shadow: var(--shadow-hover);
+  border-color: var(--secondary-color);
 }
 
-.map-label {
+. map-label {
   position: absolute;
   color: var(--text-color);
   font-weight: bold;
@@ -223,17 +323,17 @@ body {
   backdrop-filter: blur(10px);
 }
 
-.rect-label {
+. rect-label {
   top: 25%;
   left: 15%;
 }
 
-.circle-label {
+. circle-label {
   top: 45%;
   left: 65%;
 }
 
-/* Форма */
+/* ===== УЛУЧШЕННЫЕ ФОРМЫ ===== */
 .form-container {
   background: var(--bg-card);
   border-radius: var(--border-radius);
@@ -259,37 +359,71 @@ body {
   margin-bottom: var(--spacing-sm);
 }
 
-.form-control:focus,
-.form-select:focus {
-  border-color: var(--secondary-color);
-  box-shadow: 0 0 0 0.25rem rgba(41, 128, 185, 0.25);
-}
-
-.form-control,
+/* Улучшенные поля ввода */
+. form-control,
 .form-select {
   border: 2px solid var(--border-color);
   border-radius: var(--border-radius);
-  padding: var(--spacing-md);
+  padding: 14px 16px;
   font-size: var(--font-size-base);
   transition: var(--transition);
-  background: var(--bg-color);
+  background: var(--bg-card);
   color: var(--text-color);
 }
 
-.form-control:focus,
-.form-select:focus {
-  transform: translateY(-1px);
+. form-control:hover,
+.form-select:hover {
+  border-color: var(--secondary-color);
+  background: #fafbfc;
 }
 
-/* Чекбоксы и радиокнопки */
+. form-control:focus,
+.form-select:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 4px rgba(41, 128, 185, 0. 15);
+  background: var(--bg-card);
+  transform: translateY(-2px);
+}
+
+/* Улучшенные чекбоксы и радиокнопки */
+.form-check-input {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+. form-check-input:hover {
+  border-color: var(--secondary-color);
+  transform: scale(1. 1);
+}
+
 .form-check-input:checked {
   background-color: var(--accent-color);
   border-color: var(--accent-color);
+  animation: checkPulse 0. 3s ease;
 }
 
-.form-check-input:focus {
+. form-check-input:focus {
   border-color: var(--secondary-color);
-  box-shadow: 0 0 0 0.25rem rgba(41, 128, 185, 0.25);
+  box-shadow: 0 0 0 0. 25rem rgba(41, 128, 185, 0.25);
+}
+
+@keyframes checkPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* Улучшенный fieldset */
+.fieldset-custom {
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+}
+
+.fieldset-custom:hover {
+  border-color: var(--secondary-color);
 }
 
 /* Поля ввода группы */
@@ -299,7 +433,7 @@ body {
   border-right: none;
 }
 
-.input-group .form-control {
+. input-group . form-control {
   border-left: none;
 }
 
@@ -318,55 +452,74 @@ body {
   display: none;
 }
 
-/* Навигация */
+/* ===== НАВИГАЦИЯ ===== */
 .navbar-brand img {
   border-radius: var(--border-radius);
   transition: var(--transition);
 }
 
-.navbar-brand img:hover {
+. navbar-brand img:hover {
   transform: scale(1.05);
 }
 
-.navbar-nav .nav-link {
+. navbar-nav .nav-link {
   color: rgba(255, 255, 255, 0.9) !important;
   font-weight: 500;
   transition: var(--transition);
   padding: var(--spacing-sm) var(--spacing-md);
   border-radius: var(--border-radius);
+  position: relative;
 }
 
-.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--accent-color);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link:focus::after {
+  width: 80%;
+}
+
+. navbar-nav .nav-link:hover,
 .navbar-nav .nav-link:focus {
   background: rgba(255, 255, 255, 0.1);
   transform: translateY(-2px);
 }
 
-/* Блок описания */
-.site-description {
+/* ===== БЛОК ОПИСАНИЯ ===== */
+. site-description {
   background: var(--bg-card);
   border-left: 4px solid var(--secondary-color);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
 }
 
-/* Списки */
+/* ===== СПИСКИ ===== */
 .list-group-item {
   border: 1px solid var(--border-color);
   padding: var(--spacing-md);
   transition: var(--transition);
 }
 
-.list-group-item:hover {
+. list-group-item:hover {
   background-color: rgba(41, 128, 185, 0.05);
+  transform: translateX(5px);
 }
 
-.list-group-numbered .list-group-item::before {
+. list-group-numbered . list-group-item::before {
   font-weight: bold;
   color: var(--secondary-color);
 }
 
-/* Ссылки */
+/* ===== ССЫЛКИ ===== */
 a {
   color: var(--secondary-color);
   text-decoration: none;
@@ -379,13 +532,13 @@ a:focus {
   text-decoration: underline;
 }
 
-.stretched-link::after {
+. stretched-link::after {
   border-radius: var(--border-radius);
 }
 
-/* Подвал */
+/* ===== ПОДВАЛ ===== */
 footer {
-  background-color: var(--primary-color);
+  background: linear-gradient(135deg, var(--primary-color), #1a252f);
   color: white;
 }
 
@@ -393,11 +546,27 @@ footer a {
   color: white;
   text-decoration: none;
   transition: var(--transition);
+  position: relative;
+}
+
+footer a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent-color);
+  transition: width 0.3s ease;
+}
+
+footer a:hover::after {
+  width: 100%;
 }
 
 footer a:hover {
   color: var(--accent-color);
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 footer h3,
@@ -412,8 +581,13 @@ footer ul li {
   font-size: var(--font-size-sm);
 }
 
-/* Анимации и переходы */
-.fade-in {
+/* Граница для подвала */
+footer . border-top {
+  border-color: rgba(255, 255, 255, 0.3) ! important;
+}
+
+/* ===== АНИМАЦИИ И ПЕРЕХОДЫ ===== */
+. fade-in {
   animation: fadeIn 0.5s ease-in;
 }
 
@@ -428,7 +602,7 @@ footer ul li {
   }
 }
 
-/* Стили для галереи */
+/* ===== СТИЛИ ДЛЯ ГАЛЕРЕИ ===== */
 .gallery-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -445,7 +619,7 @@ footer ul li {
 
 .slider-wrapper {
   display: flex;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .slide {
@@ -464,7 +638,8 @@ footer ul li {
 }
 
 .slide-image:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
+  box-shadow: var(--shadow-hover);
 }
 
 .slider-nav {
@@ -474,12 +649,13 @@ footer ul li {
   margin-top: 20px;
 }
 
+/* Улучшенные кнопки слайдера */
 .slider-btn {
-  background-color: var(--secondary-color);
+  background: linear-gradient(135deg, var(--secondary-color), #1a5276);
   color: white;
   border: none;
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -488,20 +664,27 @@ footer ul li {
   cursor: pointer;
   transition: var(--transition);
   margin: 0 15px;
+  box-shadow: 0 4px 15px rgba(41, 128, 185, 0. 3);
 }
 
 .slider-btn:hover {
-  background-color: var(--primary-color);
-  transform: scale(1.1);
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  transform: scale(1.15);
+  box-shadow: 0 8px 25px rgba(41, 128, 185, 0. 4);
 }
 
-.slider-btn:disabled {
-  background-color: #cccccc;
+.slider-btn:active {
+  transform: scale(1. 05);
+}
+
+. slider-btn:disabled {
+  background: linear-gradient(135deg, #bdc3c7, #95a5a6);
   cursor: not-allowed;
   transform: none;
+  box-shadow: none;
 }
 
-.pager {
+. pager {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -525,12 +708,152 @@ footer ul li {
   transition: var(--transition);
 }
 
-.pager-dot.active {
+.pager-dot:hover {
   background-color: var(--secondary-color);
-  transform: scale(1.2);
+  opacity: 0.7;
 }
 
-/* Mobile First адаптации */
+. pager-dot. active {
+  background-color: var(--secondary-color);
+  transform: scale(1. 3);
+  box-shadow: 0 0 10px rgba(41, 128, 185, 0.5);
+}
+
+/* ===== СТИЛИ ДЛЯ КАЛЬКУЛЯТОРА ===== */
+#calculator . alert-success {
+  background: linear-gradient(135deg, #f8fff8 0%, #e8f5e9 100%);
+  border: 2px solid var(--accent-color);
+  border-radius: var(--border-radius);
+  position: relative;
+  overflow: hidden;
+}
+
+#calculator . alert-success::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--accent-color), #1e8449);
+}
+
+#calculator .alert-heading {
+  color: var(--primary-color);
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+#calculation-result {
+  line-height: 1.8;
+}
+
+. calculation-details {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: var(--border-radius-sm);
+  padding: var(--spacing-md);
+}
+
+.calculation-details . d-flex {
+  padding: var(--spacing-xs) 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.calculation-details .d-flex:last-child {
+  border-bottom: none;
+}
+
+.calculation-details hr {
+  margin: var(--spacing-sm) 0;
+  border-color: var(--border-color);
+}
+
+#total-cost {
+  color: var(--accent-color);
+  font-weight: 700;
+  font-size: 1.4rem;
+  text-shadow: 0 2px 4px rgba(39, 174, 96, 0.2);
+}
+
+/* Анимация появления результата */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#result-container {
+  animation: slideInUp 0.5s ease-out;
+}
+
+/* Стили для невалидного поля */
+.is-invalid {
+  border-color: var(--warning-color) !important;
+}
+
+. is-invalid:focus {
+  box-shadow: 0 0 0 0.25rem rgba(231, 76, 60, 0. 25) !important;
+}
+
+/* Стили для выбранных элементов формы */
+.form-select option:checked {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+/* Стили для карточек со ссылками */
+.card-custom . card-body . card-link {
+  position: relative;
+  z-index: 1;
+  color: var(--secondary-color);
+  font-weight: 500;
+}
+
+.card-custom .card-body . card-link:hover {
+  color: var(--primary-color);
+}
+
+/* Стили для изображения в карточке ссылки */
+. card-custom .card-body. text-center img {
+  transition: var(--transition);
+}
+
+. card-custom:hover .card-body.text-center img {
+  transform: scale(1.1);
+}
+
+/* Анимации для динамических элементов */
+. dynamic-element {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Стили для выбранных опций в калькуляторе */
+#service-options option:checked {
+  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+  color: white;
+}
+
+/* Стили для чекбокса в калькуляторе */
+#service-property:checked {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+/* Стили для валидации формы */
+.form-control:invalid:not(:focus):not(:placeholder-shown) {
+  border-color: var(--warning-color);
+}
+
+.form-control:valid:not(:focus):not(:placeholder-shown) {
+  border-color: var(--accent-color);
+}
+
+/* ===== MOBILE FIRST АДАПТАЦИИ ===== */
 @media (max-width: 576px) {
   .container {
     padding-left: var(--spacing-md);
@@ -545,20 +868,20 @@ footer ul li {
     font-size: var(--font-size-lg);
   }
   
-  .card-custom .card-body {
+  .card-custom . card-body {
     padding: var(--spacing-sm);
   }
   
   .form-container {
-    padding: var(--spacing-md) !important;
+    padding: var(--spacing-md) ! important;
   }
   
-  .map-label {
+  . map-label {
     font-size: var(--font-size-xs);
     padding: var(--spacing-xs);
   }
   
-  footer .row > div {
+  footer . row > div {
     margin-bottom: var(--spacing-lg);
   }
   
@@ -576,6 +899,12 @@ footer ul li {
     height: 45px;
     font-size: 1.3rem;
   }
+  
+  /* Адаптивность кнопок */
+  .btn-lg {
+    padding: 12px 24px;
+    font-size: var(--font-size-base);
+  }
 }
 
 @media (max-width: 768px) {
@@ -583,7 +912,7 @@ footer ul li {
     font-size: var(--font-size-sm);
   }
   
-  .btn-group-vertical {
+  . btn-group-vertical {
     width: 100%;
   }
   
@@ -596,14 +925,30 @@ footer ul li {
   }
   
   /* Адаптивность для галереи на планшетах */
-  .slide-image {
+  . slide-image {
     height: 250px;
   }
   
-  .slider-btn {
+  . slider-btn {
     width: 45px;
     height: 45px;
     font-size: 1.3rem;
+  }
+  
+  #calculator .form-container {
+    padding: var(--spacing-md) !important;
+  }
+  
+  #calculation-result {
+    font-size: var(--font-size-sm);
+  }
+  
+  . calculation-details {
+    font-size: var(--font-size-sm);
+  }
+  
+  #calculator .card-body {
+    padding: var(--spacing-sm);
   }
 }
 
@@ -613,29 +958,46 @@ footer ul li {
   }
 }
 
-/* Утилиты для отступов */
+/* Адаптивность для галереи на очень маленьких экранах */
+@media (max-width: 480px) {
+  .slide-image {
+    height: 200px;
+  }
+  
+  .slider-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  .pager {
+    font-size: 1rem;
+  }
+}
+
+/* ===== УТИЛИТЫ ДЛЯ ОТСТУПОВ ===== */
 .mt-custom {
   margin-top: var(--spacing-xl);
 }
 
-.mb-custom {
+. mb-custom {
   margin-bottom: var(--spacing-xl);
 }
 
-.p-custom {
+. p-custom {
   padding: var(--spacing-xl);
 }
 
 /* Кастомные тени */
 .shadow-custom {
-  box-shadow: var(--shadow) !important;
+  box-shadow: var(--shadow) ! important;
 }
 
-.shadow-custom-hover {
+. shadow-custom-hover {
   box-shadow: var(--shadow-hover) !important;
 }
 
-/* Состояния загрузки */
+/* ===== СОСТОЯНИЯ ЗАГРУЗКИ ===== */
 .loading {
   opacity: 0.7;
   pointer-events: none;
@@ -660,7 +1022,7 @@ footer ul li {
   100% { transform: rotate(360deg); }
 }
 
-/* Улучшенная доступность */
+/* ===== УЛУЧШЕННАЯ ДОСТУПНОСТЬ ===== */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -683,106 +1045,7 @@ textarea:focus {
   outline-offset: 2px;
 }
 
-/* Стили для валидации формы */
-.form-control:invalid:not(:focus):not(:placeholder-shown) {
-  border-color: var(--warning-color);
-}
-
-.form-control:valid:not(:focus):not(:placeholder-shown) {
-  border-color: var(--accent-color);
-}
-
-/* Стили для выбранных элементов формы */
-.form-select option:checked {
-  background-color: var(--secondary-color);
-  color: white;
-}
-
-/* Стили для карточек со ссылками */
-.card-custom .card-body .card-link {
-  position: relative;
-  z-index: 1;
-  color: var(--secondary-color);
-  font-weight: 500;
-}
-
-.card-custom .card-body .card-link:hover {
-  color: var(--primary-color);
-}
-
-/* Стили для изображения в карточке ссылки */
-.card-custom .card-body.text-center img {
-  transition: var(--transition);
-}
-
-.card-custom:hover .card-body.text-center img {
-  transform: scale(1.1);
-}
-
-/* Стили для калькулятора */
-#calculator .alert-success {
-  border-left: 4px solid var(--accent-color);
-  background: var(--bg-card);
-  border-radius: var(--border-radius);
-  border: 1px solid var(--accent-color);
-}
-
-#calculator .alert-heading {
-  color: var(--primary-color);
-  font-size: var(--font-size-lg);
-  margin-bottom: var(--spacing-md);
-}
-
-#calculation-result {
-  line-height: 1.8;
-}
-
-#calculate-btn {
-  transition: var(--transition);
-}
-
-#calculate-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-hover);
-}
-
-/* Анимация появления результата */
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-#result-container {
-  animation: slideInUp 0.5s ease-out;
-}
-
-/* Стили для невалидного поля */
-.is-invalid {
-  border-color: var(--warning-color) !important;
-}
-
-.is-invalid:focus {
-  box-shadow: 0 0 0 0.25rem rgba(231, 76, 60, 0.25) !important;
-}
-
-/* Адаптивность для калькулятора */
-@media (max-width: 768px) {
-  #calculator .form-container {
-    padding: var(--spacing-md) !important;
-  }
-  
-  #calculation-result {
-    font-size: var(--font-size-sm);
-  }
-}
-
-/* Высококонтрастный режим */
+/* ===== ВЫСОКОКОНТРАСТНЫЙ РЕЖИМ ===== */
 @media (prefers-contrast: high) {
   :root {
     --text-color: #000000;
@@ -799,12 +1062,12 @@ textarea:focus {
   }
 }
 
-/* Режим уменьшения движения */
+/* ===== РЕЖИМ УМЕНЬШЕНИЯ ДВИЖЕНИЯ ===== */
 @media (prefers-reduced-motion: reduce) {
   * {
-    animation-duration: 0.01ms !important;
+    animation-duration: 0.01ms ! important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-duration: 0. 01ms !important;
   }
   
   html {
@@ -823,7 +1086,8 @@ textarea:focus {
     transform: none;
   }
   
-  #calculate-btn:hover {
+  .btn-primary:hover,
+  .btn-outline-secondary:hover {
     transform: none;
   }
   
@@ -831,7 +1095,7 @@ textarea:focus {
     animation: none;
   }
   
-  .slider-wrapper {
+  . slider-wrapper {
     transition: none;
   }
   
@@ -842,92 +1106,8 @@ textarea:focus {
   .slider-btn:hover {
     transform: none;
   }
-}
-
-/* Стили для калькулятора стоимости услуги */
-.calculation-details {
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: var(--border-radius-sm);
-  padding: var(--spacing-md);
-}
-
-.calculation-details .d-flex {
-  padding: var(--spacing-xs) 0;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.calculation-details .d-flex:last-child {
-  border-bottom: none;
-}
-
-.calculation-details hr {
-  margin: var(--spacing-sm) 0;
-  border-color: var(--border-color);
-}
-
-/* Анимации для динамических элементов */
-.dynamic-element {
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Стили для выбранных опций в калькуляторе */
-#service-options option:checked {
-  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-  color: white;
-}
-
-/* Стили для чекбокса в калькуляторе */
-#service-property:checked {
-  background-color: var(--accent-color);
-  border-color: var(--accent-color);
-}
-
-/* Граница для подвала */
-footer .border-top {
-  border-color: rgba(255, 255, 255, 0.3) !important;
-}
-
-/* Стили для результата калькулятора */
-#total-cost {
-  color: var(--accent-color);
-  font-weight: 700;
-}
-
-/* Адаптивность для калькулятора */
-@media (max-width: 768px) {
-  .calculation-details {
-    font-size: var(--font-size-sm);
-  }
   
-  #calculator .card-body {
-    padding: var(--spacing-sm);
-  }
-}
-
-/* Адаптивность для галереи на очень маленьких экранах */
-@media (max-width: 480px) {
-  .slide-image {
-    height: 200px;
-  }
-  
-  .slider-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
-  }
-  
-  .pager {
-    font-size: 1rem;
+  .form-check-input:checked {
+    animation: none;
   }
 }
