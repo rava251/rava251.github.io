@@ -264,27 +264,214 @@ body {
 .card-custom .card-body {
   padding: var(--spacing-md);
 }
+/* ===== ТАБЛИЦА С МЯГКИМИ ЦВЕТАМИ ===== */
 
-/* ===== ТАБЛИЦЫ ===== */
-.table-custom th {
-  background: linear-gradient(135deg, var(--secondary-color), #1a5276);
-  color: white;
-  border: none;
-  font-weight: 600;
-  padding: var(--spacing-md);
+/* Обёртка таблицы */
+.table-responsive. shadow-sm {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
 }
 
-.table-custom td {
-  padding: var(--spacing-md);
-  border-color: var(--border-color);
-  transition: var(--transition);
+/* Основные стили таблицы */
+.table-custom {
+    margin-bottom: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+}
+
+/* Шапка таблицы - мягкий серый */
+.table-custom thead th {
+    background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+    color: #f9fafb;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    padding: 16px 18px;
+    border: none;
+    text-align: left;
+}
+
+/* Убираем Bootstrap стили */
+.table-custom. table-striped > tbody > tr:nth-of-type(odd) > * {
+    --bs-table-accent-bg: transparent;
+    background-color: #fafafa;
+}
+
+.table-custom.table-striped > tbody > tr:nth-of-type(even) > * {
+    --bs-table-accent-bg: transparent;
+    background-color: #ffffff;
+}
+
+/* Ячейки таблицы */
+. table-custom tbody td,
+.table-custom tbody th {
+    padding: 14px 18px;
+    vertical-align: middle;
+    border-bottom: 1px solid #e5e7eb;
+    color: #374151;
+    font-size: 0.9rem;
+    transition: all 0.25s ease;
+}
+
+/* Первая колонка */
+. table-custom tbody th[scope="row"] {
+    font-weight: 500;
+    color: #1f2937;
+    background: linear-gradient(90deg, rgba(156, 163, 175, 0. 08) 0%, transparent 100%);
+    border-left: 3px solid #9ca3af;
+}
+
+/* Hover эффект */
+.table-custom. table-hover > tbody > tr:hover > * {
+    --bs-table-accent-bg: transparent;
+    background-color: rgba(107, 114, 128, 0.06);
 }
 
 . table-custom tbody tr:hover {
-  background-color: rgba(41, 128, 185, 0. 08);
-  transform: scale(1. 01);
+    transform: none;
 }
 
+. table-custom tbody tr:hover td,
+.table-custom tbody tr:hover th {
+    color: #111827;
+}
+
+/* Числовые колонки */
+. table-custom tbody td:nth-child(2),
+.table-custom tbody td:nth-child(3) {
+    font-weight: 500;
+    color: #4b5563;
+    text-align: center;
+}
+
+. table-custom tbody td:nth-child(4) {
+    color: #6b7280;
+    text-align: center;
+}
+
+. table-custom tbody td:nth-child(5) {
+    color: #6b7280;
+    font-style: italic;
+}
+
+/* Итоговая строка */
+.table-custom . table-success,
+.table-custom tbody tr. table-success {
+    --bs-table-accent-bg: transparent;
+    background: rgba(134, 239, 172, 0.15) !important;
+}
+
+.table-custom . table-success td,
+.table-custom . table-success th,
+.table-custom tbody tr.table-success > * {
+    background: rgba(134, 239, 172, 0.15) ! important;
+    color: #166534;
+    font-weight: 600;
+    border-bottom: none;
+    padding: 18px;
+}
+
+. table-custom .table-success td strong {
+    color: #166534;
+}
+
+/* Анимация появления строк */
+.table-custom tbody tr {
+    animation: tableRowFadeIn 0.4s ease-out forwards;
+    opacity: 0;
+}
+
+. table-custom tbody tr:nth-child(1) { animation-delay: 0.05s; }
+. table-custom tbody tr:nth-child(2) { animation-delay: 0. 1s; }
+.table-custom tbody tr:nth-child(3) { animation-delay: 0.15s; }
+.table-custom tbody tr:nth-child(4) { animation-delay: 0.2s; }
+.table-custom tbody tr:nth-child(5) { animation-delay: 0.25s; }
+.table-custom tbody tr:nth-child(6) { animation-delay: 0.3s; }
+
+@keyframes tableRowFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Анимация шапки */
+. table-custom thead {
+    animation: headerSlideDown 0.3s ease-out;
+}
+
+@keyframes headerSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Подсветка ячейки */
+.table-custom tbody td:hover {
+    background: rgba(107, 114, 128, 0.04);
+}
+
+/* Скролл таблицы */
+.table-responsive {
+    border-radius: 12px;
+}
+
+. table-responsive::-webkit-scrollbar {
+    height: 6px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+    background: #f3f4f6;
+    border-radius: 3px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 3px;
+}
+
+/* Мобильные карточки */
+. card-custom . card-header. custom-bg-secondary {
+    background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%) !important;
+}
+
+.card-custom .card-header.custom-bg-secondary .card-title,
+.card-custom .card-header. custom-bg-secondary h3 {
+    color: #f9fafb;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+. card. border-success {
+    background: rgba(134, 239, 172, 0.15) !important;
+    border: 1px solid #86efac ! important;
+    border-radius: 12px;
+}
+
+.card.border-success .card-title {
+    color: #166534;
+    font-size: 0.9rem;
+}
+
+. card.border-success .card-text {
+    color: #15803d;
+    font-size: 1.75rem;
+    font-weight: 600;
+}
 /* ===== КАРТА ИЗОБРАЖЕНИЯ ===== */
 .image-map-container {
   position: relative;
