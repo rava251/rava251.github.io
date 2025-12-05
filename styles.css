@@ -1886,3 +1886,331 @@ html, body {
         scroll-behavior: smooth;
     }
 }
+/* ===== УЛУЧШЕННАЯ ТАБЛИЦА С ПРИЯТНЫМИ ЦВЕТАМИ ===== */
+
+/* Новая мягкая цветовая палитра для таблицы */
+:root {
+    --table-header-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --table-header-text: #ffffff;
+    --table-row-odd: #fafbfc;
+    --table-row-even: #ffffff;
+    --table-row-hover: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.05) 100%);
+    --table-border: #e8ecf1;
+    --table-accent: #667eea;
+    --table-success-bg: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+    --table-success-text: #059669;
+}
+
+/* Обёртка таблицы */
+.table-wrapper {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0. 1);
+    overflow: hidden;
+    border: 1px solid var(--table-border);
+}
+
+/* Десктопная таблица */
+.table-custom {
+    margin-bottom: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+}
+
+/* Шапка таблицы */
+.table-custom thead th {
+    background: var(--table-header-bg);
+    color: var(--table-header-text);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.8px;
+    padding: 18px 20px;
+    border: none;
+    position: relative;
+    text-align: left;
+}
+
+.table-custom thead th:first-child {
+    border-radius: 0;
+}
+
+.table-custom thead th:last-child {
+    border-radius: 0;
+}
+
+/* Добавляем иконки в заголовки */
+.table-custom thead th::before {
+    margin-right: 8px;
+    opacity: 0.8;
+}
+
+/* Ячейки таблицы */
+.table-custom tbody td,
+.table-custom tbody th {
+    padding: 16px 20px;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--table-border);
+    transition: all 0. 3s ease;
+    font-size: 0.95rem;
+}
+
+.table-custom tbody th[scope="row"] {
+    font-weight: 600;
+    color: #4a5568;
+    background: linear-gradient(90deg, rgba(102, 126, 234, 0. 05) 0%, transparent 100%);
+    border-left: 3px solid var(--table-accent);
+}
+
+/* Чередование строк */
+.table-custom tbody tr:nth-child(odd) {
+    background-color: var(--table-row-odd);
+}
+
+.table-custom tbody tr:nth-child(even) {
+    background-color: var(--table-row-even);
+}
+
+/* Hover эффект */
+.table-custom tbody tr:hover {
+    background: var(--table-row-hover);
+    transform: none;
+}
+
+. table-custom tbody tr:hover td,
+.table-custom tbody tr:hover th {
+    color: #374151;
+}
+
+/* Итоговая строка */
+.table-custom . table-success,
+.table-custom tbody tr. table-success {
+    background: var(--table-success-bg) !important;
+}
+
+.table-custom .table-success td,
+.table-custom . table-success th {
+    color: var(--table-success-text);
+    font-weight: 700;
+    font-size: 1rem;
+    border-bottom: none;
+    padding: 20px;
+}
+
+.table-custom .table-success td strong {
+    color: var(--table-success-text);
+}
+
+/* ===== МОБИЛЬНЫЕ КАРТОЧКИ ФАКУЛЬТЕТОВ ===== */
+.faculty-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid var(--table-border);
+    margin-bottom: 0;
+}
+
+. faculty-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(102, 126, 234, 0.15);
+}
+
+.faculty-card . card-header {
+    background: var(--table-header-bg);
+    color: white;
+    padding: 16px 20px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+}
+
+.faculty-card .card-header h3,
+.faculty-card .card-header . card-title {
+    color: white;
+    margin: 0;
+    font-size: 1rem;
+}
+
+. faculty-card .card-body {
+    padding: 0;
+}
+
+. faculty-card .card-body p,
+.faculty-card .card-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    margin: 0;
+    border-bottom: 1px solid var(--table-border);
+    font-size: 0.9rem;
+}
+
+.faculty-card . card-body p:last-child,
+.faculty-card .card-text:last-child {
+    border-bottom: none;
+}
+
+.faculty-card . card-body strong {
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.faculty-card .card-body p::after {
+    content: attr(data-value);
+    color: #374151;
+    font-weight: 600;
+}
+
+/* Карточка с итогом */
+.card. border-success {
+    background: var(--table-success-bg);
+    border: 2px solid #10b981 !important;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.card.border-success .card-body {
+    padding: 24px;
+}
+
+.card.border-success .card-title {
+    color: #059669;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.card.border-success .card-text {
+    color: #047857;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+/* ===== АДАПТИВНЫЕ ИКОНКИ ДЛЯ КАРТОЧЕК ===== */
+.card-custom . card-header. custom-bg-secondary {
+    background: var(--table-header-bg);
+}
+
+/* ===== ЧИСЛОВЫЕ ЗНАЧЕНИЯ В ТАБЛИЦЕ ===== */
+. table-custom tbody td:not(:first-child) {
+    text-align: center;
+    font-weight: 500;
+    color: #4a5568;
+}
+
+/* Акцент на числах */
+.table-custom tbody td:nth-child(2) {
+    color: #667eea;
+    font-weight: 600;
+}
+
+. table-custom tbody td:nth-child(3) {
+    color: #764ba2;
+    font-weight: 600;
+}
+
+. table-custom tbody td:nth-child(4) {
+    color: #6b7280;
+}
+
+. table-custom tbody td:nth-child(5) {
+    color: #374151;
+    font-style: italic;
+}
+
+/* ===== АНИМАЦИЯ ПОЯВЛЕНИЯ СТРОК ===== */
+.table-custom tbody tr {
+    animation: fadeInRow 0.5s ease forwards;
+    opacity: 0;
+}
+
+. table-custom tbody tr:nth-child(1) { animation-delay: 0.1s; }
+.table-custom tbody tr:nth-child(2) { animation-delay: 0.15s; }
+. table-custom tbody tr:nth-child(3) { animation-delay: 0. 2s; }
+.table-custom tbody tr:nth-child(4) { animation-delay: 0.25s; }
+.table-custom tbody tr:nth-child(5) { animation-delay: 0.3s; }
+.table-custom tbody tr:nth-child(6) { animation-delay: 0.35s; }
+
+@keyframes fadeInRow {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ТАБЛИЦЫ ===== */
+@media (max-width: 991px) {
+    .faculty-card . card-header {
+        text-align: center;
+        padding: 14px 16px;
+    }
+    
+    .faculty-card .card-body p {
+        padding: 10px 16px;
+    }
+    
+    .card. border-success . card-text {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .faculty-card {
+        margin-bottom: 12px;
+    }
+    
+    . faculty-card .card-header {
+        font-size: 0.95rem;
+        padding: 12px 14px;
+    }
+    
+    . faculty-card .card-body p {
+        padding: 10px 14px;
+        font-size: 0.85rem;
+    }
+    
+    . card.border-success {
+        margin-top: 12px;
+    }
+    
+    .card.border-success .card-body {
+        padding: 20px;
+    }
+    
+    . card.border-success .card-text {
+        font-size: 1. 5rem;
+    }
+}
+
+/* ===== ТЕНЬ ДЛЯ ОБЁРТКИ ТАБЛИЦЫ ===== */
+. table-responsive. shadow-sm {
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.1) !important;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+/* ===== УЛУЧШЕННЫЙ SCROLL ДЛЯ ТАБЛИЦЫ ===== */
+.table-responsive {
+    border-radius: 16px;
+}
+
+.table-responsive::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 4px;
+}
